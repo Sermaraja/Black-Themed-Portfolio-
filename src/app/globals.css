@@ -12,10 +12,15 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
+  --color-brand: #C50248;
 }
 
 body {
   background-color: #000000;
+  background-image: 
+    radial-gradient(circle at 100% 0%, rgba(197, 2, 72, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 0% 50%, rgba(197, 2, 72, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(197, 2, 72, 0.12) 0%, transparent 45%);
   color: #f4f4f5;
   font-family: var(--font-sans);
   overflow-x: hidden;
@@ -29,26 +34,26 @@ body {
 }
 
 .text-pink-magenta-gradient {
-  /* Matching the white -> pink -> deep magenta/crimson gradient from user's image */
-  background: linear-gradient(180deg, #ffffff 0%, #ec4899 50%, #be123c 100%);
+  /* Matching the white -> pink -> deep magenta #C50248 gradient */
+  background: linear-gradient(180deg, #ffffff 0%, #ec4899 50%, #C50248 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .bg-pink-magenta-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #ec4899 50%, #be123c 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ec4899 50%, #C50248 100%);
 }
 
 .border-pink-magenta-gradient {
-  border-image: linear-gradient(135deg, #ffffff 0%, #ec4899 50%, #be123c 100%) 1;
+  border-image: linear-gradient(135deg, #ffffff 0%, #ec4899 50%, #C50248 100%) 1;
 }
 
 /* Background grid styling */
 .bg-grid-pattern {
   background-size: 50px 50px;
   background-image: 
-    linear-gradient(to right, rgba(236, 72, 153, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(236, 72, 153, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(197, 2, 72, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(197, 2, 72, 0.04) 1px, transparent 1px);
 }
 
 /* Animation utilities */
@@ -78,7 +83,7 @@ body {
   bottom: 0;
   left: 16px;
   width: 2px;
-  background: linear-gradient(to bottom, #ec4899, #be123c, transparent);
+  background: linear-gradient(to bottom, #ec4899, #C50248, transparent);
 }
 @media (min-width: 768px) {
   .timeline-line::before {

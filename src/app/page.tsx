@@ -44,9 +44,9 @@ function TypingEffect() {
   }, [currentText, isDeleting, currentRoleIndex, typingSpeed]);
 
   return (
-    <span className="text-pink-magenta-gradient font-heading font-semibold inline-block border-r-2 border-pink-500 pr-1 select-none">
+    <span className="text-pink-magenta-gradient font-heading font-semibold inline-block border-r-2 border-brand pr-1 select-none">
       {currentText}
-      <span className="animate-cursor-blink text-pink-500 ml-0.5">|</span>
+      <span className="animate-cursor-blink text-brand ml-0.5">|</span>
     </span>
   );
 }
@@ -81,17 +81,17 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-zinc-300 font-sans selection:bg-pink-600 selection:text-white relative bg-grid-pattern">
+    <div className="min-h-screen bg-black text-zinc-300 font-sans selection:bg-brand selection:text-white relative bg-grid-pattern">
       
       {/* Decorative Glow Elements */}
-      <div className="glow-sphere w-[400px] h-[400px] bg-pink-600/10 top-[-100px] right-[-50px]"></div>
-      <div className="glow-sphere w-[500px] h-[500px] bg-rose-700/5 bottom-[10%] left-[-100px]"></div>
+      <div className="glow-sphere w-[400px] h-[400px] bg-brand/10 top-[-100px] right-[-50px]"></div>
+      <div className="glow-sphere w-[500px] h-[500px] bg-brand/5 bottom-[10%] left-[-100px]"></div>
 
       {/* Header/Navbar */}
       <header className="sticky top-0 z-50 bg-black/70 backdrop-blur-md border-b border-zinc-900">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="#" className="font-heading text-xl font-bold tracking-tight text-white hover:text-pink-500 transition-colors">
-            SERMARAJA<span className="text-pink-500">.V</span>
+          <a href="#" className="font-heading text-xl font-bold tracking-tight text-white hover:text-brand transition-colors">
+            SERMARAJA<span className="text-brand">.V</span>
           </a>
           
           <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
@@ -105,7 +105,7 @@ export default function Home() {
           <div className="hidden md:block">
             <a 
               href="#contact" 
-              className="px-5 py-2 text-xs font-semibold uppercase tracking-wider rounded border border-pink-500/30 hover:border-pink-500 hover:text-white transition-all duration-300"
+              className="px-5 py-2 text-xs font-semibold uppercase tracking-wider rounded border border-brand/30 hover:border-brand hover:text-white transition-all duration-300"
             >
               Let's Talk
             </a>
@@ -138,7 +138,7 @@ export default function Home() {
             <a 
               onClick={() => setIsMobileMenuOpen(false)}
               href="#contact" 
-              className="inline-block text-center px-4 py-2.5 text-xs font-semibold uppercase tracking-wider rounded bg-pink-600 hover:bg-pink-700 text-white transition-all"
+              className="inline-block text-center px-4 py-2.5 text-xs font-semibold uppercase tracking-wider rounded bg-brand hover:bg-brand/80 text-white transition-all"
             >
               Let's Talk
             </a>
@@ -151,8 +151,8 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center relative z-10">
           
           {/* Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/60 border border-zinc-800 text-xs font-medium text-zinc-400 hover:border-pink-500/50 transition-all select-none">
-            <span className="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
+          <div className="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/60 border border-zinc-800 text-xs font-medium text-zinc-400 hover:border-brand/50 transition-all select-none">
+            <span className="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
             Available for Opportunities
           </div>
 
@@ -178,14 +178,14 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 mb-12 items-center justify-center w-full max-w-md">
             <a 
               href="#contact" 
-              className="w-full sm:w-auto px-8 py-4 rounded font-heading font-semibold text-sm bg-pink-magenta-gradient text-white shadow-lg hover:shadow-pink-500/10 transition-all duration-300 text-center hover:scale-[1.02]"
+              className="w-full sm:w-auto px-8 py-4 rounded font-heading font-semibold text-sm bg-pink-magenta-gradient text-white shadow-lg hover:shadow-brand/10 transition-all duration-300 text-center hover:scale-[1.02]"
             >
               Contact Me
             </a>
             
             <button 
               onClick={handleDownloadCV}
-              className="w-full sm:w-auto px-8 py-4 rounded font-heading font-semibold text-sm border border-zinc-700 hover:border-pink-500 text-zinc-300 hover:text-white hover:bg-zinc-950 transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 rounded font-heading font-semibold text-sm border border-zinc-700 hover:border-brand text-zinc-300 hover:text-white hover:bg-zinc-950 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
@@ -200,7 +200,7 @@ export default function Home() {
               href="https://github.com/Sermaraja" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 hover:border-pink-500 flex items-center justify-center text-zinc-400 hover:text-white transition-all"
+              className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all"
               aria-label="GitHub"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -212,7 +212,7 @@ export default function Home() {
               href="https://www.linkedin.com/in/sermaraja-v09022005/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 hover:border-pink-500 flex items-center justify-center text-zinc-400 hover:text-white transition-all"
+              className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all"
               aria-label="LinkedIn"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -222,7 +222,7 @@ export default function Home() {
 
             <a 
               href="mailto:sermarajav.offcl@gmail.com" 
-              className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 hover:border-pink-500 flex items-center justify-center text-zinc-400 hover:text-white transition-all"
+              className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all"
               aria-label="Email"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -242,7 +242,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-heading font-bold text-silver-gradient mb-4">About Me</h2>
-            <div className="h-1 w-20 bg-pink-500 rounded"></div>
+            <div className="h-1 w-20 bg-brand rounded"></div>
             <p className="text-zinc-500 mt-6 text-sm font-medium tracking-wider uppercase font-heading">
               My Journey & Drive
             </p>
@@ -260,11 +260,11 @@ export default function Home() {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-sm">
               <div className="flex items-center gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-pink-500"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-brand"></span>
                 <span>Email: sermarajav.offcl@gmail.com</span>
               </div>
               <div className="flex items-center gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-pink-500"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-brand"></span>
                 <span>Location: Tamil Nadu, India</span>
               </div>
             </div>
@@ -289,7 +289,7 @@ export default function Home() {
               onClick={() => setActiveTab(tab)}
               className={`px-5 py-2.5 rounded font-heading text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                 activeTab === tab 
-                  ? "bg-pink-600 text-white shadow-md shadow-pink-600/10" 
+                  ? "bg-brand text-white shadow-md shadow-brand/10" 
                   : "bg-zinc-950 text-zinc-500 border border-zinc-900 hover:border-zinc-800 hover:text-zinc-300"
               }`}
             >
@@ -305,7 +305,7 @@ export default function Home() {
           {activeTab === "technical" && (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 animate-fadeIn">
               {["HTML5", "CSS3 / Sass", "JavaScript (ES6+)", "React.js", "Next.js", "Git & GitHub", "Tailwind CSS", "Responsive Design"].map((skill) => (
-                <div key={skill} className="p-5 rounded bg-zinc-950 border border-zinc-900 hover:border-pink-500/30 transition-all text-center">
+                <div key={skill} className="p-5 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/30 transition-all text-center">
                   <p className="text-sm font-semibold text-white">{skill}</p>
                 </div>
               ))}
@@ -315,7 +315,7 @@ export default function Home() {
           {activeTab === "system" && (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 animate-fadeIn">
               {["System Associate Engineer", "Linux OS", "Server Deployment", "Devopstrio Infrastructure", "IT Hardware Admin", "Networking", "Shell Scripting", "System Security"].map((skill) => (
-                <div key={skill} className="p-5 rounded bg-zinc-950 border border-zinc-900 hover:border-pink-500/30 transition-all text-center">
+                <div key={skill} className="p-5 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/30 transition-all text-center">
                   <p className="text-sm font-semibold text-white">{skill}</p>
                 </div>
               ))}
@@ -324,7 +324,7 @@ export default function Home() {
 
           {activeTab === "accomplishments" && (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fadeIn">
-              <div className="p-6 rounded bg-zinc-950 border border-zinc-900 hover:border-pink-500/30 transition-all">
+              <div className="p-6 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/30 transition-all">
                 <div className="inline-block px-3 py-1 rounded bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-xs font-semibold uppercase tracking-wider mb-4">
                   1st Prize
                 </div>
@@ -335,8 +335,8 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="p-6 rounded bg-zinc-950 border border-zinc-900 hover:border-pink-500/30 transition-all">
-                <div className="inline-block px-3 py-1 rounded bg-pink-500/10 border border-pink-500/20 text-pink-500 text-xs font-semibold uppercase tracking-wider mb-4">
+              <div className="p-6 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/30 transition-all">
+                <div className="inline-block px-3 py-1 rounded bg-brand/10 border border-brand/20 text-brand text-xs font-semibold uppercase tracking-wider mb-4">
                   Competitor Award
                 </div>
                 <h4 className="font-heading font-bold text-white mb-2">Cyber Security PPT</h4>
@@ -346,7 +346,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="p-6 rounded bg-zinc-950 border border-zinc-900 hover:border-pink-500/30 transition-all">
+              <div className="p-6 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/30 transition-all">
                 <div className="inline-block px-3 py-1 rounded bg-zinc-400/10 border border-zinc-400/20 text-zinc-400 text-xs font-semibold uppercase tracking-wider mb-4">
                   2nd Prize
                 </div>
@@ -375,33 +375,33 @@ export default function Home() {
           {/* Card 1: Devopstrio */}
           <div className="relative md:flex md:justify-between items-start mb-16">
             <div className="hidden md:block w-5/12 text-right pr-8">
-              <span className="text-sm font-semibold tracking-wider text-pink-500 font-heading">
+              <span className="text-sm font-semibold tracking-wider text-brand font-heading">
                 Present
               </span>
               <p className="text-xs text-zinc-500 mt-1">Associate System Engineer</p>
             </div>
             
-            <div className="absolute left-[-20px] md:left-1/2 md:translate-x-[-50%] w-10 h-10 rounded-full bg-zinc-950 border-2 border-pink-500 flex items-center justify-center text-pink-500 z-10 font-bold text-sm">
+            <div className="absolute left-[-20px] md:left-1/2 md:translate-x-[-50%] w-10 h-10 rounded-full bg-zinc-950 border-2 border-brand flex items-center justify-center text-brand z-10 font-bold text-sm">
               1
             </div>
 
-            <div className="w-full md:w-5/12 p-6 rounded bg-zinc-950 border border-zinc-900 hover:border-pink-500/20 transition-all">
+            <div className="w-full md:w-5/12 p-6 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/20 transition-all">
               <div className="md:hidden mb-2">
-                <span className="text-xs font-bold text-pink-500 uppercase tracking-widest">Present</span>
+                <span className="text-xs font-bold text-brand uppercase tracking-widest">Present</span>
               </div>
               <h3 className="text-lg font-heading font-bold text-white mb-1">Devopstrio</h3>
               <p className="text-xs font-semibold text-zinc-500 uppercase mb-4 tracking-wider">Associate System Engineer & Web Developer</p>
               <ul className="space-y-2.5 text-sm text-zinc-400">
                 <li className="flex items-start gap-2">
-                  <span className="text-pink-500 mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                  <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
                   <span>Designed and developed responsive web applications for clients.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-pink-500 mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                  <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
                   <span>Created engaging, interactive, user-friendly UI/UX interfaces.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-pink-500 mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                  <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
                   <span>Maintained server configurations, network setups, and systems administration duties.</span>
                 </li>
               </ul>
@@ -420,9 +420,9 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="p-8 rounded bg-zinc-950 border border-zinc-900 hover:border-pink-500/20 transition-all flex flex-col justify-between">
+          <div className="p-8 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/20 transition-all flex flex-col justify-between">
             <div>
-              <div className="text-xs font-bold text-pink-500 uppercase tracking-widest mb-4">
+              <div className="text-xs font-bold text-brand uppercase tracking-widest mb-4">
                 Undergraduate Degree
               </div>
               <h3 className="text-xl font-heading font-bold text-white mb-2">
@@ -440,9 +440,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="p-8 rounded bg-zinc-950 border border-zinc-900 hover:border-pink-500/20 transition-all flex flex-col justify-between">
+          <div className="p-8 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/20 transition-all flex flex-col justify-between">
             <div>
-              <div className="text-xs font-bold text-pink-500 uppercase tracking-widest mb-4">
+              <div className="text-xs font-bold text-brand uppercase tracking-widest mb-4">
                 Higher Secondary Certificate
               </div>
               <h3 className="text-xl font-heading font-bold text-white mb-2">
@@ -483,21 +483,21 @@ export default function Home() {
               
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-pink-500">
+                  <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-brand">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                     </svg>
                   </div>
                   <div>
                     <p className="text-xs text-zinc-500 font-semibold uppercase tracking-wider">Email Address</p>
-                    <a href="mailto:sermarajav.offcl@gmail.com" className="text-white hover:text-pink-500 transition-colors">
+                    <a href="mailto:sermarajav.offcl@gmail.com" className="text-white hover:text-brand transition-colors">
                       sermarajav.offcl@gmail.com
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-pink-500">
+                  <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-brand">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -532,7 +532,7 @@ export default function Home() {
                   onChange={(e) => setEmailInput(e.target.value)}
                   placeholder="name@example.com" 
                   required
-                  className="w-full bg-black border border-zinc-800 rounded px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-pink-500 transition-colors text-sm"
+                  className="w-full bg-black border border-zinc-800 rounded px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-brand transition-colors text-sm"
                 />
               </div>
 
@@ -545,9 +545,9 @@ export default function Home() {
                   rows={5}
                   value={messageInput}
                   onChange={(e) => setMessageInput(e.target.value)}
-                  placeholder="Tell me about your project or enquiry..." 
+                  placeholder="Tell me about your project or inquiry..." 
                   required
-                  className="w-full bg-black border border-zinc-800 rounded px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-pink-500 transition-colors text-sm resize-none"
+                  className="w-full bg-black border border-zinc-800 rounded px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-brand transition-colors text-sm resize-none"
                 />
               </div>
 
@@ -570,7 +570,7 @@ export default function Home() {
                   </p>
                   <button 
                     onClick={() => setFormStatus("idle")}
-                    className="px-6 py-2 rounded bg-zinc-900 border border-zinc-800 text-xs font-semibold hover:border-pink-500 transition-colors"
+                    className="px-6 py-2 rounded bg-zinc-900 border border-zinc-800 text-xs font-semibold hover:border-brand transition-colors"
                   >
                     Send Another
                   </button>
