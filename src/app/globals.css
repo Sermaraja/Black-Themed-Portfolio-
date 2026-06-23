@@ -66,6 +66,21 @@ body {
   animation: blink 0.8s infinite;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
 /* Glow effects */
 .glow-sphere {
   position: absolute;
@@ -91,3 +106,75 @@ body {
     transform: translateX(-50%);
   }
 }
+
+/* Marquee infinite scroll slider styling */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.hover-pause:hover,
+.hover-pause:hover * {
+  animation-play-state: paused !important;
+}
+
+@keyframes rotate-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-counter-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-rotate-clockwise {
+  animation: rotate-clockwise 40s linear infinite;
+}
+
+.animate-rotate-counter-clockwise {
+  animation: rotate-counter-clockwise 40s linear infinite;
+}
+
+/* Glass Card styles */
+.glass-card {
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-card:hover {
+  border-color: rgba(197, 2, 72, 0.3);
+}
+
+/* Scroll Reveal animations */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
