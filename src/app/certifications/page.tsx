@@ -108,13 +108,14 @@ const certifications: Certificate[] = [
 export default function CertificationsPage() {
   const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
   const [filterCategory, setFilterCategory] = useState<"all" | "development" | "engineering" | "business" | "writing">("all");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const filteredCertifications = certifications.filter(
     (cert) => filterCategory === "all" || cert.category === filterCategory
   );
 
   return (
-    <div className="min-h-screen bg-black text-zinc-300 font-sans selection:bg-brand selection:text-white relative bg-grid-pattern pb-24">
+    <div className="min-h-screen bg-black text-zinc-300 font-sans selection:bg-brand selection:text-white relative bg-grid-pattern pb-24 overflow-x-hidden">
       
       {/* Background Ambient Glows */}
       <div className="glow-sphere w-[550px] h-[550px] bg-brand/10 top-[-150px] left-[15%]"></div>
@@ -127,14 +128,42 @@ export default function CertificationsPage() {
             SERMARAJA<span className="text-brand">.V</span>
           </a>
           
-          <nav className="flex items-center space-x-6 text-sm font-medium">
+          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+            <a href="/" className="text-zinc-400 hover:text-white transition-colors">Home</a>
             <a href="/#about" className="text-zinc-400 hover:text-white transition-colors">About</a>
             <a href="/#skills" className="text-zinc-400 hover:text-white transition-colors">Skills</a>
             <a href="/#experience" className="text-zinc-400 hover:text-white transition-colors">Experience</a>
             <a href="/#education" className="text-zinc-400 hover:text-white transition-colors">Timeline</a>
             <a href="/#contact" className="text-zinc-400 hover:text-white transition-colors">Contact</a>
           </nav>
+
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+            className="md:hidden text-zinc-400 hover:text-white focus:outline-none"
+            aria-label="Toggle Menu"
+          >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {isMobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+              )}
+            </svg>
+          </button>
         </div>
+
+        {/* Mobile Navigation Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-zinc-950/95 border-b border-zinc-900 py-4 px-6 flex flex-col space-y-4">
+            <a onClick={() => setIsMobileMenuOpen(false)} href="/" className="text-zinc-400 hover:text-white transition-colors py-1">Home</a>
+            <a onClick={() => setIsMobileMenuOpen(false)} href="/#about" className="text-zinc-400 hover:text-white transition-colors py-1">About</a>
+            <a onClick={() => setIsMobileMenuOpen(false)} href="/#skills" className="text-zinc-400 hover:text-white transition-colors py-1">Skills</a>
+            <a onClick={() => setIsMobileMenuOpen(false)} href="/#experience" className="text-zinc-400 hover:text-white transition-colors py-1">Experience</a>
+            <a onClick={() => setIsMobileMenuOpen(false)} href="/#education" className="text-zinc-400 hover:text-white transition-colors py-1">Timeline</a>
+            <a onClick={() => setIsMobileMenuOpen(false)} href="/#contact" className="text-zinc-400 hover:text-white transition-colors py-1">Contact</a>
+          </div>
+        )}
       </header>
 
       {/* Main Content */}
@@ -193,6 +222,7 @@ export default function CertificationsPage() {
                   <img 
                     src={cert.image} 
                     alt={cert.title} 
+                    loading="lazy"
                     className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
                   />
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center backdrop-blur-[2px] gap-2">
@@ -284,7 +314,7 @@ export default function CertificationsPage() {
           onClick={() => setSelectedCertificate(null)}
         >
           <div 
-            className="relative max-w-4xl w-full bg-zinc-950 border border-zinc-900 rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[85vh] animate-zoomIn"
+            className="relative max-w-4xl w-full bg-zinc-950 border border-zinc-900 rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh] md:max-h-[85vh] animate-zoomIn"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -296,7 +326,7 @@ export default function CertificationsPage() {
             </button>
 
             {/* Left side: Certificate Image view */}
-            <div className="w-full md:w-7/12 bg-zinc-950 p-6 flex flex-col justify-center items-center border-r border-zinc-900/60 max-h-[40vh] md:max-h-[85vh]">
+            <div className="w-full md:w-7/12 bg-zinc-950 p-4 md:p-6 flex flex-col justify-center items-center border-b md:border-b-0 md:border-r border-zinc-900/60 max-h-[40vh] md:max-h-[85vh]">
               <div className="w-full h-full flex items-center justify-center relative rounded overflow-hidden">
                 <img 
                   src={selectedCertificate.image} 
@@ -307,7 +337,7 @@ export default function CertificationsPage() {
             </div>
 
             {/* Right side: Detailed Information panel */}
-            <div className="w-full md:w-5/12 p-8 flex flex-col justify-between overflow-y-auto max-h-[45vh] md:max-h-[85vh] bg-zinc-950/20 backdrop-blur-md relative">
+            <div className="w-full md:w-5/12 p-5 sm:p-6 md:p-8 flex flex-col justify-between overflow-y-auto max-h-[50vh] md:max-h-[85vh] bg-zinc-950/20 backdrop-blur-md relative">
               {/* Radial gradient background accent in sidebar */}
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(197,2,72,0.06),transparent_60%)] pointer-events-none"></div>
 

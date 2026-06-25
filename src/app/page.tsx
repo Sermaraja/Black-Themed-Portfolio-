@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   JAVAIcon,
   HTMLIcon,
@@ -285,7 +285,7 @@ export default function Home() {
     return () => {
       elements.forEach((el) => observer.unobserve(el));
     };
-  }, []);
+  }, [projects, projectsLoading, activeProjectTab]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -299,7 +299,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-zinc-300 font-sans selection:bg-brand selection:text-white relative bg-grid-pattern">
+    <div className="min-h-screen bg-black text-zinc-300 font-sans selection:bg-brand selection:text-white relative bg-grid-pattern overflow-x-hidden">
       {/* Custom Mouse Follower elements */}
       <div className="mouse-follower hidden md:block" />
       <div className="mouse-dot hidden md:block" />
@@ -462,19 +462,19 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgba(0,0,0,0)_10%,#000_90%)] pointer-events-none z-0"></div>
       </section>
       {/* About Section */}
-      <section id="about" className="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-900">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <section id="about" className="py-32 px-8 max-w-7xl mx-auto border-t border-zinc-900">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           {/* Bio Column */}
-          <div className="lg:col-span-7 space-y-6 reveal-item">
+          <div className="lg:col-span-7 space-y-8 reveal-item">
             <div>
-              <h2 className="text-3xl font-heading font-bold text-silver-gradient mb-4">About Me</h2>
-              <div className="h-1 w-20 bg-brand rounded mb-6"></div>
-              <p className="text-zinc-500 text-sm font-medium tracking-wider uppercase font-heading">
+              <h2 className="text-4xl font-heading font-bold text-silver-gradient mb-4">About Me</h2>
+              <div className="h-1.5 w-24 bg-brand rounded mb-6"></div>
+              <p className="text-zinc-500 text-sm font-semibold tracking-wider uppercase font-heading">
                 My Journey & Drive
               </p>
             </div>
             
-            <div className="space-y-6 text-zinc-400 text-base leading-relaxed">
+            <div className="space-y-6 text-zinc-300 text-lg leading-relaxed">
               <p>
                 I am a dedicated and passionate web developer with a strong foundation in computer science. 
                 Currently working as a <strong className="text-white">System Associate at Devopstrio</strong>, 
@@ -485,13 +485,13 @@ export default function Home() {
                 for creating digital solutions that make a difference. I enjoy turning complex problems into simple, 
                 beautiful, and intuitive designs.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-base">
                 <div className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand"></span>
+                  <span className="w-2 h-2 rounded-full bg-brand"></span>
                   <span>Email: sermarajav.offcl@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand"></span>
+                  <span className="w-2 h-2 rounded-full bg-brand"></span>
                   <span>Location: Tamil Nadu, India</span>
                 </div>
               </div>
@@ -499,12 +499,12 @@ export default function Home() {
           </div>
 
           {/* Interactive Tech Wheel Column */}
-          <div className="lg:col-span-5 flex items-center justify-center py-10 relative select-none reveal-item">
+          <div className="lg:col-span-5 flex items-center justify-center py-12 relative select-none reveal-item">
             {/* Outer light glow behind the circle */}
-            <div className="absolute w-72 h-72 rounded-full bg-brand/5 filter blur-3xl pointer-events-none -z-10"></div>
+            <div className="absolute w-80 h-80 rounded-full bg-brand/5 filter blur-3xl pointer-events-none -z-10"></div>
             
             {/* Uiverse Skill Wheel */}
-            <div className="relative h-full w-full flex items-center justify-center scale-90 sm:scale-100">
+            <div className="relative h-full w-full flex items-center justify-center scale-[0.72] min-[375px]:scale-[0.85] sm:scale-100 md:scale-110">
               <div className="profileCard_container animate-rotate-clockwise hover-pause relative p-12 border-2 border-dashed rounded-full border-spacing-4 border-gray-400/50">
                 {/* React (Top Left) */}
                 <button className="profile_item left-[55px] -top-[2px] absolute rounded-full bg-cover cursor-pointer border border-gray-400/50 p-[2px] active:scale-95 hover:scale-95 transition-all duration-500 focus:outline-none">
@@ -595,6 +595,7 @@ export default function Home() {
                     <img 
                       src="/IMG/serma_profile_face.jpg" 
                       alt="Sermaraja V Profile"
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover/avatar:scale-110"
                     />
                   </div>
@@ -644,7 +645,7 @@ export default function Home() {
                 return (
                   <div 
                     key={skill.name} 
-                    className={`group p-6 rounded-xl bg-zinc-950/80 border transition-all duration-300 flex flex-col items-center justify-center gap-4 text-center cursor-default animate-fadeIn ${
+                    className={`group p-4 sm:p-6 rounded-xl bg-zinc-950/80 border transition-all duration-300 flex flex-col items-center justify-center gap-4 text-center cursor-default animate-fadeIn ${
                       isActive 
                         ? "border-brand/30 shadow-[0_0_20px_rgba(197,2,72,0.08)]" 
                         : "border-zinc-900 hover:border-brand/30 hover:shadow-[0_0_20px_rgba(197,2,72,0.08)]"
@@ -679,7 +680,7 @@ export default function Home() {
                 return (
                   <div 
                     key={skill.name} 
-                    className={`group p-6 rounded-xl bg-zinc-950/80 border transition-all duration-300 flex flex-col items-center justify-center gap-4 text-center cursor-default animate-fadeIn ${
+                    className={`group p-4 sm:p-6 rounded-xl bg-zinc-950/80 border transition-all duration-300 flex flex-col items-center justify-center gap-4 text-center cursor-default animate-fadeIn ${
                       isActive 
                         ? "border-brand/30 shadow-[0_0_20px_rgba(197,2,72,0.08)]" 
                         : "border-zinc-900 hover:border-brand/30 hover:shadow-[0_0_20px_rgba(197,2,72,0.08)]"
@@ -727,7 +728,7 @@ export default function Home() {
             </div>
             
             {/* Node in Center */}
-            <div className="absolute left-[-20px] md:left-1/2 md:translate-x-[-50%] w-10 h-10 rounded-full bg-zinc-950 border-2 border-brand flex items-center justify-center text-brand z-10 font-bold text-sm shadow-[0_0_15px_rgba(197,2,72,0.3)]">
+            <div className="absolute left-[-4px] md:left-1/2 md:translate-x-[-50%] w-10 h-10 rounded-full bg-zinc-950 border-2 border-brand flex items-center justify-center text-brand z-10 font-bold text-sm shadow-[0_0_15px_rgba(197,2,72,0.3)]">
               1
             </div>
 
@@ -781,7 +782,7 @@ export default function Home() {
             </div>
 
             {/* Node in Center */}
-            <div className="absolute left-[-20px] md:left-1/2 md:translate-x-[-50%] w-10 h-10 rounded-full bg-zinc-950 border-2 border-brand flex items-center justify-center text-brand z-10 font-bold text-sm shadow-[0_0_15px_rgba(197,2,72,0.3)]">
+            <div className="absolute left-[-4px] md:left-1/2 md:translate-x-[-50%] w-10 h-10 rounded-full bg-zinc-950 border-2 border-brand flex items-center justify-center text-brand z-10 font-bold text-sm shadow-[0_0_15px_rgba(197,2,72,0.3)]">
               2
             </div>
 
@@ -805,7 +806,7 @@ export default function Home() {
             </div>
 
             {/* Node in Center */}
-            <div className="absolute left-[-20px] md:left-1/2 md:translate-x-[-50%] w-10 h-10 rounded-full bg-zinc-950 border-2 border-brand flex items-center justify-center text-brand z-10 font-bold text-sm shadow-[0_0_15px_rgba(197,2,72,0.3)]">
+            <div className="absolute left-[-4px] md:left-1/2 md:translate-x-[-50%] w-10 h-10 rounded-full bg-zinc-950 border-2 border-brand flex items-center justify-center text-brand z-10 font-bold text-sm shadow-[0_0_15px_rgba(197,2,72,0.3)]">
               3
             </div>
 
@@ -952,6 +953,7 @@ export default function Home() {
                       <img 
                         src={project.image} 
                         alt={project.title}
+                        loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
@@ -1048,6 +1050,7 @@ export default function Home() {
                         <img 
                           src={project.image} 
                           alt={project.title}
+                          loading="lazy"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-80"></div>
@@ -1325,7 +1328,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-xs text-zinc-500 font-semibold uppercase tracking-wider">Email Address</p>
-                    <a href="mailto:sermarajav.offcl@gmail.com" className="text-white hover:text-brand transition-colors">
+                    <a href="mailto:sermarajav.offcl@gmail.com" className="text-white hover:text-brand transition-colors break-all">
                       sermarajav.offcl@gmail.com
                     </a>
                   </div>
@@ -1354,7 +1357,7 @@ export default function Home() {
           </div>
 
           {/* Form */}
-          <div className="p-8 rounded bg-zinc-950 border border-zinc-900 relative reveal-item">
+          <div className="p-5 sm:p-8 rounded bg-zinc-950 border border-zinc-900 relative reveal-item">
             <form onSubmit={handleContactSubmit} className="space-y-6">
               <div>
                 <label htmlFor="email" className="block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2">
@@ -1432,7 +1435,7 @@ export default function Home() {
           {/* Previous Button */}
           <button 
             onClick={handlePrevSlide}
-            className="absolute left-[-16px] top-[50%] translate-y-[-50%] z-20 w-10 h-10 rounded-full bg-zinc-950/80 border border-zinc-800 text-zinc-400 hover:text-white hover:border-brand flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer backdrop-blur-sm opacity-0 group-hover/slider:opacity-100"
+            className="hidden md:flex absolute left-[-16px] top-[50%] translate-y-[-50%] z-20 w-10 h-10 rounded-full bg-zinc-950/80 border border-zinc-800 text-zinc-400 hover:text-white hover:border-brand items-center justify-center transition-all duration-300 shadow-lg cursor-pointer backdrop-blur-sm opacity-0 group-hover/slider:opacity-100"
             aria-label="Previous certificates"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1443,7 +1446,7 @@ export default function Home() {
           {/* Next Button */}
           <button 
             onClick={handleNextSlide}
-            className="absolute right-[-16px] top-[50%] translate-y-[-50%] z-20 w-10 h-10 rounded-full bg-zinc-950/80 border border-zinc-800 text-zinc-400 hover:text-white hover:border-brand flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer backdrop-blur-sm opacity-0 group-hover/slider:opacity-100"
+            className="hidden md:flex absolute right-[-16px] top-[50%] translate-y-[-50%] z-20 w-10 h-10 rounded-full bg-zinc-950/80 border border-zinc-800 text-zinc-400 hover:text-white hover:border-brand items-center justify-center transition-all duration-300 shadow-lg cursor-pointer backdrop-blur-sm opacity-0 group-hover/slider:opacity-100"
             aria-label="Next certificates"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1475,6 +1478,7 @@ export default function Home() {
                     src={cert.image} 
                     alt={cert.title} 
                     draggable={false}
+                    loading="lazy"
                     className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover/card:scale-[1.03]"
                   />
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
@@ -1596,6 +1600,7 @@ export default function Home() {
                 <img 
                   src="/IMG/blog_cover.png" 
                   alt="VMware to Nutanix - Devopstrio article cover" 
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
                 {/* Elegant overlay reflection */}
@@ -1615,13 +1620,14 @@ export default function Home() {
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md transition-opacity duration-300"
           onClick={() => setSelectedCertificate(null)}
         >
+          <button 
+            className="fixed top-4 right-4 z-50 text-zinc-400 hover:text-white text-4xl font-light focus:outline-none p-2 rounded-full hover:bg-white/10 transition-colors"
+            onClick={() => setSelectedCertificate(null)}
+            aria-label="Close modal"
+          >
+            &times;
+          </button>
           <div className="relative max-w-4xl max-h-[85vh] w-full flex flex-col items-center select-none" onClick={(e) => e.stopPropagation()}>
-            <button 
-              className="absolute top-[-45px] right-0 md:right-[-20px] text-zinc-400 hover:text-white text-4xl font-light focus:outline-none"
-              onClick={() => setSelectedCertificate(null)}
-            >
-              &times;
-            </button>
             <img 
               src={selectedCertificate} 
               alt="Certificate Zoom" 
@@ -1720,10 +1726,10 @@ export default function Home() {
       </footer>
 
       {/* Floating Support Widget */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end">
         {/* Contact Popup */}
         {isContactWidgetOpen && (
-          <div className="w-80 sm:w-[350px] mb-4 overflow-hidden rounded-2xl border border-zinc-900 bg-zinc-950 shadow-2xl animate-fadeIn transition-all duration-300">
+          <div className="w-[calc(100vw-2rem)] sm:w-[350px] mb-4 overflow-hidden rounded-2xl border border-zinc-900 bg-zinc-950 shadow-2xl animate-fadeIn transition-all duration-300">
             {/* Gradient Header */}
             <div className="bg-gradient-to-r from-brand via-pink-600 to-amber-500 px-5 py-4 flex items-center justify-between text-white select-none">
               <span className="font-heading font-bold text-base md:text-lg">How can we help you?</span>
