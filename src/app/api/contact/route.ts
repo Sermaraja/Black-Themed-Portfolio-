@@ -188,10 +188,12 @@ Submission Timestamp: ${submissionDate.toISOString()}
     }
 
     // Determine final status
-    // If it saved to DB or sent email, we consider it a success.
-    // If database insertion failed but email succeeded, we still return success.
-    // If both failed, return a 500 error.
-    if (dbSaved || emailSent) {
+    // If SMTP is configured, we require BOTH database save and email sending to succeed.
+    // If SMTP is not configured, we only require database save.
+    const isSmtpConfigured = !!(SMTP_HOST && SMTP_PORT && SMTP_USER && SMTP_PASS);
+    const isSuccess = isSmtpConfigured ? (dbSaved && emailSent) : dbSaved;
+
+    if (isSuccess) {
       return NextResponse.json({
         success: true,
         message: 'Message processed successfully',
@@ -206,8 +208,10 @@ Submission Timestamp: ${submissionDate.toISOString()}
 
     return NextResponse.json(
       {
-        error: 'Failed to process message',
+        error: 'Failed to process message. Please check SMTP/DB server logs.',
         details: {
+          dbSaved,
+          emailSent,
           dbError,
           emailError,
         }
