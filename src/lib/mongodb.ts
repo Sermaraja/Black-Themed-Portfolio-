@@ -32,34 +32,39 @@ if (process.env.NODE_ENV === 'development') {
   }
   clientPromise = globalWithMongo._mongoClientPromise;
 } else {
-  // In production mode, we use a lazy connection with Proxy.
-  // This avoids caching a permanently rejected connection promise if the initial connect fails.
+  // In production mode, we use a lazy connection with a standard Thenable object.
+  // This avoids caching a permanently rejected connection promise if the initial connect fails,
+  // while avoiding environment compatibility issues with ES6 Proxy in serverless environments.
   let cachedPromise: Promise<MongoClient> | null = null;
 
-  clientPromise = new Proxy({} as Promise<MongoClient>, {
-    get(target, prop) {
-      if (!cachedPromise) {
-        console.log('Connecting to MongoDB database (production)...');
-        const client = new MongoClient(uri, options);
-        cachedPromise = client.connect().catch(async (err) => {
-          console.error('Initial MongoDB connection failed, retrying in 1 second...', err);
-          await new Promise((resolve) => setTimeout(resolve, 1000));
-          return client.connect().catch((retryErr) => {
-            console.error('MongoDB reconnection attempt failed. Clearing connection cache.', retryErr);
-            cachedPromise = null; // Clear connection cache on permanent failure
-            throw retryErr;
-          });
+  const getClientPromise = (): Promise<MongoClient> => {
+    if (!cachedPromise) {
+      console.log('Connecting to MongoDB database (production)...');
+      const client = new MongoClient(uri, options);
+      cachedPromise = client.connect().catch(async (err) => {
+        console.error('Initial MongoDB connection failed, retrying in 1 second...', err);
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        return client.connect().catch((retryErr) => {
+          console.error('MongoDB reconnection attempt failed. Clearing connection cache.', retryErr);
+          cachedPromise = null; // Clear connection cache on permanent failure
+          throw retryErr;
         });
-      }
+      });
+    }
+    return cachedPromise;
+  };
 
-      // Route the property access (e.g. .then, .catch, .finally) to the active promise
-      const val = cachedPromise[prop as keyof typeof cachedPromise];
-      if (typeof val === 'function') {
-        return val.bind(cachedPromise);
-      }
-      return val;
+  clientPromise = {
+    then(onFulfilled?: any, onRejected?: any) {
+      return getClientPromise().then(onFulfilled, onRejected);
     },
-  });
+    catch(onRejected?: any) {
+      return getClientPromise().catch(onRejected);
+    },
+    finally(onFinally?: any) {
+      return getClientPromise().finally(onFinally);
+    },
+  } as unknown as Promise<MongoClient>;
 }
 
 // Export a module-scoped MongoClient promise. By doing this in a

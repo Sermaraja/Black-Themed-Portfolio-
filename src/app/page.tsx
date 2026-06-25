@@ -142,8 +142,12 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("technical");
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [nameInput, setNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
   const [messageInput, setMessageInput] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [messageError, setMessageError] = useState("");
   const [selectedCertificate, setSelectedCertificate] = useState<string | null>(null);
   const [isContactWidgetOpen, setIsContactWidgetOpen] = useState(false);
 
@@ -245,16 +249,70 @@ export default function Home() {
     sliderRef.current.scrollBy({ left: 340, behavior: "smooth" });
   };
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!emailInput || !messageInput) return;
+    let hasError = false;
+
+    if (!nameInput.trim()) {
+      setNameError("Name is required");
+      hasError = true;
+    } else {
+      setNameError("");
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailInput.trim()) {
+      setEmailError("Email is required");
+      hasError = true;
+    } else if (!emailRegex.test(emailInput)) {
+      setEmailError("Please enter a valid email address");
+      hasError = true;
+    } else {
+      setEmailError("");
+    }
+
+    if (!messageInput.trim()) {
+      setMessageError("Message details are required");
+      hasError = true;
+    } else if (messageInput.trim().length < 10) {
+      setMessageError("Message must be at least 10 characters long");
+      hasError = true;
+    } else {
+      setMessageError("");
+    }
+
+    if (hasError) return;
+
     setFormStatus("sending");
-    // Mocking email send to simulate behavior
-    setTimeout(() => {
-      setFormStatus("success");
-      setEmailInput("");
-      setMessageInput("");
-    }, 1500);
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: nameInput.trim(),
+          email: emailInput.trim(),
+          message: messageInput.trim(),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setFormStatus("success");
+        setNameInput("");
+        setEmailInput("");
+        setMessageInput("");
+      } else {
+        console.error('Contact form submission failed:', data.error || 'Server error');
+        setFormStatus("error");
+      }
+    } catch (err) {
+      console.error('Contact form submission network error:', err);
+      setFormStatus("error");
+    }
   };
 
   const handleDownloadCV = () => {
@@ -1300,126 +1358,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-900">
-        <div className="text-center mb-16 reveal-item">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Get In Touch</h2>
-          <p className="text-zinc-500 text-sm max-w-md mx-auto">
-            Have an idea or a collaboration in mind? I'd love to hear from you.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          
-          {/* Direct contact details */}
-          <div className="flex flex-col justify-between reveal-item">
-            <div className="space-y-8">
-              <h3 className="text-xl font-heading font-bold text-white">Contact Information</h3>
-              <p className="text-zinc-400 leading-relaxed">
-                Feel free to reach out for any questions, inquiries or project opportunities. I'm always open to discussing new ideas.
-              </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-brand">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-xs text-zinc-500 font-semibold uppercase tracking-wider">Email Address</p>
-                    <a href="mailto:sermarajav.offcl@gmail.com" className="text-white hover:text-brand transition-colors break-all">
-                      sermarajav.offcl@gmail.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-brand">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-xs text-zinc-500 font-semibold uppercase tracking-wider">Location</p>
-                    <p className="text-white">Tamil Nadu, India</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-t border-zinc-900 pt-8 mt-8">
-              <p className="text-xs text-zinc-500">
-                Designed and built by Sermaraja V. 
-              </p>
-            </div>
-          </div>
-
-          {/* Form */}
-          <div className="p-5 sm:p-8 rounded bg-zinc-950 border border-zinc-900 relative reveal-item">
-            <form onSubmit={handleContactSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="email" className="block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2">
-                  Your Email
-                </label>
-                <input 
-                  type="email" 
-                  id="email"
-                  value={emailInput}
-                  onChange={(e) => setEmailInput(e.target.value)}
-                  placeholder="name@example.com" 
-                  required
-                  className="w-full bg-black border border-zinc-800 rounded px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-brand transition-colors text-sm"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2">
-                  Message Details
-                </label>
-                <textarea 
-                  id="message" 
-                  rows={5}
-                  value={messageInput}
-                  onChange={(e) => setMessageInput(e.target.value)}
-                  placeholder="Tell me about your project or inquiry..." 
-                  required
-                  className="w-full bg-black border border-zinc-800 rounded px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-brand transition-colors text-sm resize-none"
-                />
-              </div>
-
-              <button 
-                type="submit" 
-                disabled={formStatus === "sending"}
-                className="w-full py-4 rounded font-heading font-semibold text-sm bg-pink-magenta-gradient text-white hover:scale-[1.01] transition-transform duration-300 flex items-center justify-center cursor-pointer"
-              >
-                {formStatus === "sending" ? "Sending Details..." : "Send Message"}
-              </button>
-
-              {formStatus === "success" && (
-                <div className="absolute inset-0 bg-zinc-950/90 backdrop-blur-sm rounded flex flex-col items-center justify-center p-6 text-center animate-fadeIn">
-                  <svg className="w-16 h-16 text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  <h4 className="font-heading font-bold text-white text-lg mb-1">Message Sent!</h4>
-                  <p className="text-zinc-400 text-sm mb-6">
-                    Thank you. I'll get back to you as soon as possible.
-                  </p>
-                  <button 
-                    onClick={() => setFormStatus("idle")}
-                    className="px-6 py-2 rounded bg-zinc-900 border border-zinc-800 text-xs font-semibold hover:border-brand transition-colors"
-                  >
-                    Send Another
-                  </button>
-                </div>
-              )}
-            </form>
-          </div>
-
-        </div>
-      </section>
-
       {/* Certifications Slider Section */}
       <section className="py-24 px-6 border-t border-zinc-900 relative z-10">
         <div className="max-w-6xl mx-auto text-center mb-12 reveal-item">
@@ -1637,21 +1575,285 @@ export default function Home() {
         </div>
       )}
 
+      {/* Contact Section */}
+      <section id="contact" className="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+        <div className="text-center mb-16 reveal-item">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Get In Touch</h2>
+          <p className="text-zinc-500 text-sm max-w-md mx-auto">
+            Have an idea or a collaboration in mind? I'd love to hear from you.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          
+          {/* Direct contact details */}
+          <div className="flex flex-col justify-between reveal-item">
+            <div className="space-y-8">
+              <h3 className="text-xl font-heading font-bold text-white">Contact Information</h3>
+              <p className="text-zinc-400 leading-relaxed">
+                Feel free to reach out for any questions, inquiries or project opportunities. I'm always open to discussing new ideas.
+              </p>
+              
+              <div className="space-y-5">
+                {/* Email */}
+                <div className="flex items-center gap-4 group/item">
+                  <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-brand transition-colors group-hover/item:border-brand">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-xs text-zinc-500 font-semibold uppercase tracking-wider">Email Address</p>
+                    <a href="mailto:sermarajav.offcl@gmail.com" className="text-white hover:text-brand transition-colors break-all font-medium">
+                      sermarajav.offcl@gmail.com
+                    </a>
+                  </div>
+                </div>
+
+                {/* Phone */}
+                <div className="flex items-center gap-4 group/item">
+                  <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-brand transition-colors group-hover/item:border-brand">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-xs text-zinc-500 font-semibold uppercase tracking-wider">Call / Mobile</p>
+                    <a href="tel:9626628589" className="text-white hover:text-brand transition-colors font-medium">
+                      +91 96266 28589
+                    </a>
+                  </div>
+                </div>
+
+                {/* WhatsApp */}
+                <div className="flex items-center gap-4 group/item">
+                  <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center transition-colors group-hover/item:border-green-500">
+                    <img 
+                      src="https://img.icons8.com/ios/50/whatsapp--v1.png" 
+                      alt="WhatsApp" 
+                      className="w-5 h-5 object-contain invert opacity-60 group-hover/item:opacity-100 transition-opacity" 
+                    />
+                  </div>
+                  <div>
+                    <p className="text-xs text-zinc-500 font-semibold uppercase tracking-wider">WhatsApp Chat</p>
+                    <a href="https://wa.me/919626628589" target="_blank" rel="noopener noreferrer" className="text-white hover:text-green-400 transition-colors font-medium">
+                      Chat With Me
+                    </a>
+                  </div>
+                </div>
+
+                {/* Location */}
+                <div className="flex items-center gap-4 group/item">
+                  <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-brand transition-colors group-hover/item:border-brand">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-xs text-zinc-500 font-semibold uppercase tracking-wider">Location</p>
+                    <p className="text-white font-medium">Tamil Nadu, India</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Social connect links row */}
+              <div className="pt-4">
+                <p className="text-xs text-zinc-500 font-semibold uppercase tracking-wider mb-3">Connect Socially</p>
+                <div className="flex items-center gap-4">
+                  <a 
+                    href="https://github.com/Sermaraja" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(197,2,72,0.499)]"
+                    aria-label="GitHub"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"></path>
+                    </svg>
+                  </a>
+
+                  <a 
+                    href="https://www.linkedin.com/in/sermaraja-v09022005/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(197,2,72,0.499)]"
+                    aria-label="LinkedIn"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+                    </svg>
+                  </a>
+
+                  <a 
+                    href="mailto:sermarajav.offcl@gmail.com" 
+                    className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(197,2,72,0.499)]"
+                    aria-label="Email"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                  </a>
+
+                  <a 
+                    href="https://wa.me/919626628589" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(197,2,72,0.499)]"
+                    aria-label="WhatsApp"
+                  >
+                    <img 
+                      src="https://img.icons8.com/ios/50/whatsapp--v1.png" 
+                      alt="WhatsApp" 
+                      className="w-5 h-5 object-contain invert opacity-60 group-hover:opacity-100 transition-opacity" 
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-zinc-900 pt-8 mt-8">
+              <p className="text-xs text-zinc-500">
+                Designed and built by Sermaraja V. 
+              </p>
+            </div>
+          </div>
+
+          {/* Form */}
+          <div className="p-6 sm:p-10 rounded-2xl bg-zinc-950/40 border border-zinc-900 backdrop-blur-md relative reveal-item hover:border-brand/20 transition-all duration-500 shadow-2xl overflow-hidden">
+            {/* Soft inner glow behind form */}
+            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-brand/5 rounded-full filter blur-[80px] pointer-events-none"></div>
+
+            <form onSubmit={handleContactSubmit} className="space-y-6 relative z-10">
+              <div>
+                <label htmlFor="name" className="block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2 font-heading">
+                  Your Name
+                </label>
+                <input 
+                  type="text" 
+                  id="name"
+                  value={nameInput}
+                  onChange={(e) => {
+                    setNameInput(e.target.value);
+                    if (e.target.value.trim()) setNameError("");
+                  }}
+                  placeholder="John Doe" 
+                  className={`w-full bg-black border ${nameError ? 'border-red-500/50 focus:border-red-500' : 'border-zinc-800 focus:border-brand'} rounded px-4 py-3 text-white placeholder-zinc-600 focus:outline-none transition-colors text-sm`}
+                />
+                {nameError && (
+                  <p className="text-red-500 text-xs mt-1.5 font-medium">{nameError}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2 font-heading">
+                  Your Email
+                </label>
+                <input 
+                  type="email" 
+                  id="email"
+                  value={emailInput}
+                  onChange={(e) => {
+                    setEmailInput(e.target.value);
+                    if (e.target.value.trim()) setEmailError("");
+                  }}
+                  placeholder="name@example.com" 
+                  className={`w-full bg-black border ${emailError ? 'border-red-500/50 focus:border-red-500' : 'border-zinc-800 focus:border-brand'} rounded px-4 py-3 text-white placeholder-zinc-600 focus:outline-none transition-colors text-sm`}
+                />
+                {emailError && (
+                  <p className="text-red-500 text-xs mt-1.5 font-medium">{emailError}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2 font-heading">
+                  Message Details
+                </label>
+                <textarea 
+                  id="message" 
+                  rows={5}
+                  value={messageInput}
+                  onChange={(e) => {
+                    setMessageInput(e.target.value);
+                    if (e.target.value.trim()) setMessageError("");
+                  }}
+                  placeholder="Tell me about your project or inquiry..." 
+                  className={`w-full bg-black border ${messageError ? 'border-red-500/50 focus:border-red-500' : 'border-zinc-800 focus:border-brand'} rounded px-4 py-3 text-white placeholder-zinc-600 focus:outline-none transition-colors text-sm resize-none`}
+                />
+                {messageError && (
+                  <p className="text-red-500 text-xs mt-1.5 font-medium">{messageError}</p>
+                )}
+              </div>
+
+              <button 
+                type="submit" 
+                disabled={formStatus === "sending"}
+                className="w-full py-4 rounded font-heading font-semibold text-sm bg-pink-magenta-gradient text-white hover:scale-[1.01] active:scale-95 transition-all duration-300 flex items-center justify-center cursor-pointer disabled:opacity-50"
+              >
+                {formStatus === "sending" ? (
+                  <div className="flex items-center gap-2">
+                    <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin"></span>
+                    <span>Sending Message...</span>
+                  </div>
+                ) : "Send Message"}
+              </button>
+
+              {formStatus === "success" && (
+                <div className="absolute inset-0 bg-zinc-950/90 backdrop-blur-sm rounded flex flex-col items-center justify-center p-6 text-center animate-fadeIn z-20">
+                  <svg className="w-16 h-16 text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <h4 className="font-heading font-bold text-white text-lg mb-1">Message Sent!</h4>
+                  <p className="text-zinc-400 text-sm mb-6">
+                    Thank you. I'll get back to you as soon as possible.
+                  </p>
+                  <button 
+                    onClick={() => setFormStatus("idle")}
+                    className="px-6 py-2 rounded bg-zinc-900 border border-zinc-800 text-xs font-semibold hover:border-brand transition-colors cursor-pointer"
+                  >
+                    Send Another
+                  </button>
+                </div>
+              )}
+
+              {formStatus === "error" && (
+                <div className="absolute inset-0 bg-zinc-950/90 backdrop-blur-sm rounded flex flex-col items-center justify-center p-6 text-center animate-fadeIn z-20">
+                  <svg className="w-16 h-16 text-red-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <h4 className="font-heading font-bold text-white text-lg mb-1">Submission Failed</h4>
+                  <p className="text-zinc-400 text-sm mb-6">
+                    Something went wrong. Please try again or reach out directly via email.
+                  </p>
+                  <button 
+                    onClick={() => setFormStatus("idle")}
+                    className="px-6 py-2 rounded bg-zinc-900 border border-zinc-800 text-xs font-semibold hover:border-brand transition-colors cursor-pointer"
+                  >
+                    Try Again
+                  </button>
+                </div>
+              )}
+            </form>
+          </div>
+
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-black/90 pt-16 pb-12 px-6 border-t border-zinc-900 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
             
             {/* Column 1: Info */}
-            <div className="md:col-span-2">
+            <div>
               <a href="#" className="font-heading text-lg font-bold tracking-tight text-white mb-4 block">
                 SERMARAJA<span className="text-brand">.V</span>
               </a>
-              <p className="text-sm text-zinc-500 max-w-sm leading-relaxed mb-6">
+              <p className="text-sm text-zinc-500 leading-relaxed mb-6">
                 Associate System Engineer and Web Developer focused on crafting high-performance systems, clean architectures, and interactive, human-centered designs.
               </p>
-              <div className="flex items-center gap-2 text-xs font-semibold text-zinc-400 font-heading tracking-wider uppercase">
-                <span className="w-2.5 h-2.5 rounded-full bg-brand animate-pulse"></span>
+              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-zinc-900 border border-zinc-800 text-[10px] font-semibold text-zinc-400 select-none">
+                <span className="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
                 <span>Open for Worldwide Remote roles</span>
               </div>
             </div>
@@ -1686,28 +1888,88 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Column 3: Contact/Connect */}
+            {/* Column 3: Contact Info */}
             <div>
               <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4 font-heading">
-                Connect
+                Contact Details
               </h4>
-              <ul className="space-y-3 text-sm">
-                <li>
-                  <a href="mailto:sermarajav.offcl@gmail.com" className="text-zinc-500 hover:text-white transition-colors block truncate">
+              <ul className="space-y-3.5 text-sm text-zinc-500">
+                <li className="flex flex-col gap-0.5">
+                  <span className="text-[10px] text-zinc-600 font-semibold uppercase tracking-wider">Email Address</span>
+                  <a href="mailto:sermarajav.offcl@gmail.com" className="text-zinc-400 hover:text-white transition-colors break-all">
                     sermarajav.offcl@gmail.com
                   </a>
                 </li>
-                <li>
-                  <a href="https://www.linkedin.com/in/sermaraja-v09022005/" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-white transition-colors block">
-                    LinkedIn Profile
+                <li className="flex flex-col gap-0.5">
+                  <span className="text-[10px] text-zinc-600 font-semibold uppercase tracking-wider">Call / Mobile</span>
+                  <a href="tel:9626628589" className="text-zinc-400 hover:text-white transition-colors">
+                    +91 96266 28589
                   </a>
                 </li>
-                <li>
-                  <a href="https://github.com/Sermaraja" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-white transition-colors block">
-                    GitHub Profile
-                  </a>
+                <li className="flex flex-col gap-0.5">
+                  <span className="text-[10px] text-zinc-600 font-semibold uppercase tracking-wider">Location</span>
+                  <span className="text-zinc-400">Tamil Nadu, India</span>
                 </li>
               </ul>
+            </div>
+
+            {/* Column 4: Connect */}
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4 font-heading">
+                Connect Socially
+              </h4>
+              <p className="text-xs text-zinc-500 leading-relaxed mb-4">
+                Follow my work, check code repositories, and stay in touch on social platforms.
+              </p>
+              <div className="flex flex-wrap gap-2.5">
+                <a 
+                  href="https://github.com/Sermaraja" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"
+                  aria-label="GitHub"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"></path>
+                  </svg>
+                </a>
+
+                <a 
+                  href="https://www.linkedin.com/in/sermaraja-v09022005/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"
+                  aria-label="LinkedIn"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+                  </svg>
+                </a>
+
+                <a 
+                  href="mailto:sermarajav.offcl@gmail.com" 
+                  className="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"
+                  aria-label="Email"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                </a>
+
+                <a 
+                  href="https://wa.me/919626628589" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group w-9 h-9 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"
+                  aria-label="WhatsApp"
+                >
+                  <img 
+                    src="https://img.icons8.com/ios/50/whatsapp--v1.png" 
+                    alt="WhatsApp" 
+                    className="w-4 h-4 object-contain invert opacity-60 group-hover:opacity-100 transition-opacity" 
+                  />
+                </a>
+              </div>
             </div>
 
           </div>
@@ -1786,9 +2048,11 @@ export default function Home() {
                 className="flex items-center gap-4 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-900 hover:border-green-500/30 hover:bg-zinc-900/80 transition-all group"
               >
                 <div className="w-10 h-10 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-500 shrink-0 group-hover:scale-105 transition-transform">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.45h.007c5.479 0 9.936-4.453 9.94-9.934.002-2.654-1.03-5.15-2.906-7.028C16.54 1.767 14.048.736 11.99.736c-5.485 0-9.94 4.457-9.944 9.938-.002 2.012.52 3.978 1.512 5.7l-.99 3.616 3.73-.977zm11.916-6.84c-.26-.13-1.539-.759-1.778-.847-.238-.087-.412-.13-.587.13-.175.26-.677.846-.83 1.02-.152.173-.304.195-.564.065-.26-.13-1.097-.404-2.09-1.288-.773-.69-1.295-1.542-1.447-1.802-.152-.26-.016-.4.113-.53.117-.118.26-.304.39-.456.13-.152.174-.26.26-.434.088-.174.044-.326-.022-.456-.065-.13-.587-1.412-.804-1.933-.21-.51-.443-.44-.588-.44-.15 0-.326-.01-.502-.01-.176 0-.464.065-.707.326-.243.262-.927.906-.927 2.21 0 1.303.948 2.56 1.08 2.733.13.173 1.865 2.847 4.517 3.993.63.272 1.123.435 1.507.557.633.201 1.21.173 1.665.105.507-.075 1.54-.63 1.758-1.238.217-.609.217-1.13.152-1.238-.065-.109-.239-.174-.5-.304z" />
-                  </svg>
+                  <img 
+                    src="https://img.icons8.com/ios/50/whatsapp--v1.png" 
+                    alt="WhatsApp" 
+                    className="w-5 h-5 object-contain invert" 
+                  />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xs text-zinc-500 font-semibold uppercase tracking-wider">Chat on WhatsApp</span>
