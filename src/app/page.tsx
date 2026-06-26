@@ -158,7 +158,8 @@ export default function Home() {
   const [projects, setProjects] = useState<any[]>([]);
   const [projectsLoading, setProjectsLoading] = useState(true);
   const [projectsError, setProjectsError] = useState<string | null>(null);
-  const [activeProjectTab, setActiveProjectTab] = useState<"major" | "freelance" | "opensource">("major");
+  const [activeProjectTab, setActiveProjectTab] = useState<"major" | "freelance" | "devopstrio">("devopstrio");
+  const [activeDevopstrioTab, setActiveDevopstrioTab] = useState<"cloud" | "docs">("cloud");
 
   useEffect(() => {
     async function fetchProjects() {
@@ -182,6 +183,85 @@ export default function Home() {
   }, []);
 
   const filteredProjects = projects.filter(p => p.category === activeProjectTab);
+
+  const devopstrioCloudProjects = [
+    {
+      id: "dt-cloud-1",
+      title: "Enterprise Azure Migration & Infrastructure Modernization",
+      label: "Cloud Migration",
+      status: "Completed",
+      gradient: "from-sky-600 via-blue-700 to-indigo-900",
+      icon: "🚀",
+      overview: "Supported an enterprise Azure migration project by assisting with infrastructure analysis, migration planning, and technical documentation across multiple environments.",
+      responsibilities: [
+        "Assisted in infrastructure assessment across multiple enterprise environments.",
+        "Supported Azure Site Recovery (ASR) replication and migration activities.",
+        "Analyzed server inventories and workload classifications using Microsoft Excel.",
+        "Assisted with application deployment and environment configuration.",
+        "Prepared cloud migration documentation and operational runbooks.",
+        "Collaborated with senior engineers during migration planning and validation."
+      ],
+      technologies: ["Azure", "Azure Site Recovery", "Windows Server", "VMware", "Microsoft Excel"],
+      tags: ["Cloud", "Migration", "Infrastructure", "ASR"]
+    },
+    {
+      id: "dt-cloud-2",
+      title: "Enterprise Azure Monitoring & Cloud Operations",
+      label: "Cloud Operations",
+      status: "Completed",
+      gradient: "from-emerald-600 via-teal-700 to-cyan-900",
+      icon: "📊",
+      overview: "Supported Azure monitoring and cloud operations by analyzing alerts, preparing operational reports, and assisting with infrastructure monitoring.",
+      responsibilities: [
+        "Assisted in Azure alert monitoring and classification.",
+        "Analyzed infrastructure alerts and recurring warning patterns.",
+        "Supported Azure cost optimization reporting.",
+        "Prepared operational reports using Microsoft Excel.",
+        "Assisted in documenting monitoring processes and operational procedures.",
+        "Contributed to cloud operations documentation and reporting."
+      ],
+      technologies: ["Azure Monitor", "Azure Portal", "Log Analytics", "Microsoft Excel"],
+      tags: ["Monitoring", "Alerts", "Cost Optimization", "Operations"]
+    },
+    {
+      id: "dt-cloud-3",
+      title: "Enterprise VMware Infrastructure Assessment",
+      label: "Virtualization",
+      status: "Completed",
+      gradient: "from-violet-600 via-purple-700 to-fuchsia-900",
+      icon: "🖥️",
+      overview: "Supported VMware infrastructure assessment and virtualization documentation for enterprise infrastructure modernization.",
+      responsibilities: [
+        "Assisted in analyzing VMware ESXi infrastructure.",
+        "Prepared infrastructure assessment reports and technical documentation.",
+        "Supported documentation for StarWind VSAN architecture.",
+        "Created technical Word documents and PowerPoint presentations.",
+        "Assisted in documenting virtualization environments and cluster configurations.",
+        "Collaborated with the infrastructure team during technical assessments."
+      ],
+      technologies: ["VMware ESXi", "StarWind VSAN", "Windows Server", "Microsoft Office"],
+      tags: ["VMware", "VSAN", "Assessment", "Virtualization"]
+    },
+    {
+      id: "dt-cloud-4",
+      title: "Azure QA Replication & Migration Support",
+      label: "QA & Testing",
+      status: "Completed",
+      gradient: "from-rose-600 via-pink-700 to-red-900",
+      icon: "🔄",
+      overview: "Supported Azure replication testing and migration readiness activities for enterprise workloads.",
+      responsibilities: [
+        "Assisted with Azure QA replication activities.",
+        "Verified replication status and migration readiness.",
+        "Supported migration validation and testing.",
+        "Updated migration tracking documents.",
+        "Collaborated with cloud engineers during migration activities.",
+        "Maintained technical documentation for migration tasks."
+      ],
+      technologies: ["Azure", "Azure Site Recovery", "Windows Server", "Microsoft Excel"],
+      tags: ["Replication", "QA", "Testing", "Migration"]
+    }
+  ];
 
   const currentSkillsCount = activeTab === "technical" ? technicalSkills.length : activeTab === "design" ? designSkills.length : 0;
 
@@ -904,12 +984,26 @@ export default function Home() {
         <div className="text-center mb-16 reveal-item">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Projects Portfolio</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
-            Explore my major academic, freelance, and open source software integrations.
+            Explore my major academic, freelance, and professional work projects.
           </p>
         </div>
 
         {/* Tab Controls */}
         <div className="flex justify-center gap-4 mb-12 reveal-item">
+          <button
+            onClick={() => setActiveProjectTab("devopstrio")}
+            className={`flex items-center gap-2 px-5 py-3 rounded-full font-heading font-semibold text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+              activeProjectTab === "devopstrio"
+                ? "bg-brand text-white shadow-[0_0_20px_rgba(197,2,72,0.4)]"
+                : "bg-zinc-900/60 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700"
+            }`}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0" />
+            </svg>
+            Work @ Devopstrio
+          </button>
+
           <button
             onClick={() => setActiveProjectTab("major")}
             className={`flex items-center gap-2 px-5 py-3 rounded-full font-heading font-semibold text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer ${
@@ -936,20 +1030,6 @@ export default function Home() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
             </svg>
             Freelance Work
-          </button>
-
-          <button
-            onClick={() => setActiveProjectTab("opensource")}
-            className={`flex items-center gap-2 px-5 py-3 rounded-full font-heading font-semibold text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer ${
-              activeProjectTab === "opensource"
-                ? "bg-brand text-white shadow-[0_0_20px_rgba(197,2,72,0.4)]"
-                : "bg-zinc-900/60 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700"
-            }`}
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0v3.75" />
-            </svg>
-            Open Source
           </button>
         </div>
 
@@ -1095,7 +1175,7 @@ export default function Home() {
               </div>
             )}
 
-            {(activeProjectTab === "major" || activeProjectTab === "opensource") && (
+            {activeProjectTab === "major" && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fadeIn">
                 {filteredProjects.map((project, idx) => (
                   <div 
@@ -1195,8 +1275,159 @@ export default function Home() {
                 ))}
               </div>
             )}
+
+            {/* Work @ Devopstrio Tab Content */}
+            {activeProjectTab === "devopstrio" && (
+              <div className="animate-fadeIn">
+                {/* Sub-tab Controls */}
+                <div className="flex justify-center gap-3 mb-10 reveal-item">
+                  <button
+                    onClick={() => setActiveDevopstrioTab("cloud")}
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-heading font-semibold text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                      activeDevopstrioTab === "cloud"
+                        ? "bg-gradient-to-r from-sky-500/20 to-blue-600/20 border border-sky-500/40 text-sky-400 shadow-[0_0_15px_rgba(14,165,233,0.2)]"
+                        : "bg-zinc-900/40 border border-zinc-800/60 text-zinc-500 hover:text-zinc-300 hover:border-zinc-700"
+                    }`}
+                  >
+                    <span className="text-base">☁️</span>
+                    Cloud Engineering
+                  </button>
+                  <button
+                    onClick={() => setActiveDevopstrioTab("docs")}
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-heading font-semibold text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                      activeDevopstrioTab === "docs"
+                        ? "bg-gradient-to-r from-amber-500/20 to-orange-600/20 border border-amber-500/40 text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.2)]"
+                        : "bg-zinc-900/40 border border-zinc-800/60 text-zinc-500 hover:text-zinc-300 hover:border-zinc-700"
+                    }`}
+                  >
+                    <span className="text-base">📄</span>
+                    Technical Documentation
+                  </button>
+                </div>
+
+                {/* Cloud Engineering Projects */}
+                {activeDevopstrioTab === "cloud" && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fadeIn">
+                    {devopstrioCloudProjects.map((project, idx) => (
+                      <div
+                        key={project.id}
+                        className="group flex flex-col justify-between rounded-2xl bg-zinc-950/40 border border-zinc-900/80 hover:border-brand/30 hover:shadow-[0_0_30px_rgba(197,2,72,0.1)] transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-sm reveal-item"
+                      >
+                        <div>
+                          {/* Visual Header — Gradient Banner */}
+                          <div className={`relative aspect-video overflow-hidden border-b border-zinc-900 bg-gradient-to-br ${project.gradient}`}>
+                            {/* Decorative grid pattern overlay */}
+                            <div className="absolute inset-0 opacity-[0.08]" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23fff\' fill-opacity=\'1\' fill-rule=\'evenodd\'%3E%3Cpath d=\'M0 40L40 0H20L0 20M40 40V20L20 40\'/%3E%3C/g%3E%3C/svg%3E")'}}></div>
+                            {/* Centered Icon */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <span className="text-6xl opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-700 select-none">
+                                {project.icon}
+                              </span>
+                            </div>
+                            {/* Bottom gradient fade */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-80"></div>
+                            
+                            {/* Badges */}
+                            <div className="absolute top-3 right-3 flex flex-col gap-1.5">
+                              <span className="px-2.5 py-0.5 rounded-full bg-brand/80 border border-brand/40 text-white text-[9px] font-bold uppercase tracking-wider backdrop-blur-sm">
+                                {project.label}
+                              </span>
+                              <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/80 border border-emerald-400/40 text-white text-[9px] font-bold uppercase tracking-wider backdrop-blur-sm">
+                                {project.status}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Body Content */}
+                          <div className="p-6 space-y-4">
+                            <div className="flex flex-col gap-1">
+                              <span className="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider">
+                                Devopstrio • Cloud Engineering
+                              </span>
+                              <h3 className="text-lg font-heading font-bold text-white group-hover:text-brand transition-colors duration-300 leading-snug">
+                                {project.title}
+                              </h3>
+                            </div>
+
+                            <p className="text-xs text-zinc-400 leading-relaxed font-normal line-clamp-3">
+                              {project.overview}
+                            </p>
+
+                            {/* Key Accomplishments */}
+                            <div className="space-y-1.5 pt-2">
+                              <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 font-heading">Key Accomplishments</h4>
+                              <ul className="space-y-1">
+                                {project.responsibilities.slice(0, 3).map((resp, rIdx) => (
+                                  <li key={rIdx} className="flex items-start gap-1.5 text-xs text-zinc-300">
+                                    <span className="text-emerald-500 shrink-0">✓</span>
+                                    <span className="line-clamp-2">{resp}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Bottom tech stack and tags */}
+                        <div className="p-6 pt-0 space-y-4">
+                          <div className="space-y-1.5 border-t border-zinc-900 pt-4">
+                            {/* Primary Tech Pills */}
+                            <div className="flex flex-wrap gap-1.5">
+                              {project.technologies.map((tech, tIdx) => (
+                                <span key={tIdx} className="px-2 py-0.5 rounded bg-brand/10 border border-brand/20 text-brand text-[10px] font-semibold">
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                            {/* Secondary tags */}
+                            <div className="flex flex-wrap gap-1">
+                              {project.tags.map((tag, tIdx) => (
+                                <span key={tIdx} className="px-1.5 py-0.5 rounded bg-zinc-900 text-zinc-500 text-[8px] font-medium border border-zinc-900/50">
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Technical Documentation */}
+                {activeDevopstrioTab === "docs" && (
+                  <div className="animate-fadeIn">
+                    <div className="text-center py-20 px-6 rounded-2xl border border-zinc-900/80 bg-zinc-950/40 backdrop-blur-sm">
+                      <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-3xl mx-auto mb-6">
+                        📄
+                      </div>
+                      <h3 className="text-xl font-heading font-bold text-white mb-3">Technical Documentation</h3>
+                      <p className="text-sm text-zinc-500 max-w-md mx-auto leading-relaxed">
+                        Technical documentation projects and contributions will be showcased here soon.
+                      </p>
+                      <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold">
+                        <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                        Coming Soon
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </>
         )}
+        {/* View All Works Button */}
+        <div className="text-center mt-16 reveal-item">
+          <a
+            href="/works"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-lg font-heading font-bold text-sm uppercase tracking-wider bg-zinc-950 border border-zinc-800 hover:border-brand text-zinc-300 hover:text-white hover:bg-zinc-900 transition-all duration-300 group hover:shadow-[0_0_25px_rgba(197,2,72,0.15)]"
+          >
+            <span>View All My Works</span>
+            <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
       </section>
 
       {/* Education Section */}
