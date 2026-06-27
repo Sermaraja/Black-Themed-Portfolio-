@@ -7,7 +7,7 @@ interface Certificate {
   title: string;
   issuer: string;
   image: string;
-  category: "development" | "engineering" | "business" | "writing";
+  category: "development" | "engineering" | "business" | "writing" | "ai" | "achievement";
   credentialId: string;
   skills: string[];
   description: string;
@@ -102,12 +102,34 @@ const certifications: Certificate[] = [
     date: "July 2024",
     skills: ["SEO Metrics", "Brand Marketing", "Google Analytics", "Marketing Funnels"],
     description: "Foundational training in search optimization metrics, marketing funnel structures, digital brand distribution, and analytics-driven conversion tracking."
+  },
+  {
+    id: "cert-9",
+    title: "Collaboration Champion Award – Devopstrio Employee Recognition 2026",
+    issuer: "Devopstrio Ltd.",
+    image: "/IMG/Certificates/SERMARAJA EMA CERTIFIVATE.png",
+    category: "achievement",
+    credentialId: "DEVOPS-COA-2026-002",
+    date: "June 2026",
+    skills: ["Team Collaboration", "Cross-functional Collaboration", "Technical Mentorship", "Knowledge Sharing", "Leadership", "Communication", "Team Building", "Problem Solving", "Process Improvement", "Organizational Contribution"],
+    description: "Recognized with the Collaboration Champion Award by Devopstrio Ltd. for demonstrating exceptional teamwork, cross-functional collaboration, technical knowledge sharing, mentorship, and continuous support to colleagues. This award acknowledges outstanding contributions toward fostering a collaborative workplace culture, improving team productivity, and driving organizational excellence through leadership and effective communication."
+  },
+  {
+    id: "cert-10",
+    title: "AI Skills Fest 2026",
+    issuer: "AI Skills Fest",
+    image: "/IMG/Certificates/ai-skills-fest-2026.png",
+    category: "ai",
+    credentialId: "AISF-2026-SV",
+    date: "June 2026",
+    skills: ["Artificial Intelligence", "Machine Learning", "AI Applications", "Prompt Engineering"],
+    description: "Certification earned at the AI Skills Fest 2026, demonstrating proficiency in modern AI technologies, machine learning concepts, and practical AI application development."
   }
 ];
 
 export default function CertificationsPage() {
   const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
-  const [filterCategory, setFilterCategory] = useState<"all" | "development" | "engineering" | "business" | "writing">("all");
+  const [filterCategory, setFilterCategory] = useState<"all" | "development" | "engineering" | "business" | "writing" | "ai" | "achievement">("all");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const filteredCertifications = certifications.filter(
@@ -173,7 +195,7 @@ export default function CertificationsPage() {
         <div className="text-center mb-16 select-none relative z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-950/60 border border-zinc-800 text-xs font-semibold text-zinc-400 mb-4 tracking-wider uppercase">
             <span className="w-2.5 h-2.5 rounded-full bg-brand animate-pulse"></span>
-            8 Professional Credentials Verified
+            10 Professional Credentials Verified
           </div>
           <h1 className="text-4xl md:text-6xl font-heading font-black tracking-tight mb-4 text-white">
             Exhibition of <span className="text-brand">Credentials</span>
@@ -186,7 +208,7 @@ export default function CertificationsPage() {
 
         {/* Dynamic Category Filters */}
         <div className="flex flex-wrap justify-center gap-3 mb-16 relative z-10">
-          {(["all", "development", "engineering", "business", "writing"] as const).map((cat) => (
+          {(["all", "development", "engineering", "business", "writing", "ai", "achievement"] as const).map((cat) => (
             <button
               key={cat}
               onClick={() => setFilterCategory(cat)}
@@ -201,6 +223,8 @@ export default function CertificationsPage() {
               {cat === "engineering" && "Programming & Systems"}
               {cat === "business" && "Marketing & Presentations"}
               {cat === "writing" && "Publications"}
+              {cat === "ai" && "AI & Machine Learning"}
+              {cat === "achievement" && "Achievements"}
             </button>
           ))}
         </div>

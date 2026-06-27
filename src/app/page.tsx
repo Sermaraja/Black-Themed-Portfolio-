@@ -510,7 +510,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center py-20 px-6 overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center justify-center py-28 px-6 overflow-hidden">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center relative z-10">
           
           {/* Badge */}
@@ -600,7 +600,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgba(0,0,0,0)_10%,#000_90%)] pointer-events-none z-0"></div>
       </section>
       {/* About Section */}
-      <section id="about" className="py-32 px-8 max-w-7xl mx-auto border-t border-zinc-900">
+      <section id="about" className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           {/* Bio Column */}
           <div className="lg:col-span-7 space-y-8 reveal-item">
@@ -744,7 +744,7 @@ export default function Home() {
         </div>
       </section>
       {/* Skills Section */}
-      <section id="skills" className="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+      <section id="skills" className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="text-center mb-16 reveal-item">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Core Competencies</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
@@ -845,7 +845,7 @@ export default function Home() {
       </section>
 
       {/* Experience & Timeline Section */}
-      <section id="experience" className="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+      <section id="experience" className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="text-center mb-16 reveal-item">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Experience & Timeline</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
@@ -980,7 +980,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+      <section id="projects" className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="text-center mb-16 reveal-item">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Projects Portfolio</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
@@ -1431,7 +1431,7 @@ export default function Home() {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+      <section id="education" className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="text-center mb-16 reveal-item">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Academic Background</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
@@ -1590,7 +1590,7 @@ export default function Home() {
       </section>
 
       {/* Certifications Slider Section */}
-      <section className="py-24 px-6 border-t border-zinc-900 relative z-10">
+      <section className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900 relative z-10">
         <div className="max-w-6xl mx-auto text-center mb-12 reveal-item">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Certifications</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
@@ -1693,7 +1693,7 @@ export default function Home() {
       </section>
 
       {/* Blogs Section */}
-      <section id="blogs" className="py-24 px-6 border-t border-zinc-900 relative z-10 overflow-hidden">
+      <section id="blogs" className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900 relative z-10 overflow-hidden">
         {/* Background Glow */}
         <div className="glow-sphere w-[400px] h-[400px] bg-brand/5 top-[10%] left-[60%]"></div>
         
@@ -1807,7 +1807,7 @@ export default function Home() {
       )}
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+      <section id="contact" className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="text-center mb-16 reveal-item">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Get In Touch</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
