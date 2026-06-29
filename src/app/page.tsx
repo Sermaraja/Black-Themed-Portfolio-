@@ -2201,7 +2201,7 @@ export default function Home() {
                   </svg>
                   <h4 className="font-heading font-bold text-white text-lg mb-1">Message Sent!</h4>
                   <p className="text-zinc-400 text-sm mb-6">
-                    Thank you. I'll get back to you as soon as possible.
+                    Thank you. I&apos;ll get back to you as soon as possible.
                   </p>
                   <button 
                     onClick={() => setFormStatus("idle")}
