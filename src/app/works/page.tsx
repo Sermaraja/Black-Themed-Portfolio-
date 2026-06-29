@@ -168,7 +168,7 @@ export default function WorksPage() {
               start: "top 90%",
               end: "top 25%",
               scrub: 0.5,
-              onUpdate: (self) => {
+              onUpdate: (self: any) => {
                 const progress = self.progress;
                 const scale = 1 - progress * 0.08; // clear 3D scale down
                 const opacity = 1 - progress * 0.55; // smooth fade into background
@@ -190,7 +190,7 @@ export default function WorksPage() {
 
     return () => {
       clearTimeout(timer);
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      ScrollTrigger.getAll().forEach((t: any) => t.kill());
     };
   }, [projects, projectsLoading, activeFilter]);
 
