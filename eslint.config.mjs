@@ -9,9 +9,11 @@ const eslintConfig = defineConfig([
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-require-imports": "off",
       "@next/next/no-html-link-for-pages": "off",
       "@next/next/no-img-element": "warn",
       "react/no-unescaped-entities": "off",
+      "react-hooks/set-state-in-effect": "off",
       "prefer-const": "warn"
     }
   },
@@ -20,6 +22,7 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "scratch/**",
   ]),
 ]);
 
