@@ -30,4 +30,4 @@ jobs:
       - name: Build Next.js project
         run: npm run build
         env:
-          NEXT_PUBLIC_SITE_URL: https://sermaraja.com
+          NEXT_PUBLIC_SITE_URL: https://sermaraj-dev-portfolio.vercel.app

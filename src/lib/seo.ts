@@ -4,7 +4,7 @@ export const siteConfig = {
   name: 'Sermaraja V',
   title: 'Sermaraja V | Associate System Engineer, Cloud & Full Stack Developer',
   description: 'Official portfolio of Sermaraja V (Sermaraj Vairamani), Associate System Engineer at Devopstrio Ltd. Specialized in Azure/AWS Cloud Engineering, DevOps, Infrastructure Modernization, and Full Stack Web Development across Kovilpatti, Chennai, Bangalore, India, UK, London, USA, and Australia.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://sermaraja.com',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://sermaraj-dev-portfolio.vercel.app',
   ogImage: '/IMG/sermaja V logo.png',
   author: 'Sermaraja V',
   keywords: [
