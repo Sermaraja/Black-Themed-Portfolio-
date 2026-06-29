@@ -150,6 +150,10 @@ export default function Home() {
   const [messageError, setMessageError] = useState("");
   const [selectedCertificate, setSelectedCertificate] = useState<string | null>(null);
   const [isContactWidgetOpen, setIsContactWidgetOpen] = useState(false);
+  const [isAwardModalOpen, setIsAwardModalOpen] = useState(false);
+  const [isAwardDetailModalOpen, setIsAwardDetailModalOpen] = useState(false);
+  const [awardModalImage, setAwardModalImage] = useState<string>("/IMG/Awards/SERMARAJA EMA CERTIFIVATE.png");
+  const [awardModalTitle, setAwardModalTitle] = useState<string>("Collaboration Champion Award Certificate");
 
   const [activeSkillIndex, setActiveSkillIndex] = useState(0);
   const [isSkillsGridHovered, setIsSkillsGridHovered] = useState(false);
@@ -166,15 +170,19 @@ export default function Home() {
       try {
         setProjectsLoading(true);
         const res = await fetch('/api/projects');
-        if (!res.ok) {
-          throw new Error(`Failed to fetch projects: ${res.statusText}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data)) {
+            setProjects(data);
+          }
+          setProjectsError(null);
+        } else {
+          console.warn(`Projects API returned status ${res.status}: ${res.statusText}`);
+          setProjectsError(null); // Silent fail / fallback handled gracefully
         }
-        const data = await res.json();
-        setProjects(data);
-        setProjectsError(null);
       } catch (err: any) {
-        console.error(err);
-        setProjectsError(err.message || 'Failed to load projects');
+        console.warn('Failed to fetch projects:', err);
+        setProjectsError(null);
       } finally {
         setProjectsLoading(false);
       }
@@ -455,6 +463,7 @@ export default function Home() {
           
           <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
             <a href="#about" className="text-zinc-400 hover:text-white transition-colors">About</a>
+            <a href="#awards" className="text-zinc-400 hover:text-white transition-colors">Awards</a>
             <a href="#skills" className="text-zinc-400 hover:text-white transition-colors">Skills</a>
             <a href="#experience" className="text-zinc-400 hover:text-white transition-colors">Experience</a>
             <a href="#projects" className="text-zinc-400 hover:text-white transition-colors">Projects</a>
@@ -492,6 +501,7 @@ export default function Home() {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-zinc-950/95 border-b border-zinc-900 py-4 px-6 flex flex-col space-y-4">
             <a onClick={() => setIsMobileMenuOpen(false)} href="#about" className="text-zinc-400 hover:text-white transition-colors py-1">About</a>
+            <a onClick={() => setIsMobileMenuOpen(false)} href="#awards" className="text-zinc-400 hover:text-white transition-colors py-1">Awards</a>
             <a onClick={() => setIsMobileMenuOpen(false)} href="#skills" className="text-zinc-400 hover:text-white transition-colors py-1">Skills</a>
             <a onClick={() => setIsMobileMenuOpen(false)} href="#experience" className="text-zinc-400 hover:text-white transition-colors py-1">Experience</a>
             <a onClick={() => setIsMobileMenuOpen(false)} href="#projects" className="text-zinc-400 hover:text-white transition-colors py-1">Projects</a>
@@ -510,7 +520,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center py-28 px-6 overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center justify-center py-14 md:py-16 px-6 overflow-hidden">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center relative z-10">
           
           {/* Badge */}
@@ -600,7 +610,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgba(0,0,0,0)_10%,#000_90%)] pointer-events-none z-0"></div>
       </section>
       {/* About Section */}
-      <section id="about" className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+      <section id="about" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           {/* Bio Column */}
           <div className="lg:col-span-7 space-y-8 reveal-item">
@@ -743,9 +753,154 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* Awards & Recognition Section */}
+      <section id="awards" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900 relative z-10 overflow-hidden">
+        {/* Decorative Background Ambient Glow */}
+        <div className="glow-sphere w-[600px] h-[400px] bg-brand/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none -z-10"></div>
+
+        {/* Section Header matching site rules (Left Aligned) */}
+        <div className="mb-10 reveal-item text-left">
+          {/* Featured Award Pill Tag */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-brand/10 border border-brand/20 text-brand text-[10px] font-heading font-bold uppercase tracking-wider mb-4 shadow-sm">
+            <span>★</span> FEATURED AWARD
+          </div>
+
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-silver-gradient tracking-tight leading-tight mb-3">
+            Awards & Recognition
+          </h2>
+
+          <p className="text-zinc-400 text-sm md:text-base max-w-2xl leading-relaxed font-sans mt-2">
+            Recognitions that reflect my commitment to collaboration, continuous learning, leadership, innovation, and professional excellence.
+          </p>
+        </div>
+
+        {/* Featured Award Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12 items-start reveal-item">
+          {/* Left Column: Trophy Presentation */}
+          <div className="lg:col-span-5 flex flex-col items-center">
+            {/* Top Floating Category Badge */}
+            <div className="z-20 -mb-4">
+              <span className="px-4 py-1.5 rounded-full font-heading text-[11px] font-bold tracking-widest text-white bg-gradient-to-r from-brand via-[#e60254] to-brand shadow-[0_0_25px_rgba(197,2,72,0.5)] uppercase inline-block border border-brand/40">
+                COLLABORATION CHAMPION
+              </span>
+            </div>
+
+            {/* Main Trophy Frame Box */}
+            <div 
+              onClick={() => {
+                setAwardModalImage("/IMG/Awards/sermaraja collabration champion award.png");
+                setAwardModalTitle("Collaboration Champion Award Trophy");
+                setIsAwardModalOpen(true);
+              }}
+              className="relative w-full rounded-2xl overflow-hidden bg-gradient-to-b from-zinc-900/80 via-zinc-950 to-black border border-zinc-800/80 hover:border-brand/40 transition-all duration-500 p-8 flex flex-col items-center justify-center min-h-[420px] md:min-h-[460px] shadow-2xl group cursor-pointer"
+            >
+              {/* Backlight Radial Glow */}
+              <div className="absolute w-56 h-56 bg-brand/15 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:bg-brand/25 transition-all duration-500"></div>
+
+              {/* Background Circular Ring Outline */}
+              <div className="absolute w-[280px] h-[280px] rounded-full border border-brand/20 pointer-events-none"></div>
+
+              {/* Trophy Image */}
+              <img 
+                src="/IMG/Awards/sermaraja collabration champion award.png" 
+                alt="Devopstrio Collaboration Champion Award 2025-26" 
+                className="h-[320px] md:h-[360px] w-auto object-contain z-10 drop-shadow-[0_20px_35px_rgba(0,0,0,0.9)] transition-transform duration-700 group-hover:scale-105"
+              />
+
+              {/* Hover Overlay Badge */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20 backdrop-blur-[2px]">
+                <span className="px-4 py-2 rounded-full font-heading bg-brand text-white text-xs font-semibold tracking-wider uppercase shadow-xl flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                  Click to Enlarge
+                </span>
+              </div>
+            </div>
+
+            {/* Bottom Capsule Badges */}
+            <div className="flex items-center justify-center gap-3 mt-5 w-full">
+              <span className="px-3.5 py-1.5 rounded-full font-heading bg-brand/10 border border-brand/20 text-brand text-xs font-semibold tracking-wider shadow-sm">
+                2025 – 26
+              </span>
+              <span className="px-3.5 py-1.5 rounded-full font-heading bg-zinc-950 border border-zinc-900 text-zinc-400 text-xs font-medium tracking-wider shadow-sm">
+                Devopstrio Ltd.
+              </span>
+            </div>
+          </div>
+
+          {/* Right Column: Award Details & Actions Card */}
+          <div className="lg:col-span-7 bg-zinc-950/80 border border-zinc-900 rounded-2xl p-8 md:p-10 shadow-2xl backdrop-blur-md relative overflow-hidden flex flex-col justify-between min-h-[460px] hover:border-brand/20 transition-all duration-500">
+            {/* Ambient Corner Glow */}
+            <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-brand/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div>
+              {/* Top Featured Award Badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-brand/10 border border-brand/20 text-brand text-[10px] font-heading font-bold uppercase tracking-wider mb-4 shadow-sm">
+                <svg className="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+                FEATURED AWARD
+              </div>
+
+              {/* Award Title */}
+              <h3 className="text-3xl md:text-4xl font-heading font-bold text-white tracking-tight leading-snug">
+                Collaboration Champion Award
+              </h3>
+
+              {/* Year */}
+              <div className="text-xl md:text-2xl font-heading font-bold text-brand mt-1">
+                2025 – 26
+              </div>
+
+              {/* Awarded By */}
+              <div className="flex items-center gap-2.5 text-zinc-400 text-sm md:text-base mt-3.5 font-medium">
+                <svg className="w-5 h-5 text-zinc-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V11m0 0h4m-4 0V5" />
+                </svg>
+                <span>Awarded by <strong className="text-white font-semibold">Devopstrio</strong></span>
+              </div>
+
+              {/* Divider */}
+              <div className="h-px bg-zinc-900 w-full my-6"></div>
+
+              {/* Description */}
+              <p className="text-zinc-400 leading-relaxed text-sm md:text-base font-sans font-normal mb-8">
+                Recognized for actively supporting team members through knowledge sharing, technical guidance, and conducting valuable technical and process training sessions.
+              </p>
+            </div>
+
+            {/* Action Buttons Row */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <button
+                onClick={() => {
+                  setAwardModalImage("/IMG/Awards/SERMARAJA EMA CERTIFIVATE.png");
+                  setAwardModalTitle("Collaboration Champion Award Certificate");
+                  setIsAwardModalOpen(true);
+                }}
+                className="px-6 py-3 rounded font-heading text-xs font-semibold uppercase tracking-wider text-white bg-brand hover:bg-brand/90 transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer shadow-lg shadow-brand/10"
+              >
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                <span>View Certificate</span>
+              </button>
+
+              <a
+                href="/awards"
+                className="px-6 py-3 rounded font-heading text-xs font-semibold uppercase tracking-wider text-zinc-300 bg-zinc-950 border border-zinc-900 hover:border-brand/30 hover:text-white transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer group"
+              >
+                <span>Explore More</span>
+                <svg className="w-4 h-4 text-zinc-400 group-hover:translate-x-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* Skills Section */}
-      <section id="skills" className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900">
-        <div className="text-center mb-16 reveal-item">
+      <section id="skills" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+        <div className="text-center mb-10 reveal-item">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Core Competencies</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
             Categorized technical capabilities and achievements
@@ -845,8 +1000,8 @@ export default function Home() {
       </section>
 
       {/* Experience & Timeline Section */}
-      <section id="experience" className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900">
-        <div className="text-center mb-16 reveal-item">
+      <section id="experience" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+        <div className="text-center mb-10 reveal-item">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Experience & Timeline</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
             Professional trajectory and projects
@@ -980,8 +1135,8 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900">
-        <div className="text-center mb-16 reveal-item">
+      <section id="projects" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+        <div className="text-center mb-10 reveal-item">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Projects Portfolio</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
             Explore my major academic, freelance, and professional work projects.
@@ -1062,9 +1217,9 @@ export default function Home() {
                 setProjectsError(null);
                 setProjectsLoading(true);
                 fetch('/api/projects')
-                  .then(res => res.json())
-                  .then(data => { setProjects(data); setProjectsLoading(false); })
-                  .catch(err => { setProjectsError(err.message); setProjectsLoading(false); });
+                  .then(res => res.ok ? res.json() : [])
+                  .then(data => { if (Array.isArray(data)) setProjects(data); setProjectsLoading(false); })
+                  .catch(err => { console.warn(err); setProjectsLoading(false); });
               }}
               className="px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white"
             >
@@ -1279,6 +1434,16 @@ export default function Home() {
             {/* Work @ Devopstrio Tab Content */}
             {activeProjectTab === "devopstrio" && (
               <div className="animate-fadeIn">
+                {/* NDA Confidentiality Disclaimer */}
+                <div className="mb-8 p-5 rounded-xl border border-sky-500/20 bg-sky-950/20 backdrop-blur-md text-left max-w-4xl mx-auto relative overflow-hidden shadow-lg reveal-item">
+                  <div className="flex items-start gap-3">
+                    <span className="text-sky-400 text-lg shrink-0 mt-0.5">ℹ️</span>
+                    <p className="text-xs md:text-sm text-zinc-300 leading-relaxed font-sans">
+                      The projects featured in this section were completed as part of my professional role at <strong className="text-white font-semibold">Devopstrio Ltd.</strong> To respect client confidentiality and non-disclosure agreements (NDAs), certain client names, project titles, and implementation details have been anonymized or generalized. The responsibilities, technologies, and technical contributions accurately represent my work and experience.
+                    </p>
+                  </div>
+                </div>
+
                 {/* Sub-tab Controls */}
                 <div className="flex justify-center gap-3 mb-10 reveal-item">
                   <button
@@ -1431,8 +1596,8 @@ export default function Home() {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900">
-        <div className="text-center mb-16 reveal-item">
+      <section id="education" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+        <div className="text-center mb-10 reveal-item">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Academic Background</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
             Formal education history and accomplishments
@@ -1590,8 +1755,8 @@ export default function Home() {
       </section>
 
       {/* Certifications Slider Section */}
-      <section className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900 relative z-10">
-        <div className="max-w-6xl mx-auto text-center mb-12 reveal-item">
+      <section className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900 relative z-10">
+        <div className="max-w-6xl mx-auto text-center mb-10 reveal-item">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Certifications</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
             Drag to explore or use navigation buttons. Click a certificate to view details.
@@ -1693,13 +1858,13 @@ export default function Home() {
       </section>
 
       {/* Blogs Section */}
-      <section id="blogs" className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900 relative z-10 overflow-hidden">
+      <section id="blogs" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900 relative z-10 overflow-hidden">
         {/* Background Glow */}
         <div className="glow-sphere w-[400px] h-[400px] bg-brand/5 top-[10%] left-[60%]"></div>
         
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16 select-none reveal-item">
+          <div className="text-center mb-10 select-none reveal-item">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">My Blogs</h2>
             <div className="h-1 w-20 bg-brand mx-auto rounded"></div>
             <p className="text-zinc-500 text-sm mt-4 max-w-md mx-auto">
@@ -1807,8 +1972,8 @@ export default function Home() {
       )}
 
       {/* Contact Section */}
-      <section id="contact" className="py-28 px-6 max-w-6xl mx-auto border-t border-zinc-900">
-        <div className="text-center mb-16 reveal-item">
+      <section id="contact" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+        <div className="text-center mb-10 reveal-item">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Get In Touch</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
             Have an idea or a collaboration in mind? I'd love to hear from you.
@@ -2099,6 +2264,9 @@ export default function Home() {
                   <a href="#about" className="text-zinc-500 hover:text-white transition-colors">About Me</a>
                 </li>
                 <li>
+                  <a href="#awards" className="text-zinc-500 hover:text-white transition-colors">Awards & Recognition</a>
+                </li>
+                <li>
                   <a href="#skills" className="text-zinc-500 hover:text-white transition-colors">Core Skills</a>
                 </li>
                 <li>
@@ -2346,6 +2514,122 @@ export default function Home() {
           )}
         </button>
       </div>
+
+      {/* Award High-Res Image Modal */}
+      {isAwardModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-fadeIn">
+          <div className="relative max-w-4xl w-full bg-zinc-950 border border-[#ec4899]/40 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-900 bg-zinc-900/60">
+              <div className="flex items-center gap-3">
+                <span className="px-3 py-1 rounded-full bg-[#1a0a16] border border-[#ec4899]/40 text-[#ec4899] text-xs font-semibold uppercase">Award Preview</span>
+                <h4 className="text-lg font-bold text-white">{awardModalTitle}</h4>
+              </div>
+              <button 
+                onClick={() => setIsAwardModalOpen(false)}
+                className="text-zinc-400 hover:text-white p-2 rounded-full hover:bg-zinc-800 transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div className="p-6 flex items-center justify-center bg-black/60 min-h-[400px]">
+              <img 
+                src={awardModalImage} 
+                alt={awardModalTitle} 
+                className="max-h-[75vh] w-auto object-contain rounded-xl shadow-2xl"
+              />
+            </div>
+            <div className="p-4 border-t border-zinc-900 bg-zinc-950 flex justify-end gap-3">
+              <a 
+                href={awardModalImage} 
+                download={awardModalImage.split('/').pop()}
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#ec4899] to-[#C50248] hover:shadow-[0_0_20px_rgba(236,72,153,0.5)] text-white text-sm font-semibold transition-all flex items-center gap-2"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                Download Image
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Award Learn More Details Modal */}
+      {isAwardDetailModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-fadeIn">
+          <div className="relative max-w-2xl w-full bg-[#0e0714] border border-[#ec4899]/40 rounded-3xl p-6 md:p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button 
+              onClick={() => setIsAwardDetailModalOpen(false)}
+              className="absolute top-6 right-6 text-zinc-400 hover:text-white p-2 rounded-full hover:bg-zinc-800 transition-colors"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider text-[#ec4899] bg-[#1a0a16] border border-[#ec4899]/40 uppercase mb-4">
+              🏆 HONORS & RECOGNITION
+            </div>
+
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+              Collaboration Champion Award
+            </h3>
+            <div className="text-[#ec4899] font-semibold text-lg mb-6">
+              Presented to Sermaraja V (System Associate) | Devopstrio (2025–26)
+            </div>
+
+            <div className="space-y-6 text-zinc-300 text-sm md:text-base leading-relaxed">
+              <div className="p-4 rounded-2xl bg-[#16091d] border border-[#ec4899]/30">
+                <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#ec4899]"></span>
+                  Award Citation & Summary
+                </h4>
+                <p className="text-zinc-300 text-sm">
+                  Recognized for actively supporting team members through knowledge sharing, technical guidance, and conducting valuable technical and process training sessions across enterprise infrastructure operations.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-white mb-3 text-base">Key Contributions & Highlights:</h4>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3 text-sm">
+                    <span className="text-[#ec4899] mt-1">✓</span>
+                    <div>
+                      <strong className="text-white">Technical Guidance & Mentorship:</strong> Provided technical assistance and troubleshooting support to team members on Azure cloud services and VMware virtualization.
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm">
+                    <span className="text-[#ec4899] mt-1">✓</span>
+                    <div>
+                      <strong className="text-white">Knowledge Sharing Sessions:</strong> Authored detailed documentation, runbooks, and operational guidelines to streamline team onboarding and process efficiency.
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3 text-sm">
+                    <span className="text-[#ec4899] mt-1">✓</span>
+                    <div>
+                      <strong className="text-white">Process Training:</strong> Conducted technical sessions for team associates on cloud monitoring, alert management, and system administration best practices.
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-pink-900/30 flex flex-wrap justify-end gap-3">
+              <button
+                onClick={() => {
+                  setIsAwardDetailModalOpen(false);
+                  setIsAwardModalOpen(true);
+                }}
+                className="px-5 py-2.5 rounded-xl bg-[#1f0a25] text-[#ec4899] border border-[#ec4899]/50 hover:bg-[#ec4899] hover:text-white text-sm font-semibold transition-all"
+              >
+                View Trophy Image
+              </button>
+              <button
+                onClick={() => setIsAwardDetailModalOpen(false)}
+                className="px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-semibold transition-all"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

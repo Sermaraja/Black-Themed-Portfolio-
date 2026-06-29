@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface DevopstrioProject {
   id: string;
@@ -102,6 +104,7 @@ const devopstrioCloudProjects: DevopstrioProject[] = [
 export default function WorksPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState<"all" | "devopstrio" | "major" | "freelance">("all");
+  const [activeDevopstrioTab, setActiveDevopstrioTab] = useState<"cloud" | "docs">("cloud");
   const [projects, setProjects] = useState<any[]>([]);
   const [projectsLoading, setProjectsLoading] = useState(true);
   const mainRef = useRef<HTMLElement>(null);
@@ -147,6 +150,50 @@ export default function WorksPage() {
     };
   }, [projects, projectsLoading, activeFilter]);
 
+  // GSAP ScrollTrigger Pinned Scrollytelling & Stacking Cards Effect
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const timer = setTimeout(() => {
+      const sections = document.querySelectorAll('.scrolly-section');
+      
+      sections.forEach((section) => {
+        const cards = section.querySelectorAll('.scrolly-card');
+        cards.forEach((card, idx) => {
+          if (idx < cards.length - 1) {
+            const nextCard = cards[idx + 1];
+            ScrollTrigger.create({
+              trigger: nextCard,
+              start: "top 90%",
+              end: "top 25%",
+              scrub: 0.5,
+              onUpdate: (self) => {
+                const progress = self.progress;
+                const scale = 1 - progress * 0.08; // clear 3D scale down
+                const opacity = 1 - progress * 0.55; // smooth fade into background
+                const brightness = 1 - progress * 0.45; // subtle dim
+                gsap.set(card, {
+                  scale: scale,
+                  opacity: opacity,
+                  filter: `brightness(${brightness}) blur(${progress * 1.5}px)`,
+                  transformOrigin: "center top"
+                });
+              }
+            });
+          }
+        });
+      });
+
+      ScrollTrigger.refresh();
+    }, 150);
+
+    return () => {
+      clearTimeout(timer);
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+  }, [projects, projectsLoading, activeFilter]);
+
   const majorProjects = projects.filter(p => p.category === "major");
   const freelanceProjects = projects.filter(p => p.category === "freelance");
 
@@ -155,7 +202,7 @@ export default function WorksPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-zinc-300 font-sans selection:bg-brand selection:text-white relative bg-grid-pattern pb-24 overflow-x-hidden">
+    <div className="min-h-screen bg-black text-zinc-300 font-sans selection:bg-brand selection:text-white relative bg-grid-pattern pb-24 overflow-clip">
       
       {/* Background Ambient Glows */}
       <div className="glow-sphere w-[550px] h-[550px] bg-brand/10 top-[-150px] left-[15%]"></div>
@@ -257,7 +304,7 @@ export default function WorksPage() {
         {(activeFilter === "all" || activeFilter === "devopstrio") && (
           <div className="mb-20 relative z-10 animate-fadeIn">
             {/* Section Header */}
-            <div className="flex items-center gap-4 mb-10 reveal-item">
+            <div className="flex items-center gap-4 mb-8 reveal-item">
               <div className="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 text-xl shrink-0 shadow-[0_0_20px_rgba(14,165,233,0.1)]">
                 ☁️
               </div>
@@ -272,74 +319,109 @@ export default function WorksPage() {
               </div>
             </div>
 
-            {/* Cloud Project Cards — Full-width with Image */}
-            <div className="space-y-8">
+            {/* NDA Confidentiality Disclaimer */}
+            <div className="mb-8 p-5 rounded-xl border border-sky-500/20 bg-sky-950/20 backdrop-blur-md text-left max-w-4xl mx-auto relative overflow-hidden shadow-lg reveal-item">
+              <div className="flex items-start gap-3">
+                <span className="text-sky-400 text-lg shrink-0 mt-0.5">ℹ️</span>
+                <p className="text-xs md:text-sm text-zinc-300 leading-relaxed font-sans">
+                  The projects featured in this section were completed as part of my professional role at <strong className="text-white font-semibold">Devopstrio Ltd.</strong> To respect client confidentiality and non-disclosure agreements (NDAs), certain client names, project titles, and implementation details have been anonymized or generalized. The responsibilities, technologies, and technical contributions accurately represent my work and experience.
+                </p>
+              </div>
+            </div>
+
+            {/* Sub-tab Controls */}
+            <div className="flex justify-center gap-3 mb-10 reveal-item">
+              <button
+                onClick={() => setActiveDevopstrioTab("cloud")}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-heading font-semibold text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                  activeDevopstrioTab === "cloud"
+                    ? "bg-gradient-to-r from-sky-500/20 to-blue-600/20 border border-sky-500/40 text-sky-400 shadow-[0_0_15px_rgba(14,165,233,0.2)]"
+                    : "bg-zinc-900/40 border border-zinc-800/60 text-zinc-500 hover:text-zinc-300 hover:border-zinc-700"
+                }`}
+              >
+                <span className="text-base">☁️</span>
+                Cloud Engineering
+              </button>
+              <button
+                onClick={() => setActiveDevopstrioTab("docs")}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-heading font-semibold text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                  activeDevopstrioTab === "docs"
+                    ? "bg-gradient-to-r from-amber-500/20 to-orange-600/20 border border-amber-500/40 text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.2)]"
+                    : "bg-zinc-900/40 border border-zinc-800/60 text-zinc-500 hover:text-zinc-300 hover:border-zinc-700"
+                }`}
+              >
+                <span className="text-base">📄</span>
+                Technical Documentation
+              </button>
+            </div>
+
+            {/* Cloud Project Cards — Pinned Scrollytelling Deck */}
+            {activeDevopstrioTab === "cloud" && (
+              <div className="scrolly-section space-y-12 relative pb-16 animate-fadeIn">
               {devopstrioCloudProjects.map((project, idx) => (
                 <div
                   key={project.id}
-                  className="group grid grid-cols-1 lg:grid-cols-12 gap-0 rounded-2xl bg-zinc-950/50 border border-zinc-900/80 hover:border-sky-500/25 transition-all duration-600 overflow-hidden backdrop-blur-sm relative hover:shadow-[0_8px_40px_rgba(14,165,233,0.08)] reveal-item"
+                  className="scrolly-card group sticky grid grid-cols-1 lg:grid-cols-12 gap-0 rounded-2xl bg-[#090D14] border border-sky-950/80 hover:border-sky-500/40 transition-colors duration-500 overflow-hidden backdrop-blur-xl relative shadow-[0_20px_50px_rgba(0,0,0,0.9)] reveal-item will-change-transform"
+                  style={{
+                    top: `calc(6.5rem + ${idx * 1.25}rem)`,
+                    zIndex: idx + 10,
+                  }}
                 >
-                  {/* Ambient glow on hover */}
-                  <div className="absolute -top-32 -right-32 w-64 h-64 bg-sky-500/0 group-hover:bg-sky-500/5 rounded-full filter blur-[80px] transition-all duration-700 pointer-events-none"></div>
-
                   {/* Left side: Project Image */}
-                  <div className="lg:col-span-5 relative overflow-hidden aspect-video lg:aspect-auto">
+                  <div className="lg:col-span-5 relative overflow-hidden aspect-video lg:aspect-auto min-h-[220px] sm:min-h-[260px] lg:min-h-[380px] p-4 sm:p-5 flex flex-col justify-between">
                     <img 
                       src={project.image} 
                       alt={project.title}
                       loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[900ms] ease-out"
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out z-0"
                     />
-                    {/* Gradient overlays */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-zinc-950/90 hidden lg:block"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent"></div>
-                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 mix-blend-overlay`}></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-[#090D14] hidden lg:block z-0"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#090D14] via-transparent to-black/30 z-0"></div>
                     
-                    {/* Badges on Image */}
-                    <div className="absolute top-4 left-4 flex flex-col gap-1.5">
-                      <span className="px-3 py-1 rounded-full bg-brand/90 border border-brand/40 text-white text-[9px] font-bold uppercase tracking-wider backdrop-blur-md shadow-lg">
+                    {/* Top Badges */}
+                    <div className="relative z-10 flex flex-col items-start gap-2">
+                      <span className="px-3.5 py-1 rounded-full bg-[#C50248] text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
                         {project.label}
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-emerald-500/90 border border-emerald-400/40 text-white text-[9px] font-bold uppercase tracking-wider backdrop-blur-md shadow-lg">
+                      <span className="px-3.5 py-1 rounded-full bg-[#00C896] text-black text-[10px] font-extrabold uppercase tracking-wider shadow-md">
                         {project.status}
                       </span>
                     </div>
 
                     {/* Project number badge */}
-                    <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                      <span className="text-5xl font-heading font-black text-white/10 select-none leading-none">
+                    <div className="relative z-10">
+                      <span className="text-6xl lg:text-7xl font-heading font-black text-white/15 select-none pointer-events-none leading-none">
                         0{idx + 1}
                       </span>
                     </div>
                   </div>
 
                   {/* Right side: Project Details */}
-                  <div className="lg:col-span-7 p-6 md:p-8 flex flex-col justify-center space-y-5">
-                    {/* Title & Overview */}
+                  <div className="lg:col-span-7 p-4 sm:p-6 md:p-8 flex flex-col justify-between space-y-6 z-10">
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="text-[10px] font-bold text-sky-400 uppercase tracking-widest">Devopstrio • Cloud Engineering</span>
+                        <span className="text-xs font-bold text-sky-400 uppercase tracking-widest">DEVOPSTRIO • CLOUD ENGINEERING</span>
                       </div>
-                      <h3 className="text-xl md:text-2xl font-heading font-bold text-white group-hover:text-sky-400 transition-colors duration-300 leading-tight mb-3">
+                      <h3 className="text-2xl md:text-3xl font-heading font-bold text-sky-400 group-hover:text-cyan-300 transition-colors duration-300 leading-tight mb-3">
                         {project.title}
                       </h3>
-                      <p className="text-sm text-zinc-400 leading-relaxed">
+                      <p className="text-sm text-zinc-400 leading-relaxed font-normal">
                         {project.overview}
                       </p>
                     </div>
 
                     {/* Key Responsibilities */}
                     <div className="space-y-3">
-                      <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-500 font-heading flex items-center gap-2">
-                        <svg className="w-3.5 h-3.5 text-emerald-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400 font-heading flex items-center gap-2">
+                        <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        Key Responsibilities
+                        KEY RESPONSIBILITIES
                       </h4>
-                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
                         {project.responsibilities.map((resp, rIdx) => (
-                          <li key={rIdx} className="flex items-start gap-2 text-sm text-zinc-300">
-                            <span className="text-emerald-500 shrink-0 mt-0.5">✓</span>
+                          <li key={rIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-300">
+                            <span className="text-emerald-400 shrink-0 mt-0.5 font-bold">✓</span>
                             <span>{resp}</span>
                           </li>
                         ))}
@@ -347,18 +429,18 @@ export default function WorksPage() {
                     </div>
 
                     {/* Technologies & Tags */}
-                    <div className="space-y-3 pt-2 border-t border-zinc-900/80">
+                    <div className="space-y-3 pt-4 border-t border-zinc-800/80">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 font-heading mr-1">Technologies</span>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 font-heading mr-1">TECHNOLOGIES</span>
                         {project.technologies.map((tech, tIdx) => (
-                          <span key={tIdx} className="px-2.5 py-1 rounded-md bg-sky-500/10 border border-sky-500/20 text-sky-400 text-[11px] font-semibold transition-colors duration-300 hover:bg-sky-500/20">
+                          <span key={tIdx} className="px-3 py-1 rounded-lg bg-sky-950/60 border border-sky-700/60 text-sky-300 text-xs font-medium hover:bg-sky-900/60 transition-colors">
                             {tech}
                           </span>
                         ))}
                       </div>
                       <div className="flex flex-wrap gap-1.5">
                         {project.tags.map((tag, tIdx) => (
-                          <span key={tIdx} className="px-2 py-0.5 rounded bg-zinc-900/80 text-zinc-500 text-[9px] font-medium border border-zinc-800/50">
+                          <span key={tIdx} className="px-2.5 py-1 rounded-md bg-zinc-900/90 border border-zinc-800 text-zinc-500 text-[10px] font-medium">
                             {tag}
                           </span>
                         ))}
@@ -368,6 +450,26 @@ export default function WorksPage() {
                 </div>
               ))}
             </div>
+            )}
+
+            {/* Technical Documentation */}
+            {activeDevopstrioTab === "docs" && (
+              <div className="animate-fadeIn">
+                <div className="text-center py-20 px-6 rounded-2xl border border-zinc-900/80 bg-zinc-950/40 backdrop-blur-sm">
+                  <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-3xl mx-auto mb-6">
+                    📄
+                  </div>
+                  <h3 className="text-xl font-heading font-bold text-white mb-3">Technical Documentation</h3>
+                  <p className="text-sm text-zinc-500 max-w-md mx-auto leading-relaxed">
+                    Technical documentation projects and contributions will be showcased here soon.
+                  </p>
+                  <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold">
+                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                    Coming Soon
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
@@ -394,96 +496,107 @@ export default function WorksPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="scrolly-section space-y-12 relative pb-16">
               {majorProjects.map((project, idx) => (
                 <div 
                   key={project._id || idx}
-                  className="group flex flex-col justify-between rounded-2xl bg-zinc-950/40 border border-zinc-900/80 hover:border-brand/30 hover:shadow-[0_8px_40px_rgba(197,2,72,0.08)] transition-all duration-500 hover:-translate-y-2 overflow-hidden backdrop-blur-sm reveal-item"
+                  className="scrolly-card group sticky grid grid-cols-1 lg:grid-cols-12 gap-0 rounded-2xl bg-[#090D14] border border-sky-950/80 hover:border-sky-500/40 transition-colors duration-500 overflow-hidden backdrop-blur-xl relative shadow-[0_20px_50px_rgba(0,0,0,0.9)] reveal-item will-change-transform"
+                  style={{
+                    top: `calc(6.5rem + ${idx * 1.25}rem)`,
+                    zIndex: idx + 10,
+                  }}
                 >
-                  <div>
-                    {/* Image Container */}
-                    <div className="relative aspect-video overflow-hidden border-b border-zinc-900">
-                      <img 
-                        src={project.image} 
-                        alt={project.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[900ms] ease-out"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-80"></div>
-                      
-                      {/* Badges */}
-                      <div className="absolute top-3 right-3 flex flex-col gap-1.5">
-                        <span className="px-2.5 py-0.5 rounded-full bg-brand/80 border border-brand/40 text-white text-[9px] font-bold uppercase tracking-wider backdrop-blur-sm">
-                          {project.label}
-                        </span>
-                        <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/80 border border-emerald-400/40 text-white text-[9px] font-bold uppercase tracking-wider backdrop-blur-sm">
-                          {project.status}
-                        </span>
-                      </div>
+                  {/* Left side: Project Image */}
+                  <div className="lg:col-span-5 relative overflow-hidden aspect-video lg:aspect-auto min-h-[220px] sm:min-h-[260px] lg:min-h-[380px] p-4 sm:p-5 flex flex-col justify-between">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out z-0"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-[#090D14] hidden lg:block z-0"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#090D14] via-transparent to-black/30 z-0"></div>
+                    
+                    {/* Top Badges */}
+                    <div className="relative z-10 flex flex-col items-start gap-2">
+                      <span className="px-3.5 py-1 rounded-full bg-[#C50248] text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
+                        {project.label || "MAJOR PROJECT"}
+                      </span>
+                      <span className="px-3.5 py-1 rounded-full bg-[#00C896] text-black text-[10px] font-extrabold uppercase tracking-wider shadow-md">
+                        {project.status || "COMPLETED"}
+                      </span>
                     </div>
 
-                    {/* Body Content */}
-                    <div className="p-6 space-y-4">
-                      <div className="flex flex-col gap-1">
-                        <span className="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider">
-                          {project.duration}
-                        </span>
-                        <h3 className="text-lg font-heading font-bold text-white group-hover:text-brand transition-colors duration-300 leading-snug">
-                          {project.title}
-                        </h3>
-                      </div>
-
-                      <p className="text-xs text-zinc-400 leading-relaxed font-normal line-clamp-3">
-                        {project.description}
-                      </p>
-
-                      {/* Features list */}
-                      <div className="space-y-1.5 pt-2">
-                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 font-heading">Key Accomplishments</h4>
-                        <ul className="space-y-1">
-                          {project.features?.slice(0, 3).map((feat: string, fIdx: number) => (
-                            <li key={fIdx} className="flex items-start gap-1.5 text-xs text-zinc-300">
-                              <span className="text-emerald-500 shrink-0">✓</span>
-                              <span className="line-clamp-2">{feat}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                    {/* Project number badge */}
+                    <div className="relative z-10">
+                      <span className="text-6xl lg:text-7xl font-heading font-black text-white/15 select-none pointer-events-none leading-none">
+                        0{idx + 1}
+                      </span>
                     </div>
                   </div>
 
-                  {/* Bottom tech stack */}
-                  <div className="p-6 pt-0 space-y-4">
-                    <div className="space-y-1.5 border-t border-zinc-900 pt-4">
-                      <div className="flex flex-wrap gap-1.5">
+                  {/* Right side: Project Details */}
+                  <div className="lg:col-span-7 p-4 sm:p-6 md:p-8 flex flex-col justify-between space-y-6 z-10">
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-xs font-bold text-sky-400 uppercase tracking-widest">PORTFOLIO • MAJOR PROJECT</span>
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-heading font-bold text-sky-400 group-hover:text-cyan-300 transition-colors duration-300 leading-tight mb-3">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-zinc-400 leading-relaxed font-normal">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    {/* Key Accomplishments */}
+                    <div className="space-y-3">
+                      <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400 font-heading flex items-center gap-2">
+                        <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        KEY ACCOMPLISHMENTS
+                      </h4>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                        {project.features?.map((feat: string, fIdx: number) => (
+                          <li key={fIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-300">
+                            <span className="text-emerald-400 shrink-0 mt-0.5 font-bold">✓</span>
+                            <span>{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Technologies & Tags */}
+                    <div className="space-y-3 pt-4 border-t border-zinc-800/80">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 font-heading mr-1">TECHNOLOGIES</span>
                         {project.technologies?.map((tech: string, tIdx: number) => (
-                          <span key={tIdx} className="px-2 py-0.5 rounded bg-brand/10 border border-brand/20 text-brand text-[10px] font-semibold">
+                          <span key={tIdx} className="px-3 py-1 rounded-lg bg-sky-950/60 border border-sky-700/60 text-sky-300 text-xs font-medium hover:bg-sky-900/60 transition-colors">
                             {tech}
                           </span>
                         ))}
                       </div>
-                      <div className="flex flex-wrap gap-1">
-                        {project.tags?.map((tag: string, tIdx: number) => (
-                          <span key={tIdx} className="px-1.5 py-0.5 rounded bg-zinc-900 text-zinc-500 text-[8px] font-medium border border-zinc-900/50">
-                            {tag}
-                          </span>
-                        ))}
+                      <div className="flex items-center justify-between pt-1">
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.tags?.map((tag: string, tIdx: number) => (
+                            <span key={tIdx} className="px-2.5 py-1 rounded-md bg-zinc-900/90 border border-zinc-800 text-zinc-500 text-[10px] font-medium">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        {project.link && (
+                          <a 
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-sky-400 hover:text-cyan-300 font-bold text-xs hover:underline transition-colors"
+                          >
+                            Source Code ↗
+                          </a>
+                        )}
                       </div>
                     </div>
-
-                    {project.link && (
-                      <div className="flex items-center justify-between pt-1 text-xs">
-                        <span className="text-zinc-600 font-medium">Code Repository</span>
-                        <a 
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-0.5 text-brand hover:text-brand-light font-bold hover:underline transition-colors"
-                        >
-                          Source Code ↗
-                        </a>
-                      </div>
-                    )}
                   </div>
                 </div>
               ))}
@@ -514,105 +627,100 @@ export default function WorksPage() {
               </div>
             </div>
 
-            <div className="space-y-8">
+            <div className="scrolly-section space-y-12 relative pb-16">
               {freelanceProjects.map((project, idx) => (
                 <div 
                   key={project._id || idx}
-                  className="group grid grid-cols-1 lg:grid-cols-12 gap-0 bg-zinc-950/50 border border-zinc-900/80 rounded-2xl overflow-hidden backdrop-blur-md relative hover:border-emerald-500/20 transition-all duration-600 hover:shadow-[0_8px_40px_rgba(16,185,129,0.08)] reveal-item"
+                  className="scrolly-card group sticky grid grid-cols-1 lg:grid-cols-12 gap-0 rounded-2xl bg-[#090D14] border border-sky-950/80 hover:border-sky-500/40 transition-colors duration-500 overflow-hidden backdrop-blur-xl relative shadow-[0_20px_50px_rgba(0,0,0,0.9)] reveal-item will-change-transform"
+                  style={{
+                    top: `calc(6.5rem + ${idx * 1.25}rem)`,
+                    zIndex: idx + 10,
+                  }}
                 >
-                  {/* Visual Glow */}
-                  <div className="absolute -top-32 -right-32 w-64 h-64 bg-emerald-500/0 group-hover:bg-emerald-500/5 rounded-full filter blur-[80px] transition-all duration-700 pointer-events-none"></div>
-
                   {/* Left side: Project Image */}
-                  <div className="lg:col-span-5 relative overflow-hidden aspect-video lg:aspect-auto">
+                  <div className="lg:col-span-5 relative overflow-hidden aspect-video lg:aspect-auto min-h-[220px] sm:min-h-[260px] lg:min-h-[380px] p-4 sm:p-5 flex flex-col justify-between">
                     <img 
                       src={project.image} 
                       alt={project.title}
                       loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[900ms] ease-out"
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out z-0"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-zinc-950/90 hidden lg:block"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-[#090D14] hidden lg:block z-0"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#090D14] via-transparent to-black/30 z-0"></div>
                     
-                    {/* Badges on Image */}
-                    <div className="absolute top-4 left-4 flex flex-col gap-1.5">
-                      <span className="px-3 py-1 rounded-full bg-brand/90 border border-brand/40 text-white text-[9px] font-bold uppercase tracking-wider backdrop-blur-md shadow-lg">
-                        {project.label}
+                    {/* Top Badges */}
+                    <div className="relative z-10 flex flex-col items-start gap-2">
+                      <span className="px-3.5 py-1 rounded-full bg-[#C50248] text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
+                        {project.label || "FREELANCE"}
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-emerald-500/90 border border-emerald-400/40 text-white text-[9px] font-bold uppercase tracking-wider backdrop-blur-md shadow-lg">
-                        {project.status}
+                      <span className="px-3.5 py-1 rounded-full bg-[#00C896] text-black text-[10px] font-extrabold uppercase tracking-wider shadow-md">
+                        {project.status || "COMPLETED"}
+                      </span>
+                    </div>
+
+                    {/* Project number badge */}
+                    <div className="relative z-10">
+                      <span className="text-6xl lg:text-7xl font-heading font-black text-white/15 select-none pointer-events-none leading-none">
+                        0{idx + 1}
                       </span>
                     </div>
                   </div>
 
                   {/* Right side: Project Details */}
-                  <div className="lg:col-span-7 p-6 md:p-8 flex flex-col justify-center space-y-5">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
-                      <h3 className="text-xl md:text-2xl font-heading font-bold text-white group-hover:text-emerald-400 transition-colors duration-300">
+                  <div className="lg:col-span-7 p-6 md:p-8 flex flex-col justify-between space-y-6 z-10">
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-xs font-bold text-sky-400 uppercase tracking-widest">CLIENT ENGAGEMENT • FREELANCE</span>
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-heading font-bold text-sky-400 group-hover:text-cyan-300 transition-colors duration-300 leading-tight mb-3">
                         {project.title}
                       </h3>
-                      <span className="inline-block text-xs font-semibold px-3 py-1.5 rounded-full bg-zinc-900/80 border border-zinc-800 text-zinc-400 self-start shrink-0">
-                        {project.duration}
-                      </span>
+                      <p className="text-sm text-zinc-400 leading-relaxed font-normal">
+                        {project.description}
+                      </p>
                     </div>
-                    
-                    <p className="text-sm text-zinc-400 leading-relaxed font-normal">
-                      {project.description}
-                    </p>
 
-                    <div className="space-y-2">
-                      <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-500 font-heading flex items-center gap-2">
-                        <svg className="w-3.5 h-3.5 text-emerald-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    {/* Key Features */}
+                    <div className="space-y-3">
+                      <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400 font-heading flex items-center gap-2">
+                        <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        Key Features
+                        KEY FEATURES
                       </h4>
-                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
                         {project.features?.map((feat: string, fIdx: number) => (
-                          <li key={fIdx} className="flex items-start gap-2 text-sm text-zinc-300">
-                            <span className="text-emerald-500 shrink-0 mt-0.5">✓</span>
+                          <li key={fIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-300">
+                            <span className="text-emerald-400 shrink-0 mt-0.5 font-bold">✓</span>
                             <span>{feat}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="space-y-3 pt-2 border-t border-zinc-900/80">
+                    {/* Technologies & Tags */}
+                    <div className="space-y-3 pt-4 border-t border-zinc-800/80">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 font-heading mr-1">Technologies</span>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 font-heading mr-1">TECHNOLOGIES</span>
                         {project.technologies?.map((tech: string, tIdx: number) => (
-                          <span key={tIdx} className="px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-semibold hover:bg-emerald-500/20 transition-colors">
+                          <span key={tIdx} className="px-3 py-1 rounded-lg bg-sky-950/60 border border-sky-700/60 text-sky-300 text-xs font-medium hover:bg-sky-900/60 transition-colors">
                             {tech}
                           </span>
                         ))}
                       </div>
-                      <div className="flex flex-wrap gap-1.5">
-                        {project.tags?.map((tag: string, tIdx: number) => (
-                          <span key={tIdx} className="px-2 py-0.5 rounded bg-zinc-900/80 text-zinc-500 text-[9px] font-medium border border-zinc-800/50">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {project.client && (
-                      <div className="border-t border-zinc-900 pt-4 flex items-center justify-between text-xs text-zinc-500">
-                        <span><strong className="text-zinc-400">Client:</strong> {project.client}</span>
-                        {project.link && (
-                          <a 
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 text-brand hover:text-brand-light font-bold hover:underline transition-colors group/link"
-                          >
-                            View Project 
-                            <svg className="w-3.5 h-3.5 transform group-hover/link:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                            </svg>
-                          </a>
+                      <div className="flex items-center justify-between pt-1 text-xs text-zinc-400">
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.tags?.map((tag: string, tIdx: number) => (
+                            <span key={tIdx} className="px-2.5 py-1 rounded-md bg-zinc-900/90 border border-zinc-800 text-zinc-500 text-[10px] font-medium">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        {project.client && (
+                          <span><strong className="text-zinc-300">Client:</strong> {project.client}</span>
                         )}
                       </div>
-                    )}
+                    </div>
                   </div>
                 </div>
               ))}

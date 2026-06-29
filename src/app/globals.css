@@ -30,6 +30,7 @@ body {
 .text-silver-gradient {
   background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -37,6 +38,7 @@ body {
   /* Matching the white -> pink -> deep magenta #C50248 gradient */
   background: linear-gradient(180deg, #ffffff 0%, #ec4899 50%, #C50248 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -177,3 +179,35 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* 100% Responsive & Mobile Utilities */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+img, video, iframe, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent accidental horizontal overflow on narrow mobile screens */
+body, main {
+  overflow-x: clip;
+}
+
+/* Fluid responsive typography helpers */
+@media (max-width: 640px) {
+  h1 {
+    word-break: break-word;
+    hyphens: auto;
+  }
+  .scrolly-card {
+    position: relative !important;
+    top: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}
+

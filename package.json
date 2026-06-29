@@ -11,12 +11,20 @@
   "dependencies": {
     "@swc/helpers": "^0.5.15",
     "@vercel/speed-insights": "^2.0.0",
+    "framer-motion": "^12.42.0",
+    "fuse.js": "^7.4.2",
+    "gray-matter": "^4.0.3",
+    "gsap": "^3.15.0",
+    "lucide-react": "^1.22.0",
     "mongodb": "^7.3.0",
     "next": "16.2.9",
     "next-seo": "^7.2.0",
     "nodemailer": "^9.0.1",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
+    "schema-dts": "^2.0.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
