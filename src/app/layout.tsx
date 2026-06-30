@@ -8,7 +8,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 export const metadata: Metadata = {
   ...constructMetadata(),
   verification: {
-    google: "hzV6sbbUihTQuEC5u71YHv0NtJkYqRmWmvU9uRsV7k4",
+    google: "ymo6qf01gtOVtrexyHvtvsKBSVVDr4mPTuA_FhkzDaI",
     other: {
       "msvalidate.01": "8B29CA3E20A2D34DBFEB386C2024580F",
     },
