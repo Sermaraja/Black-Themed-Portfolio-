@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-
-# Block non-public routes
-Disallow: /api/
-Disallow: /private/
-
-# Sitemap
-Sitemap: https://sermaraj-dev-portfolio.vercel.app/sitemap.xml
