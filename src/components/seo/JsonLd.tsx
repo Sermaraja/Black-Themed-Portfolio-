@@ -31,6 +31,35 @@ export function JsonLd() {
       'System Architecture',
       'AI Agent & RAG Development'
     ],
+    email: 'sermarajav.offcl@gmail.com',
+    award: ['Collaboration Champion Award 2025-26 (Devopstrio Ltd.)'],
+    hasCredential: [
+      {
+        '@type': 'EducationalOccupationalCredential',
+        name: 'Microsoft Certified: Azure Administrator Associate (AZ-104)',
+        credentialCategory: 'Certification',
+      },
+      {
+        '@type': 'EducationalOccupationalCredential',
+        name: 'HashiCorp Certified: Terraform Associate',
+        credentialCategory: 'Certification',
+      },
+      {
+        '@type': 'EducationalOccupationalCredential',
+        name: 'Red Hat Certified System Administrator (RHCSA)',
+        credentialCategory: 'Certification',
+      },
+      {
+        '@type': 'EducationalOccupationalCredential',
+        name: 'DevOps Engineering Foundations',
+        credentialCategory: 'Certification',
+      },
+      {
+        '@type': 'EducationalOccupationalCredential',
+        name: 'Enterprise Cloud Security & Monitoring Specialization',
+        credentialCategory: 'Certification',
+      },
+    ],
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Kovilpatti',

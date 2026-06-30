@@ -1,0 +1,41 @@
+# Sermaraja V | Associate System Engineer, Cloud & Full Stack Developer
+
+Official portfolio of Sermaraja V (Sermaraj Vairamani), Associate System Engineer at Devopstrio Ltd. Specialized in Azure/AWS Cloud Engineering, DevOps, Infrastructure Modernization, and Full Stack Web Development.
+
+## Bio & Contact Info
+- **Name**: Sermaraja V (also known as Sermaraj Vairamani)
+- **Role**: Associate System Engineer
+- **Company**: Devopstrio Ltd.
+- **Location**: Kovilpatti, Tamil Nadu, India
+- **Email**: sermarajav.offcl@gmail.com
+- **Website**: https://sermaraj-dev-portfolio.vercel.app
+- **GitHub**: https://github.com/sermaraja
+- **LinkedIn**: https://linkedin.com/in/sermaraja
+
+## Key Credentials & Certifications
+- **Microsoft Certified: Azure Administrator Associate (AZ-104)**: Expertise in managing Azure identities, governance, storage, compute, and virtual networks.
+- **HashiCorp Certified: Terraform Associate**: Infrastructure as Code (IaC) principles, state management, and HCL syntax.
+- **Red Hat Certified System Administrator (RHCSA)**: Linux system administration, storage management, security, and user access.
+- **DevOps Engineering Foundations**: Continuous Integration, Continuous Delivery, container orchestration (Kubernetes), and automated testing.
+- **Enterprise Cloud Security & Monitoring Specialization**: Monitoring hybrid architectures with Azure Monitor, Grafana, and Log Analytics.
+
+## Technical Skills
+- **Cloud Providers**: Microsoft Azure, Amazon Web Services (AWS)
+- **Infrastructure as Code (IaC)**: Terraform
+- **Operating Systems**: Red Hat Enterprise Linux (RHEL), Ubuntu, Windows Server
+- **DevOps & Automation**: Kubernetes, Docker, CI/CD pipelines, PowerShell/Bash scripting
+- **Web Development**: Next.js, React, Node.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS
+- **Database & Backend**: MongoDB, SQL, Node.js API development
+
+## Professional Experience
+### Associate System Engineer at Devopstrio Ltd. (July 2025 - Present)
+- Supported an enterprise Azure migration project by assisting with infrastructure analysis, migration planning, and technical documentation across multiple environments.
+- Worked on infrastructure modernization, virtualization, and deployment automation.
+- Conducted internal technical training workshops on cloud migration tools, PowerShell scripting, and system monitoring.
+
+## Awards & Recognition
+- **Collaboration Champion Award (2025–26)**: The highest internal recognition at Devopstrio Ltd. for exceptional teamwork, peer support, technical guidance, and active training sessions.
+
+## Projects
+- **Enterprise Azure Migration & Infrastructure Modernization**: Assistance with migration planning, network security configurations, and tenant setups.
+- **Infrastructure Monitoring & Observability Dashboard**: Implementing Grafana, Prometheus, and Azure Monitor for real-time cluster metrics.
