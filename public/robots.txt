@@ -1,20 +1,9 @@
 User-agent: *
 Allow: /
+
+# Block non-public routes
 Disallow: /api/
-Disallow: /_next/
 Disallow: /private/
 
-User-agent: Googlebot
-Allow: /
-Disallow: /api/
-
-User-agent: Bingbot
-Allow: /
-Disallow: /api/
-
-User-agent: Applebot
-Allow: /
-Disallow: /api/
-
+# Sitemap
 Sitemap: https://sermaraj-dev-portfolio.vercel.app/sitemap.xml
-Host: https://sermaraj-dev-portfolio.vercel.app
