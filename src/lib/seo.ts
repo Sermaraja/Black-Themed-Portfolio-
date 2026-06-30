@@ -9,7 +9,7 @@ export const siteConfig = {
   ogImage: '/IMG/sermaja V logo.png',
   author: 'Sermaraja V',
   keywords: [
-    // Brand & Name Keywords (Main Focus)
+    // Brand & Name Keywords (Main Focus)zzzz
     'sermaraj',
     'sermaraja V',
     'sermaraja vairamani',
@@ -139,8 +139,14 @@ export function constructMetadata({
     other: {
       'geo.region': 'IN-TN',
       'geo.placename': 'Kovilpatti, Tamil Nadu, India',
-      'geo.position': '9.1722;77.8694',
-      'ICBM': '9.1722, 77.8694',
+      'geo.position': '9.172205;77.869389',
+      'ICBM': '9.172205, 77.869389',
+      'place:location:latitude': '9.172205',
+      'place:location:longitude': '77.869389',
+      'business:contact_data:locality': 'Kovilpatti',
+      'business:contact_data:region': 'Tamil Nadu',
+      'business:contact_data:country_name': 'India',
+      'business:contact_data:email': 'sermarajav.offcl@gmail.com',
     },
   };
 }

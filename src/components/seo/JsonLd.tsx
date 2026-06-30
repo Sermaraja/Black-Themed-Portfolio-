@@ -35,6 +35,7 @@ export function JsonLd() {
       '@type': 'PostalAddress',
       addressLocality: 'Kovilpatti',
       addressRegion: 'Tamil Nadu',
+      postalCode: '628501',
       addressCountry: 'India',
     },
     sameAs: [
@@ -54,12 +55,13 @@ export function JsonLd() {
       '@type': 'PostalAddress',
       addressLocality: 'Kovilpatti',
       addressRegion: 'Tamil Nadu',
+      postalCode: '628501',
       addressCountry: 'India',
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 9.1722,
-      longitude: 77.8694,
+      latitude: 9.172205,
+      longitude: 77.869389,
     },
     priceRange: '$$$',
     areaServed: [
