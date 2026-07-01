@@ -99,3 +99,75 @@ export const MobiriseIcon = ({ isActive }: { isActive?: boolean }) => (
     className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
   />
 );
+
+export const AzureIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/fluency/48/azure-1.png" 
+    alt="Azure" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const MongoDBIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/color/48/mongo-db.png" 
+    alt="MongoDB" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const AzureLogAnalyticsIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/color/48/azure-log-analytics.png" 
+    alt="Azure Log Analytics" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const MicrosoftWordIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/color/48/microsoft-word-2019.png" 
+    alt="Microsoft Word" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const MicrosoftPowerPointIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=48&id=117557&format=png" 
+    alt="Microsoft PowerPoint" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const MicrosoftExcelIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=48&id=UECmBSgBOvPT&format=png" 
+    alt="Microsoft Excel" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const Microsoft365Icon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=48&id=g7UKWvv49CoI&format=png" 
+    alt="Microsoft 365" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const MicrosoftVisioIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=48&id=38403&format=png" 
+    alt="Microsoft Visio" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const SharePointIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=48&id=bVAf0kiXtJhO&format=png" 
+    alt="SharePoint" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);

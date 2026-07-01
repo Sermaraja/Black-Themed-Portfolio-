@@ -101,6 +101,109 @@ const devopstrioCloudProjects: DevopstrioProject[] = [
   }
 ];
 
+const devopstrioDocsProjects: DevopstrioProject[] = [
+  {
+    id: "dt-docs-1",
+    title: "CyberArk PAM Documentation",
+    label: "Security Docs",
+    status: "Completed",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+    gradient: "from-slate-700 via-zinc-800 to-neutral-900",
+    icon: "🔒",
+    overview: "Supported the preparation of technical documentation for an enterprise Privileged Access Management (PAM) solution using CyberArk.",
+    responsibilities: [
+      "Assisted in preparing CyberArk implementation documentation.",
+      "Created deployment guides and operational documentation.",
+      "Developed technical Word documents and PowerPoint presentations.",
+      "Documented security workflows and operational procedures.",
+      "Supported documentation updates throughout the project lifecycle.",
+      "Collaborated with security and infrastructure teams."
+    ],
+    technologies: ["CyberArk", "Microsoft Word", "PowerPoint", "Technical Documentation"],
+    tags: ["Security", "CyberArk", "PAM", "Documentation"]
+  },
+  {
+    id: "dt-docs-2",
+    title: "Cloud Migration Runbooks & SOPs",
+    label: "Migration Docs",
+    status: "Completed",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80",
+    gradient: "from-cyan-800 via-blue-800 to-indigo-950",
+    icon: "📋",
+    overview: "Prepared documentation to support Azure migration activities and operational consistency.",
+    responsibilities: [
+      "Created cloud migration runbooks.",
+      "Prepared Standard Operating Procedures (SOPs).",
+      "Documented migration workflows and implementation steps.",
+      "Assisted in maintaining technical documentation.",
+      "Updated migration reports and supporting documents.",
+      "Supported knowledge-sharing initiatives within the team."
+    ],
+    technologies: ["Microsoft Word", "Azure", "Technical Documentation"],
+    tags: ["Azure", "Runbook", "SOP", "Migration"]
+  },
+  {
+    id: "dt-docs-3",
+    title: "Infrastructure Assessment & Cluster Reports",
+    label: "Assessment Docs",
+    status: "Completed",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    gradient: "from-violet-800 via-purple-900 to-fuchsia-955",
+    icon: "📊",
+    overview: "Supported the preparation of infrastructure assessment reports for virtualization and cloud modernization projects.",
+    responsibilities: [
+      "Prepared infrastructure assessment reports.",
+      "Documented ESXi cluster configurations.",
+      "Assisted in creating solution documentation.",
+      "Developed technical presentations for project reviews.",
+      "Organized infrastructure data and project documentation.",
+      "Supported report preparation for technical discussions."
+    ],
+    technologies: ["VMware", "Microsoft Word", "PowerPoint", "Excel"],
+    tags: ["VMware", "ESXi", "Cluster", "Assessment"]
+  },
+  {
+    id: "dt-docs-4",
+    title: "Azure Cost Optimization & Alert Analysis Reports (British Heart Foundation)",
+    label: "Cost & Alert Docs",
+    status: "Completed",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    gradient: "from-emerald-700 via-teal-800 to-cyan-950",
+    icon: "📈",
+    overview: "Prepared operational reports and documentation to support Azure monitoring and cost optimization activities.",
+    responsibilities: [
+      "Assisted in preparing Azure cost optimization reports.",
+      "Analyzed monitoring data using Microsoft Excel.",
+      "Documented alert classifications and monitoring procedures.",
+      "Created PowerPoint presentations for operational reporting.",
+      "Supported issue tracking and reporting activities.",
+      "Maintained project documentation and analysis records."
+    ],
+    technologies: ["Azure", "Azure Monitor", "Excel", "PowerPoint"],
+    tags: ["BHF", "Cost Optimization", "Alerts", "Reports"]
+  },
+  {
+    id: "dt-docs-5",
+    title: "Architecture & Solution Documentation",
+    label: "Architecture Docs",
+    status: "Completed",
+    image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=80",
+    gradient: "from-amber-600 via-orange-700 to-red-900",
+    icon: "📐",
+    overview: "Supported the creation of technical documentation for cloud infrastructure and enterprise solutions.",
+    responsibilities: [
+      "Prepared technical Word documents and PowerPoint presentations.",
+      "Assisted in developing solution architecture documentation.",
+      "Created implementation guides and deployment documents.",
+      "Supported infrastructure and cloud solution documentation.",
+      "Organized project deliverables and technical records.",
+      "Collaborated with engineering teams to maintain documentation quality."
+    ],
+    technologies: ["Microsoft Word", "PowerPoint", "Azure", "VMware", "Technical Documentation"],
+    tags: ["Architecture", "Solutions", "Deployment", "Enterprise"]
+  }
+];
+
 export default function WorksPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState<"all" | "devopstrio" | "major" | "freelance">("all");
@@ -148,7 +251,7 @@ export default function WorksPage() {
     return () => {
       elements.forEach((el) => observer.unobserve(el));
     };
-  }, [projects, projectsLoading, activeFilter]);
+  }, [projects, projectsLoading, activeFilter, activeDevopstrioTab]);
 
   // GSAP ScrollTrigger Pinned Scrollytelling & Stacking Cards Effect
   useEffect(() => {
@@ -192,13 +295,13 @@ export default function WorksPage() {
       clearTimeout(timer);
       ScrollTrigger.getAll().forEach((t: any) => t.kill());
     };
-  }, [projects, projectsLoading, activeFilter]);
+  }, [projects, projectsLoading, activeFilter, activeDevopstrioTab]);
 
   const majorProjects = projects.filter(p => p.category === "major");
   const freelanceProjects = projects.filter(p => p.category === "freelance");
 
   const getCounts = () => {
-    return devopstrioCloudProjects.length + majorProjects.length + freelanceProjects.length;
+    return devopstrioCloudProjects.length + devopstrioDocsProjects.length + majorProjects.length + freelanceProjects.length;
   };
 
   return (
@@ -314,7 +417,7 @@ export default function WorksPage() {
               </div>
               <div className="ml-auto hidden sm:block">
                 <span className="px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-[10px] font-bold uppercase tracking-wider">
-                  {devopstrioCloudProjects.length} Projects
+                  {devopstrioCloudProjects.length + devopstrioDocsProjects.length} Projects
                 </span>
               </div>
             </div>
@@ -454,21 +557,99 @@ export default function WorksPage() {
 
             {/* Technical Documentation */}
             {activeDevopstrioTab === "docs" && (
-              <div className="animate-fadeIn">
-                <div className="text-center py-20 px-6 rounded-2xl border border-zinc-900/80 bg-zinc-950/40 backdrop-blur-sm">
-                  <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-3xl mx-auto mb-6">
-                    📄
+              <div className="scrolly-section space-y-12 relative pb-16 animate-fadeIn">
+              {devopstrioDocsProjects.map((project, idx) => (
+                <div
+                  key={project.id}
+                  className="scrolly-card group sticky grid grid-cols-1 lg:grid-cols-12 gap-0 rounded-2xl bg-[#090D14] border border-amber-950/80 hover:border-amber-500/40 transition-colors duration-500 overflow-hidden backdrop-blur-xl relative shadow-[0_20px_50px_rgba(0,0,0,0.9)] reveal-item will-change-transform"
+                  style={{
+                    top: `calc(6.5rem + ${idx * 1.25}rem)`,
+                    zIndex: idx + 10,
+                  }}
+                >
+                  {/* Left side: Project Image */}
+                  <div className="lg:col-span-5 relative overflow-hidden aspect-video lg:aspect-auto min-h-[220px] sm:min-h-[260px] lg:min-h-[380px] p-4 sm:p-5 flex flex-col justify-between">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out z-0"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-[#090D14] hidden lg:block z-0"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#090D14] via-transparent to-black/30 z-0"></div>
+                    
+                    {/* Top Badges */}
+                    <div className="relative z-10 flex flex-col items-start gap-2">
+                      <span className="px-3.5 py-1 rounded-full bg-amber-600 text-white text-[10px] font-bold uppercase tracking-wider shadow-md">
+                        {project.label}
+                      </span>
+                      <span className="px-3.5 py-1 rounded-full bg-[#00C896] text-black text-[10px] font-extrabold uppercase tracking-wider shadow-md">
+                        {project.status}
+                      </span>
+                    </div>
+
+                    {/* Project number badge */}
+                    <div className="relative z-10">
+                      <span className="text-6xl lg:text-7xl font-heading font-black text-white/15 select-none pointer-events-none leading-none">
+                        0{idx + 1}
+                      </span>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-heading font-bold text-white mb-3">Technical Documentation</h3>
-                  <p className="text-sm text-zinc-500 max-w-md mx-auto leading-relaxed">
-                    Technical documentation projects and contributions will be showcased here soon.
-                  </p>
-                  <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                    Coming Soon
+
+                  {/* Right side: Project Details */}
+                  <div className="lg:col-span-7 p-4 sm:p-6 md:p-8 flex flex-col justify-between space-y-6 z-10">
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">DEVOPSTRIO • TECHNICAL DOCUMENTATION</span>
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-heading font-bold text-amber-400 group-hover:text-amber-300 transition-colors duration-300 leading-tight mb-3">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-zinc-400 leading-relaxed font-normal">
+                        {project.overview}
+                      </p>
+                    </div>
+
+                    {/* Key Responsibilities */}
+                    <div className="space-y-3">
+                      <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400 font-heading flex items-center gap-2">
+                        <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        KEY RESPONSIBILITIES
+                      </h4>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                        {project.responsibilities.map((resp, rIdx) => (
+                          <li key={rIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-300">
+                            <span className="text-emerald-400 shrink-0 mt-0.5 font-bold">✓</span>
+                            <span>{resp}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Technologies & Tags */}
+                    <div className="space-y-3 pt-4 border-t border-zinc-800/80">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 font-heading mr-1">TECHNOLOGIES</span>
+                        {project.technologies.map((tech, tIdx) => (
+                          <span key={tIdx} className="px-3 py-1 rounded-lg bg-amber-950/60 border border-amber-700/60 text-amber-300 text-xs font-medium hover:bg-amber-900/60 transition-colors">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.tags.map((tag, tIdx) => (
+                          <span key={tIdx} className="px-2.5 py-1 rounded-md bg-zinc-900/90 border border-zinc-800 text-zinc-500 text-[10px] font-medium">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
+            </div>
             )}
           </div>
         )}

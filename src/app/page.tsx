@@ -19,7 +19,16 @@ import {
   SEOIcon,
   ContentCreationIcon,
   AffinityIcon,
-  MobiriseIcon
+  MobiriseIcon,
+  AzureIcon,
+  MongoDBIcon,
+  AzureLogAnalyticsIcon,
+  MicrosoftWordIcon,
+  MicrosoftPowerPointIcon,
+  MicrosoftExcelIcon,
+  Microsoft365Icon,
+  MicrosoftVisioIcon,
+  SharePointIcon
 } from "./official-icons";
 
 const roles = [
@@ -125,6 +134,9 @@ const technicalSkills = [
   { name: "JavaScript", icon: <JavaScriptIcon /> },
   { name: "React.js", icon: <ReactIcon /> },
   { name: "Node.js", icon: <NodeIcon /> },
+  { name: "Azure", icon: <AzureIcon /> },
+  { name: "MongoDB", icon: <MongoDBIcon /> },
+  { name: "Azure Log Analytics", icon: <AzureLogAnalyticsIcon /> },
 ];
 
 const designSkills = [
@@ -136,6 +148,15 @@ const designSkills = [
   { name: "Content Creation", icon: <ContentCreationIcon /> },
   { name: "Affinity", icon: <AffinityIcon /> },
   { name: "Mobirise website builder", icon: <MobiriseIcon /> }
+];
+
+const docsSkills = [
+  { name: "Microsoft Word", icon: <MicrosoftWordIcon /> },
+  { name: "Microsoft PowerPoint", icon: <MicrosoftPowerPointIcon /> },
+  { name: "Microsoft Excel", icon: <MicrosoftExcelIcon /> },
+  { name: "Microsoft 365", icon: <Microsoft365Icon /> },
+  { name: "Microsoft Visio", icon: <MicrosoftVisioIcon /> },
+  { name: "SharePoint", icon: <SharePointIcon /> },
 ];
 
 export default function Home() {
@@ -198,6 +219,7 @@ export default function Home() {
       title: "Enterprise Azure Migration & Infrastructure Modernization",
       label: "Cloud Migration",
       status: "Completed",
+      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
       gradient: "from-sky-600 via-blue-700 to-indigo-900",
       icon: "🚀",
       overview: "Supported an enterprise Azure migration project by assisting with infrastructure analysis, migration planning, and technical documentation across multiple environments.",
@@ -217,6 +239,7 @@ export default function Home() {
       title: "Enterprise Azure Monitoring & Cloud Operations",
       label: "Cloud Operations",
       status: "Completed",
+      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
       gradient: "from-emerald-600 via-teal-700 to-cyan-900",
       icon: "📊",
       overview: "Supported Azure monitoring and cloud operations by analyzing alerts, preparing operational reports, and assisting with infrastructure monitoring.",
@@ -236,6 +259,7 @@ export default function Home() {
       title: "Enterprise VMware Infrastructure Assessment",
       label: "Virtualization",
       status: "Completed",
+      image: "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?w=800&q=80",
       gradient: "from-violet-600 via-purple-700 to-fuchsia-900",
       icon: "🖥️",
       overview: "Supported VMware infrastructure assessment and virtualization documentation for enterprise infrastructure modernization.",
@@ -255,6 +279,7 @@ export default function Home() {
       title: "Azure QA Replication & Migration Support",
       label: "QA & Testing",
       status: "Completed",
+      image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80",
       gradient: "from-rose-600 via-pink-700 to-red-900",
       icon: "🔄",
       overview: "Supported Azure replication testing and migration readiness activities for enterprise workloads.",
@@ -271,10 +296,113 @@ export default function Home() {
     }
   ];
 
-  const currentSkillsCount = activeTab === "technical" ? technicalSkills.length : activeTab === "design" ? designSkills.length : 0;
+  const devopstrioDocsProjects = [
+    {
+      id: "dt-docs-1",
+      title: "CyberArk PAM Documentation",
+      label: "Security Docs",
+      status: "Completed",
+      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+      gradient: "from-slate-700 via-zinc-800 to-neutral-900",
+      icon: "🔒",
+      overview: "Supported the preparation of technical documentation for an enterprise Privileged Access Management (PAM) solution using CyberArk.",
+      responsibilities: [
+        "Assisted in preparing CyberArk implementation documentation.",
+        "Created deployment guides and operational documentation.",
+        "Developed technical Word documents and PowerPoint presentations.",
+        "Documented security workflows and operational procedures.",
+        "Supported documentation updates throughout the project lifecycle.",
+        "Collaborated with security and infrastructure teams."
+      ],
+      technologies: ["CyberArk", "Microsoft Word", "PowerPoint", "Technical Documentation"],
+      tags: ["Security", "CyberArk", "PAM", "Documentation"]
+    },
+    {
+      id: "dt-docs-2",
+      title: "Cloud Migration Runbooks & SOPs",
+      label: "Migration Docs",
+      status: "Completed",
+      image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80",
+      gradient: "from-cyan-800 via-blue-800 to-indigo-955",
+      icon: "📋",
+      overview: "Prepared documentation to support Azure migration activities and operational consistency.",
+      responsibilities: [
+        "Created cloud migration runbooks.",
+        "Prepared Standard Operating Procedures (SOPs).",
+        "Documented migration workflows and implementation steps.",
+        "Assisted in maintaining technical documentation.",
+        "Updated migration reports and supporting documents.",
+        "Supported knowledge-sharing initiatives within the team."
+      ],
+      technologies: ["Microsoft Word", "Azure", "Technical Documentation"],
+      tags: ["Azure", "Runbook", "SOP", "Migration"]
+    },
+    {
+      id: "dt-docs-3",
+      title: "Infrastructure Assessment & Cluster Reports",
+      label: "Assessment Docs",
+      status: "Completed",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+      gradient: "from-violet-800 via-purple-900 to-fuchsia-955",
+      icon: "📊",
+      overview: "Supported the preparation of infrastructure assessment reports for virtualization and cloud modernization projects.",
+      responsibilities: [
+        "Prepared infrastructure assessment reports.",
+        "Documented ESXi cluster configurations.",
+        "Assisted in creating solution documentation.",
+        "Developed technical presentations for project reviews.",
+        "Organized infrastructure data and project documentation.",
+        "Supported report preparation for technical discussions."
+      ],
+      technologies: ["VMware", "Microsoft Word", "PowerPoint", "Excel"],
+      tags: ["VMware", "ESXi", "Cluster", "Assessment"]
+    },
+    {
+      id: "dt-docs-4",
+      title: "Azure Cost Optimization & Alert Analysis Reports (BHF)",
+      label: "Cost & Alert Docs",
+      status: "Completed",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+      gradient: "from-emerald-700 via-teal-800 to-cyan-950",
+      icon: "📈",
+      overview: "Prepared operational reports and documentation to support Azure monitoring and cost optimization activities.",
+      responsibilities: [
+        "Assisted in preparing Azure cost optimization reports.",
+        "Analyzed monitoring data using Microsoft Excel.",
+        "Documented alert classifications and monitoring procedures.",
+        "Created PowerPoint presentations for operational reporting.",
+        "Supported issue tracking and reporting activities.",
+        "Maintained project documentation and analysis records."
+      ],
+      technologies: ["Azure", "Azure Monitor", "Excel", "PowerPoint"],
+      tags: ["BHF", "Cost Optimization", "Alerts", "Reports"]
+    },
+    {
+      id: "dt-docs-5",
+      title: "Architecture & Solution Documentation",
+      label: "Architecture Docs",
+      status: "Completed",
+      image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=80",
+      gradient: "from-amber-600 via-orange-700 to-red-900",
+      icon: "📐",
+      overview: "Supported the creation of technical documentation for cloud infrastructure and enterprise solutions.",
+      responsibilities: [
+        "Prepared technical Word documents and PowerPoint presentations.",
+        "Assisted in developing solution architecture documentation.",
+        "Created implementation guides and deployment documents.",
+        "Supported infrastructure and cloud solution documentation.",
+        "Organized project deliverables and technical records.",
+        "Collaborated with engineering teams to maintain documentation quality."
+      ],
+      technologies: ["Microsoft Word", "PowerPoint", "Azure", "VMware", "Technical Documentation"],
+      tags: ["Architecture", "Solutions", "Deployment", "Enterprise"]
+    }
+  ];
+
+  const currentSkillsCount = activeTab === "technical" ? technicalSkills.length : activeTab === "design" ? designSkills.length : activeTab === "docs" ? docsSkills.length : 0;
 
   useEffect(() => {
-    if (activeTab !== "technical" && activeTab !== "design") return;
+    if (activeTab !== "technical" && activeTab !== "design" && activeTab !== "docs") return;
 
     if (isSkillsGridHovered) {
       setActiveSkillIndex(-1);
@@ -431,7 +559,7 @@ export default function Home() {
     return () => {
       elements.forEach((el) => observer.unobserve(el));
     };
-  }, [projects, projectsLoading, activeProjectTab]);
+  }, [projects, projectsLoading, activeProjectTab, activeDevopstrioTab]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -908,8 +1036,8 @@ export default function Home() {
         </div>
 
         {/* Tab Controls */}
-        <div className="flex justify-center gap-4 mb-12 reveal-item">
-          {["technical", "design"].map((tab) => (
+        <div className="flex flex-wrap justify-center gap-4 mb-12 reveal-item">
+          {["technical", "design", "docs"].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -921,6 +1049,7 @@ export default function Home() {
             >
               {tab === "technical" && "Technical Skills"}
               {tab === "design" && "Design & Marketing"}
+              {tab === "docs" && "Technical Documentation"}
             </button>
           ))}
         </div>
@@ -969,6 +1098,41 @@ export default function Home() {
               className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 animate-fadeIn"
             >
               {designSkills.map((skill, index) => {
+                const isActive = activeSkillIndex === index;
+                return (
+                  <div 
+                    key={skill.name} 
+                    className={`group p-4 sm:p-6 rounded-xl bg-zinc-950/80 border transition-all duration-300 flex flex-col items-center justify-center gap-4 text-center cursor-default animate-fadeIn ${
+                      isActive 
+                        ? "border-brand/30 shadow-[0_0_20px_rgba(197,2,72,0.08)]" 
+                        : "border-zinc-900 hover:border-brand/30 hover:shadow-[0_0_20px_rgba(197,2,72,0.08)]"
+                    }`}
+                  >
+                    <div className={`flex items-center justify-center w-16 h-16 rounded-lg transition-all duration-300 ${
+                      isActive 
+                        ? "bg-zinc-900 border-zinc-800" 
+                        : "bg-zinc-900/50 border-zinc-900 group-hover:bg-zinc-900 group-hover:border-zinc-800"
+                    }`}>
+                      {React.cloneElement(skill.icon, { isActive })}
+                    </div>
+                    <p className={`text-sm font-semibold transition-colors duration-300 ${
+                      isActive ? "text-white" : "text-zinc-400 group-hover:text-white"
+                    }`}>
+                      {skill.name}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {activeTab === "docs" && (
+            <div 
+              onMouseEnter={() => setIsSkillsGridHovered(true)}
+              onMouseLeave={() => setIsSkillsGridHovered(false)}
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 animate-fadeIn"
+            >
+              {docsSkills.map((skill, index) => {
                 const isActive = activeSkillIndex === index;
                 return (
                   <div 
@@ -1479,21 +1643,19 @@ export default function Home() {
                         className="group flex flex-col justify-between rounded-2xl bg-zinc-950/40 border border-zinc-900/80 hover:border-brand/30 hover:shadow-[0_0_30px_rgba(197,2,72,0.1)] transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-sm reveal-item"
                       >
                         <div>
-                          {/* Visual Header — Gradient Banner */}
-                          <div className={`relative aspect-video overflow-hidden border-b border-zinc-900 bg-gradient-to-br ${project.gradient}`}>
-                            {/* Decorative grid pattern overlay */}
-                            <div className="absolute inset-0 opacity-[0.08]" style={{backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23fff\' fill-opacity=\'1\' fill-rule=\'evenodd\'%3E%3Cpath d=\'M0 40L40 0H20L0 20M40 40V20L20 40\'/%3E%3C/g%3E%3C/svg%3E")'}}></div>
-                            {/* Centered Icon */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <span className="text-6xl opacity-30 group-hover:opacity-50 group-hover:scale-110 transition-all duration-700 select-none">
-                                {project.icon}
-                              </span>
-                            </div>
-                            {/* Bottom gradient fade */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-80"></div>
+                          {/* Visual Header — Image Preview */}
+                          <div className="relative aspect-video overflow-hidden border-b border-zinc-900 bg-zinc-950">
+                            <img 
+                              src={project.image} 
+                              alt={project.title}
+                              loading="lazy"
+                              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out z-0"
+                            />
+                            {/* Gradient Overlay to blend with card body */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-black/30 z-0"></div>
                             
                             {/* Badges */}
-                            <div className="absolute top-3 right-3 flex flex-col gap-1.5">
+                            <div className="absolute top-3 right-3 flex flex-col gap-1.5 z-10">
                               <span className="px-2.5 py-0.5 rounded-full bg-brand/80 border border-brand/40 text-white text-[9px] font-bold uppercase tracking-wider backdrop-blur-sm">
                                 {project.label}
                               </span>
@@ -1561,20 +1723,88 @@ export default function Home() {
 
                 {/* Technical Documentation */}
                 {activeDevopstrioTab === "docs" && (
-                  <div className="animate-fadeIn">
-                    <div className="text-center py-20 px-6 rounded-2xl border border-zinc-900/80 bg-zinc-950/40 backdrop-blur-sm">
-                      <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-3xl mx-auto mb-6">
-                        📄
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fadeIn">
+                    {devopstrioDocsProjects.map((project, idx) => (
+                      <div
+                        key={project.id}
+                        className="group flex flex-col justify-between rounded-2xl bg-zinc-950/40 border border-zinc-900/80 hover:border-brand/30 hover:shadow-[0_0_30px_rgba(197,2,72,0.1)] transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-sm reveal-item"
+                      >
+                        <div>
+                          {/* Visual Header — Image Preview */}
+                          <div className="relative aspect-video overflow-hidden border-b border-zinc-900 bg-zinc-950">
+                            <img 
+                              src={project.image} 
+                              alt={project.title}
+                              loading="lazy"
+                              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out z-0"
+                            />
+                            {/* Gradient Overlay to blend with card body */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-black/30 z-0"></div>
+                            
+                            {/* Badges */}
+                            <div className="absolute top-3 right-3 flex flex-col gap-1.5 z-10">
+                              <span className="px-2.5 py-0.5 rounded-full bg-brand/80 border border-brand/40 text-white text-[9px] font-bold uppercase tracking-wider backdrop-blur-sm">
+                                {project.label}
+                              </span>
+                              <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/80 border border-emerald-400/40 text-white text-[9px] font-bold uppercase tracking-wider backdrop-blur-sm">
+                                {project.status}
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Body Content */}
+                          <div className="p-6 space-y-4">
+                            <div className="flex flex-col gap-1">
+                              <span className="text-[10px] font-semibold text-zinc-500 uppercase tracking-wider">
+                                Devopstrio • Technical Documentation
+                              </span>
+                              <h3 className="text-lg font-heading font-bold text-white group-hover:text-brand transition-colors duration-300 leading-snug">
+                                {project.title}
+                              </h3>
+                            </div>
+
+                            <p className="text-xs text-zinc-400 leading-relaxed font-normal line-clamp-3">
+                              {project.overview}
+                            </p>
+
+                            {/* Key Accomplishments */}
+                            <div className="space-y-1.5 pt-2">
+                              <h4 className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 font-heading">Key Accomplishments</h4>
+                              <ul className="space-y-1">
+                                {project.responsibilities.slice(0, 3).map((resp, rIdx) => (
+                                  <li key={rIdx} className="flex items-start gap-1.5 text-xs text-zinc-300">
+                                    <span className="text-emerald-500 shrink-0">✓</span>
+                                    <span className="line-clamp-2">{resp}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Bottom tech stack and tags */}
+                        <div className="p-6 pt-0 space-y-4">
+                          <div className="space-y-1.5 border-t border-zinc-900 pt-4">
+                            {/* Primary Tech Pills */}
+                            <div className="flex flex-wrap gap-1.5">
+                              {project.technologies.map((tech, tIdx) => (
+                                <span key={tIdx} className="px-2 py-0.5 rounded bg-brand/10 border border-brand/20 text-brand text-[10px] font-semibold">
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                            {/* Secondary tags */}
+                            <div className="flex flex-wrap gap-1">
+                              {project.tags.map((tag, tIdx) => (
+                                <span key={tIdx} className="px-1.5 py-0.5 rounded bg-zinc-900 text-zinc-500 text-[8px] font-medium border border-zinc-900/50">
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <h3 className="text-xl font-heading font-bold text-white mb-3">Technical Documentation</h3>
-                      <p className="text-sm text-zinc-500 max-w-md mx-auto leading-relaxed">
-                        Technical documentation projects and contributions will be showcased here soon.
-                      </p>
-                      <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold">
-                        <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                        Coming Soon
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 )}
               </div>
