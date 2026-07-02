@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 export const siteConfig = {
   name: 'Sermaraja V',
-  title: 'Sermaraja V | Associate System Engineer, Cloud & Full Stack Developer',
+  title: 'Sermaraja V | Web Engineering, Product Strategy & Digital Solutions',
   description: 'Official portfolio of Sermaraja V (Sermaraj Vairamani), Associate System Engineer at Devopstrio Ltd. Specialized in Azure/AWS Cloud Engineering, DevOps, Infrastructure Modernization, and Full Stack Web Development across Kovilpatti, Chennai, Bangalore, India, UK, London, USA, and Australia.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://sermaraj-dev-portfolio.vercel.app',
   ogImage: '/IMG/sermaja V logo.png',
@@ -108,20 +108,30 @@ export function constructMetadata({
       siteName: siteConfig.name,
       images: [
         {
-          url: image,
+          url: '/IMG/hero section sermaraja.png',
           width: 1200,
           height: 630,
-          alt: title,
+          alt: 'Sermaraja V Portfolio - Web Engineering, Product Strategy & Digital Solutions',
         },
+        {
+          url: '/IMG/sermaja V logo.png',
+          width: 800,
+          height: 800,
+          alt: 'Sermaraja V Official Logo',
+        }
       ],
       locale: 'en_US',
-      type: 'website',
+      type: 'profile',
+      firstName: 'Sermaraja',
+      lastName: 'V',
+      username: 'sermaraja',
+      gender: 'male',
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [image],
+      images: ['/IMG/hero section sermaraja.png'],
       creator: '@sermaraja',
     },
     robots: {
