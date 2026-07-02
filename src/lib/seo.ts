@@ -108,16 +108,10 @@ export function constructMetadata({
       siteName: siteConfig.name,
       images: [
         {
-          url: '/IMG/hero section sermaraja.png',
+          url: '/IMG/sermaraj fevicon.png',
           width: 1200,
           height: 630,
-          alt: 'Sermaraja V Portfolio - Web Engineering, Product Strategy & Digital Solutions',
-        },
-        {
-          url: '/IMG/sermaja V logo.png',
-          width: 800,
-          height: 800,
-          alt: 'Sermaraja V Official Logo',
+          alt: 'Sermaraja V Logo',
         }
       ],
       locale: 'en_US',
@@ -131,7 +125,7 @@ export function constructMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['/IMG/hero section sermaraja.png'],
+      images: ['/IMG/sermaraj fevicon.png'],
       creator: '@sermaraja',
     },
     robots: {
