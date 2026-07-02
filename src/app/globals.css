@@ -13,6 +13,32 @@
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
   --color-brand: #C50248;
+
+  /* Custom Floating Animations */
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-float-slow: float-slow 5s ease-in-out infinite;
+  --animate-float-reverse: float-reverse 4.5s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes float-reverse {
+    0%, 100% { transform: translateY(-8px); }
+    50% { transform: translateY(4px); }
+  }
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
 }
 
 body {
@@ -501,4 +527,10 @@ main {
 
 .talk-btn:hover .talk-btn__icon-svg--copy {
   transform: translate(0, 0);
+}
+
+/* Hero Profile Image - override global img constraints for transparent PNG */
+.hero-profile-img {
+  max-width: none;
+  filter: brightness(1.05) contrast(1.02);
 }

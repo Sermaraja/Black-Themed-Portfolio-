@@ -411,7 +411,7 @@ export default function AwardsPage() {
                       <div className="relative w-11 h-11 rounded-full p-[2px] bg-gradient-to-tr from-amber-500 via-[#C50248] to-purple-600 shrink-0 shadow-md">
                         <div className="w-full h-full rounded-full overflow-hidden bg-black p-[1.5px]">
                           <img 
-                            src="/IMG/serma_profile_face.jpg" 
+                            src="/IMG/serma_profile_face.png" 
                             alt="Sermaraja V" 
                             className="w-full h-full object-cover rounded-full"
                           />

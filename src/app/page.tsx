@@ -183,7 +183,7 @@ export default function Home() {
   const [projects, setProjects] = useState<any[]>([]);
   const [projectsLoading, setProjectsLoading] = useState(true);
   const [projectsError, setProjectsError] = useState<string | null>(null);
-  const [activeProjectTab, setActiveProjectTab] = useState<"major" | "freelance" | "devopstrio">("devopstrio");
+  const [activeProjectTab, setActiveProjectTab] = useState<"major" | "freelance" | "devopstrio">("major");
   const [activeDevopstrioTab, setActiveDevopstrioTab] = useState<"cloud" | "docs">("cloud");
 
   useEffect(() => {
@@ -216,7 +216,7 @@ export default function Home() {
   const devopstrioCloudProjects = [
     {
       id: "dt-cloud-1",
-      title: "Enterprise Azure Migration & Infrastructure Modernization",
+      title: " Azure Migration & Infrastructure Modernization",
       label: "Cloud Migration",
       status: "Completed",
       image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
@@ -236,7 +236,7 @@ export default function Home() {
     },
     {
       id: "dt-cloud-2",
-      title: "Enterprise Azure Monitoring & Cloud Operations",
+      title: " Azure Monitoring & Cloud Operations",
       label: "Cloud Operations",
       status: "Completed",
       image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
@@ -256,7 +256,7 @@ export default function Home() {
     },
     {
       id: "dt-cloud-3",
-      title: "Enterprise VMware Infrastructure Assessment",
+      title: "VMware Infrastructure Assessment",
       label: "Virtualization",
       status: "Completed",
       image: "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?w=800&q=80",
@@ -583,20 +583,29 @@ export default function Home() {
       <div className="glow-sphere w-[500px] h-[500px] bg-brand/5 bottom-[10%] left-[-100px]"></div>
 
       {/* Header/Navbar */}
-      <header className="sticky top-0 z-50 bg-black/70 backdrop-blur-md border-b border-zinc-900">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="#" className="font-heading text-xl font-bold tracking-tight text-white hover:text-brand transition-colors">
-            SERMARAJA<span className="text-brand">.V</span>
+      <header className="sticky top-5 z-50 px-6 w-full max-w-6xl mx-auto">
+        <div className="bg-black/80 backdrop-blur-lg border border-zinc-900 rounded-full px-8 py-4 flex items-center justify-between shadow-xl shadow-black/30">
+          <a href="#" className="flex items-center gap-3.5 transition-colors group">
+            <div className="w-12 h-12 rounded-full overflow-hidden border border-zinc-800 bg-white flex items-center justify-center p-0.5 shrink-0 shadow-md transition-transform duration-300 group-hover:scale-105">
+              <img 
+                src="/IMG/sermaja V logo.png" 
+                alt="Sermaraja V Logo" 
+                className="w-[150%] h-[150%] max-w-none object-contain" 
+              />
+            </div>
+            <span 
+              className="font-heading text-xl md:text-2xl font-bold text-white tracking-tight"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Sermaraja <span className="text-brand">V</span>
+            </span>
           </a>
           
-          <nav className="hidden md:flex items-center space-x-6 text-xs lg:text-sm font-semibold uppercase tracking-wider font-heading">
+          <nav className="hidden md:flex items-center space-x-10 text-sm font-semibold uppercase tracking-wider font-heading">
             <a href="#about" className="text-zinc-400 hover:text-white transition-colors">About</a>
-            <a href="#awards" className="text-zinc-400 hover:text-white transition-colors">Awards</a>
             <a href="#skills" className="text-zinc-400 hover:text-white transition-colors">Skills</a>
             <a href="#experience" className="text-zinc-400 hover:text-white transition-colors">Experience</a>
             <a href="#projects" className="text-zinc-400 hover:text-white transition-colors">Projects</a>
-            <a href="#education" className="text-zinc-400 hover:text-white transition-colors">Education</a>
-            <a href="#blogs" className="text-zinc-400 hover:text-white transition-colors">Blogs</a>
             <a href="#contact" className="text-zinc-400 hover:text-white transition-colors">Contact</a>
           </nav>
 
@@ -635,117 +644,188 @@ export default function Home() {
 
         {/* Mobile Navigation Dropdown */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-zinc-950/95 border-b border-zinc-900 py-4 px-6 flex flex-col space-y-4">
+          <div className="md:hidden mt-2 bg-zinc-950/95 border border-zinc-900 rounded-2xl py-4 px-6 flex flex-col space-y-4 shadow-xl">
             <a onClick={() => setIsMobileMenuOpen(false)} href="#about" className="text-zinc-400 hover:text-white transition-colors py-1">About</a>
-            <a onClick={() => setIsMobileMenuOpen(false)} href="#awards" className="text-zinc-400 hover:text-white transition-colors py-1">Awards</a>
             <a onClick={() => setIsMobileMenuOpen(false)} href="#skills" className="text-zinc-400 hover:text-white transition-colors py-1">Skills</a>
             <a onClick={() => setIsMobileMenuOpen(false)} href="#experience" className="text-zinc-400 hover:text-white transition-colors py-1">Experience</a>
             <a onClick={() => setIsMobileMenuOpen(false)} href="#projects" className="text-zinc-400 hover:text-white transition-colors py-1">Projects</a>
-            <a onClick={() => setIsMobileMenuOpen(false)} href="#education" className="text-zinc-400 hover:text-white transition-colors py-1">Education & Accomplishments</a>
-            <a onClick={() => setIsMobileMenuOpen(false)} href="#blogs" className="text-zinc-400 hover:text-white transition-colors py-1">Blogs</a>
             <a onClick={() => setIsMobileMenuOpen(false)} href="#contact" className="text-zinc-400 hover:text-white transition-colors py-1">Contact</a>
             <a 
               onClick={() => setIsMobileMenuOpen(false)}
               href="#contact" 
-              className="talk-btn justify-center"
+              className="px-6 py-2.5 rounded-full border border-brand/50 bg-brand/5 hover:bg-brand/15 text-white font-semibold text-xs tracking-wider uppercase transition-all duration-300 hover:scale-[1.03] flex items-center justify-center gap-1.5"
             >
-              <span className="talk-btn__icon-wrapper">
-                <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="talk-btn__icon-svg w-2.5 h-2.5">
-                  <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor" />
-                </svg>
-                <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="talk-btn__icon-svg talk-btn__icon-svg--copy w-2.5 h-2.5">
-                  <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor" />
-                </svg>
-              </span>
-              Let's Talk
+              Contact Us 
+              <svg className="w-3.5 h-3.5 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+              </svg>
             </a>
           </div>
         )}
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center justify-center py-14 md:py-16 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center flex flex-col items-center relative z-10">
+      <section className="relative min-h-[85vh] flex items-center justify-center py-16 md:py-24 px-6 overflow-hidden">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10 w-full">
           
-          {/* Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/60 border border-zinc-800 text-xs font-medium text-zinc-400 hover:border-brand/50 transition-all select-none">
-            <span className="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
-            Available for Opportunities
-          </div>
+          {/* Left Column - Text Details */}
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left select-none">
+            {/* Badge */}
+            <div className="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/60 border border-zinc-800 text-xs font-medium text-zinc-400 hover:border-brand/50 transition-all select-none">
+              <span className="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
+              Available for Opportunities
+            </div>
 
-          <h3 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 mb-2 font-heading">
-            Hello, I'm
-          </h3>
-          
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-heading font-black tracking-tight mb-4 text-silver-gradient select-none">
-            Sermaraja V
-          </h1>
-
-          <div className="text-xl sm:text-3xl md:text-4xl font-heading font-medium tracking-tight mb-8 h-12 flex items-center justify-center">
-            <span className="text-zinc-400 mr-2 select-none">I am a</span>
-            <TypingEffect />
-          </div>
-
-          <p className="max-w-2xl text-base sm:text-lg text-zinc-400 leading-relaxed mb-10 text-center px-4">
-            A passionate Web Developer and System Associate with expertise in creating innovative digital solutions. 
-            I specialize in building responsive websites and applications with modern technologies.
-          </p>
-
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-12 items-center justify-center w-full max-w-md">
-            <a 
-              href="#contact" 
-              className="w-full sm:w-auto px-8 py-4 rounded font-heading font-semibold text-sm bg-pink-magenta-gradient text-white shadow-lg hover:shadow-brand/10 transition-all duration-300 text-center hover:scale-[1.02]"
-            >
-              Contact Me
-            </a>
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-zinc-500 mb-2 font-heading">
+              Hello, I'm
+            </h3>
             
-            <button 
-              onClick={handleDownloadCV}
-              className="themed-btn w-full sm:w-auto px-8 py-4 text-sm flex items-center justify-center gap-2"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-              </svg>
-              Download CV
-            </button>
+            <h1 className="text-5xl sm:text-7xl md:text-8xl font-heading font-black tracking-tight mb-4 text-silver-gradient select-none">
+              Sermaraja V
+            </h1>
+
+            <div className="text-xl sm:text-3xl md:text-4xl font-heading font-medium tracking-tight mb-8 h-12 flex items-center justify-center lg:justify-start">
+              <span className="text-zinc-400 mr-2 select-none">I am a</span>
+              <TypingEffect />
+            </div>
+
+            <p className="max-w-2xl text-base sm:text-lg text-zinc-400 leading-relaxed mb-10 text-center lg:text-left px-0 lg:pr-6">
+              A passionate Web Developer and System Associate with expertise in creating innovative digital solutions. 
+              I specialize in building responsive websites and applications with modern technologies.
+            </p>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start w-full max-w-md">
+              <a 
+                href="#contact" 
+                className="w-full sm:w-auto px-8 py-4 rounded font-heading font-semibold text-sm bg-pink-magenta-gradient text-white shadow-lg hover:shadow-brand/10 transition-all duration-300 text-center hover:scale-[1.02] inline-flex items-center justify-center gap-2"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                Contact Me
+              </a>
+              
+              <button 
+                onClick={handleDownloadCV}
+                className="themed-btn w-full sm:w-auto px-8 py-4 text-sm flex items-center justify-center gap-2"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+                Download CV
+              </button>
+            </div>
+
+            {/* Let's Connect Social Section */}
+            <div className="mt-10 flex flex-col items-center lg:items-start gap-4 w-full">
+              <span className="text-[10px] tracking-[0.2em] font-heading font-bold text-pink-500 uppercase select-none">
+                Let's Connect
+              </span>
+              
+              <div className="flex items-center gap-4">
+                <a 
+                  href="https://github.com/Sermaraja" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-11 h-11 rounded-full bg-zinc-900/60 border border-zinc-800/80 hover:border-pink-500/50 hover:bg-zinc-800/80 flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"
+                  aria-label="GitHub"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"></path>
+                  </svg>
+                </a>
+                
+                <a 
+                  href="https://www.linkedin.com/in/sermaraja-v09022005/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-11 h-11 rounded-full bg-zinc-900/60 border border-zinc-800/80 hover:border-pink-500/50 hover:bg-zinc-800/80 flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"
+                  aria-label="LinkedIn"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+                  </svg>
+                </a>
+
+                <a 
+                  href="mailto:sermarajav.offcl@gmail.com" 
+                  className="w-11 h-11 rounded-full bg-zinc-900/60 border border-zinc-800/80 hover:border-pink-500/50 hover:bg-zinc-800/80 flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"
+                  aria-label="Email"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-5">
-            <a 
-              href="https://github.com/Sermaraja" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all"
-              aria-label="GitHub"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"></path>
-              </svg>
-            </a>
+          {/* Right Column - Profile Image */}
+          <div className="lg:col-span-5 flex justify-center w-full relative">
+            <div className="relative w-[270px] h-[270px] min-[360px]:w-[300px] min-[360px]:h-[300px] min-[400px]:w-[320px] min-[400px]:h-[320px] sm:w-[380px] sm:h-[380px] md:w-[420px] md:h-[420px] max-w-full select-none">
+              
+              {/* Decorative Dot Grid - Top Right - with float animation */}
+              <div className="absolute -top-2 -right-6 z-0 opacity-45 animate-float-slow">
+                <div className="grid grid-cols-5 gap-2">
+                  {Array.from({ length: 25 }).map((_, i) => (
+                    <div key={i} className="w-1 h-1 rounded-full bg-white" />
+                  ))}
+                </div>
+              </div>
 
-            <a 
-              href="https://www.linkedin.com/in/sermaraja-v09022005/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all"
-              aria-label="LinkedIn"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
-              </svg>
-            </a>
+              {/* Concentric Orbital Rings */}
+              {/* Outermost ring - rotating with 3 dots */}
+              <div className="absolute inset-[-20px] rounded-full border border-brand/20 animate-rotate-clockwise z-0 pointer-events-none" style={{ animationDuration: '30s' }}>
+                {/* Dot 1 - top */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-brand/70" />
+                {/* Dot 2 - bottom-left (120°) */}
+                <div className="absolute bottom-[13%] left-[13%] w-2 h-2 rounded-full bg-brand/50" />
+                {/* Dot 3 - bottom-right (240°) */}
+                <div className="absolute bottom-[13%] right-[13%] w-2 h-2 rounded-full bg-brand/50" />
+              </div>
+              {/* Second ring */}
+              <div className="absolute inset-[-8px] rounded-full border border-dashed border-brand/15 z-0 pointer-events-none" />
+              {/* Outer glow ring */}
+              <div className="absolute inset-[2px] rounded-full border border-brand/10 z-0 pointer-events-none" />
 
-            <a 
-              href="mailto:sermarajav.offcl@gmail.com" 
-              className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all"
-              aria-label="Email"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-              </svg>
-            </a>
+              {/* Red/Pink radial glow behind person */}
+              <div 
+                className="absolute inset-[-40px] rounded-full z-0 pointer-events-none"
+                style={{
+                  background: 'radial-gradient(circle, rgba(197,2,72,0.30) 0%, rgba(197,2,72,0.12) 45%, transparent 70%)'
+                }}
+              />
+
+              {/* Perfect Circle Image Container */}
+              <div className="absolute inset-0 rounded-full overflow-hidden z-10 border-2 border-brand/20">
+                <img 
+                  src="/IMG/sermaraja-hero-profile.png" 
+                  alt="Sermaraja V" 
+                  className="hero-profile-img w-full h-full object-cover object-top" 
+                />
+              </div>
+
+              {/* Professional Quote Card - Floating */}
+              <div className="absolute -bottom-12 right-0 min-[400px]:-right-4 md:-right-10 z-20 animate-float bg-zinc-900/90 backdrop-blur-lg border border-zinc-700/50 rounded-2xl px-5 py-4 max-w-[200px] min-[360px]:max-w-[220px] shadow-2xl">
+                {/* Quote Icon */}
+                <svg className="w-5 h-5 text-brand mb-2 opacity-80" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983z"/>
+                </svg>
+                <p className="text-[13px] font-heading font-semibold text-white leading-snug mb-1">Turning Ideas into Digital Experiences</p>
+                <p className="text-[10px] text-zinc-400 leading-relaxed italic">Clean systems, thoughtful products, modern web experiences.</p>
+              </div>
+
+              {/* Decorative Dot Grid - Bottom Left - with float animation */}
+              <div className="absolute -bottom-4 -left-8 z-0 opacity-35 animate-float-reverse">
+                <div className="grid grid-cols-4 gap-2">
+                  {Array.from({ length: 16 }).map((_, i) => (
+                    <div key={i} className="w-1 h-1 rounded-full bg-white" />
+                  ))}
+                </div>
+              </div>
+
+            </div>
           </div>
 
         </div>
@@ -754,7 +834,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgba(0,0,0,0)_10%,#000_90%)] pointer-events-none z-0"></div>
       </section>
       {/* About Section */}
-      <section id="about" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+      <section id="about" className="py-10 md:py-12 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           {/* Bio Column */}
           <div className="lg:col-span-7 space-y-8 reveal-item">
@@ -885,7 +965,7 @@ export default function Home() {
                 <div className="profile_item w-[240px] h-[240px] p-1 border-2 rounded-full border-gray-400/30 hover:border-brand/50 transition-all duration-500 z-10 relative overflow-hidden bg-zinc-950/80">
                   <div className="w-full h-full rounded-full overflow-hidden relative group/avatar animate-rotate-counter-clockwise">
                     <img 
-                      src="/IMG/serma_profile_face.jpg" 
+                      src="/IMG/serma_profile_face.png" 
                       alt="Sermaraja V Profile"
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover/avatar:scale-110"
@@ -898,7 +978,7 @@ export default function Home() {
         </div>
       </section>
       {/* Awards & Recognition Section */}
-      <section id="awards" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900 relative z-10 overflow-hidden">
+      <section id="awards" className="py-10 md:py-12 px-6 max-w-6xl mx-auto border-t border-zinc-900 relative z-10 overflow-hidden">
         {/* Decorative Background Ambient Glow */}
         <div className="glow-sphere w-[600px] h-[400px] bg-brand/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none -z-10"></div>
 
@@ -1045,7 +1125,7 @@ export default function Home() {
         </div>
       </section>
       {/* Skills Section */}
-      <section id="skills" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+      <section id="skills" className="py-10 md:py-12 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="text-center mb-10 reveal-item">
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-silver-gradient mb-4">Core Competencies</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
@@ -1182,7 +1262,7 @@ export default function Home() {
       </section>
 
       {/* Experience & Timeline Section */}
-      <section id="experience" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+      <section id="experience" className="py-10 md:py-12 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="text-center mb-10 reveal-item">
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-silver-gradient mb-4">Experience Highlights</h2>
           <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
@@ -1208,36 +1288,37 @@ export default function Home() {
             </div>
 
             {/* Card on Right */}
-            <div className="w-full md:w-5/12 flip-card h-[340px]">
+            {/* Card on Right */}
+            <div className="w-full md:w-5/12 flip-card h-[290px]">
               <div className="flip-card-inner">
                 {/* Front Side */}
-                <div className="flip-card-front p-8 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/20 flex flex-col justify-between items-center text-center">
+                <div className="flip-card-front p-6 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/20 flex flex-col justify-between items-center text-center">
                   <div className="flex-1 flex flex-col justify-center items-center">
                     <div className="md:hidden mb-2">
-                      <span className="text-sm font-bold text-brand uppercase tracking-widest">Present</span>
+                      <span className="text-xs font-bold text-brand uppercase tracking-widest">Present</span>
                     </div>
-                    <div className="flex flex-col items-center mb-5 gap-3">
-                      <div className="w-16 h-16 rounded-full bg-zinc-900/80 flex items-center justify-center border border-zinc-800 overflow-hidden p-2.5 shrink-0 shadow-lg shadow-black/50">
+                    <div className="flex flex-col items-center mb-3 gap-2">
+                      <div className="w-12 h-12 rounded-full bg-zinc-900/80 flex items-center justify-center border border-zinc-800 overflow-hidden p-2.5 shrink-0 shadow-lg shadow-black/50">
                         <img src="https://devopstrio.co.uk/assets/logo/logo.png" alt="Devopstrio Logo" className="w-full h-full object-contain" />
                       </div>
-                      <h3 className="text-2xl md:text-3xl font-heading font-bold text-white tracking-wide">Devopstrio</h3>
+                      <h3 className="text-xl md:text-2xl font-heading font-bold text-white tracking-wide">Devopstrio</h3>
                     </div>
-                    <p className="text-sm md:text-base font-semibold text-brand uppercase tracking-wider mb-3">Associate System Engineer & Web Developer</p>
-                    <p className="text-sm md:text-base text-zinc-400 leading-relaxed max-w-sm">
+                    <p className="text-xs md:text-sm font-semibold text-brand uppercase tracking-wider mb-2">Associate System Engineer & Web Developer</p>
+                    <p className="text-xs md:text-sm text-zinc-400 leading-relaxed max-w-sm">
                       Designing responsive web applications, interactive UI/UX interfaces, and managing system infrastructures.
                     </p>
                   </div>
-                  <div className="w-full flex items-center justify-center gap-1.5 text-sm text-zinc-400 font-medium border-t border-zinc-900/50 pt-4 mt-4">
+                  <div className="w-full flex items-center justify-center gap-1.5 text-xs text-zinc-400 font-medium border-t border-zinc-900/50 pt-3 mt-3">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
                     <span>Hover to view key contributions</span>
                   </div>
                 </div>
 
                 {/* Back Side */}
-                <div className="flip-card-back p-6 rounded bg-zinc-950 border border-brand/30 flex flex-col justify-between text-left shadow-[0_0_15px_rgba(197,2,72,0.15)]">
+                <div className="flip-card-back p-5 rounded bg-zinc-950 border border-brand/30 flex flex-col justify-between text-left shadow-[0_0_15px_rgba(197,2,72,0.15)]">
                   <div className="overflow-y-auto pr-1 scrollbar-thin flex-1">
-                    <h4 className="text-xs font-semibold text-brand uppercase tracking-widest mb-3">Key Contributions</h4>
-                    <ul className="space-y-2.5 text-sm text-zinc-400">
+                    <h4 className="text-[11px] font-semibold text-brand uppercase tracking-widest mb-2">Key Contributions</h4>
+                    <ul className="space-y-2 text-xs text-zinc-400">
                       <li className="flex items-start gap-2">
                         <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
                         <span>1.Worked on cloud operations tasks, including environment support, service coordination, and infrastructure-related activities.</span>
@@ -1264,7 +1345,7 @@ export default function Home() {
                       </li>
                     </ul>
                   </div>
-                  <div className="text-right text-[10px] text-zinc-600 mt-2">
+                  <div className="text-right text-[9px] text-zinc-600 mt-2">
                     <span>Hover away to flip back</span>
                   </div>
                 </div>
@@ -1275,36 +1356,36 @@ export default function Home() {
           {/* Card 2: Softstor Technology */}
           <div className="relative md:flex md:justify-between items-start mb-16 reveal-item">
             {/* Card on Left */}
-            <div className="w-full md:w-5/12 flip-card h-[340px]">
+            <div className="w-full md:w-5/12 flip-card h-[290px]">
               <div className="flip-card-inner">
                 {/* Front Side */}
-                <div className="flip-card-front p-8 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/20 flex flex-col justify-between items-center text-center">
+                <div className="flip-card-front p-6 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/20 flex flex-col justify-between items-center text-center">
                   <div className="flex-1 flex flex-col justify-center items-center">
                     <div className="md:hidden mb-2">
-                      <span className="text-sm font-bold text-brand uppercase tracking-widest">May 2024 - May 2024</span>
+                      <span className="text-xs font-bold text-brand uppercase tracking-widest">May 2024 - May 2024</span>
                     </div>
-                    <div className="flex flex-col items-center mb-5 gap-3">
-                      <div className="w-16 h-16 rounded-full bg-zinc-900/80 flex items-center justify-center border border-zinc-800 overflow-hidden shrink-0 shadow-lg shadow-black/50">
-                        <span className="text-lg font-bold text-brand">ST</span>
+                    <div className="flex flex-col items-center mb-3 gap-2">
+                      <div className="w-12 h-12 rounded-full bg-zinc-900/80 flex items-center justify-center border border-zinc-800 overflow-hidden shrink-0 shadow-lg shadow-black/50">
+                        <span className="text-base font-bold text-brand font-heading">ST</span>
                       </div>
-                      <h3 className="text-2xl md:text-3xl font-heading font-bold text-white tracking-wide">Softstor Technology</h3>
+                      <h3 className="text-xl md:text-2xl font-heading font-bold text-white tracking-wide">Softstor Technology</h3>
                     </div>
-                    <p className="text-sm md:text-base font-semibold text-brand uppercase tracking-wider mb-3">Web Development Intern</p>
-                    <p className="text-sm md:text-base text-zinc-400 leading-relaxed max-w-sm">
+                    <p className="text-xs md:text-sm font-semibold text-brand uppercase tracking-wider mb-2">Web Development Intern</p>
+                    <p className="text-xs md:text-sm text-zinc-400 leading-relaxed max-w-sm">
                       Building responsive web layouts, improving performance metrics, and assisting senior developer tasks.
                     </p>
                   </div>
-                  <div className="w-full flex items-center justify-center gap-1.5 text-sm text-zinc-400 font-medium border-t border-zinc-900/50 pt-4 mt-4">
+                  <div className="w-full flex items-center justify-center gap-1.5 text-xs text-zinc-400 font-medium border-t border-zinc-900/50 pt-3 mt-3">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
                     <span>Hover to view key contributions</span>
                   </div>
                 </div>
 
                 {/* Back Side */}
-                <div className="flip-card-back p-6 rounded bg-zinc-950 border border-brand/30 flex flex-col justify-between text-left shadow-[0_0_15px_rgba(197,2,72,0.15)]">
+                <div className="flip-card-back p-5 rounded bg-zinc-950 border border-brand/30 flex flex-col justify-between text-left shadow-[0_0_15px_rgba(197,2,72,0.15)]">
                   <div className="overflow-y-auto pr-1 scrollbar-thin flex-1">
-                    <h4 className="text-xs font-semibold text-brand uppercase tracking-widest mb-3">Key Contributions</h4>
-                    <ul className="space-y-2.5 text-sm text-zinc-400">
+                    <h4 className="text-[11px] font-semibold text-brand uppercase tracking-widest mb-2">Key Contributions</h4>
+                    <ul className="space-y-2 text-xs text-zinc-400">
                       <li className="flex items-start gap-2">
                         <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
                         <span>Built and optimized responsive websites using HTML, CSS, and JavaScript.</span>
@@ -1319,7 +1400,7 @@ export default function Home() {
                       </li>
                     </ul>
                   </div>
-                  <div className="text-right text-[10px] text-zinc-600 mt-2">
+                  <div className="text-right text-[9px] text-zinc-600 mt-2">
                     <span>Hover away to flip back</span>
                   </div>
                 </div>
@@ -1356,36 +1437,36 @@ export default function Home() {
             </div>
 
             {/* Card on Right */}
-            <div className="w-full md:w-5/12 flip-card h-[340px]">
+            <div className="w-full md:w-5/12 flip-card h-[290px]">
               <div className="flip-card-inner">
                 {/* Front Side */}
-                <div className="flip-card-front p-8 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/20 flex flex-col justify-between items-center text-center">
+                <div className="flip-card-front p-6 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/20 flex flex-col justify-between items-center text-center">
                   <div className="flex-1 flex flex-col justify-center items-center">
                     <div className="md:hidden mb-2">
-                      <span className="text-sm font-bold text-brand uppercase tracking-widest">Dec 2023 - Jan 2024</span>
+                      <span className="text-xs font-bold text-brand uppercase tracking-widest">Dec 2023 - Jan 2024</span>
                     </div>
-                    <div className="flex flex-col items-center mb-5 gap-3">
-                      <div className="w-16 h-16 rounded-full bg-zinc-900/80 flex items-center justify-center border border-zinc-800 overflow-hidden shrink-0 shadow-lg shadow-black/50">
-                        <span className="text-lg font-bold text-brand">NR</span>
+                    <div className="flex flex-col items-center mb-3 gap-2">
+                      <div className="w-12 h-12 rounded-full bg-zinc-900/80 flex items-center justify-center border border-zinc-800 overflow-hidden shrink-0 shadow-lg shadow-black/50">
+                        <span className="text-base font-bold text-brand font-heading">NR</span>
                       </div>
-                      <h3 className="text-2xl md:text-3xl font-heading font-bold text-white tracking-wide">Novitech R&D Pvt Ltd</h3>
+                      <h3 className="text-xl md:text-2xl font-heading font-bold text-white tracking-wide">Novitech R&D Pvt Ltd</h3>
                     </div>
-                    <p className="text-sm md:text-base font-semibold text-brand uppercase tracking-wider mb-3">Fullstack Web Development Intern</p>
-                    <p className="text-sm md:text-base text-zinc-400 leading-relaxed max-w-sm">
+                    <p className="text-xs md:text-sm font-semibold text-brand uppercase tracking-wider mb-2">Fullstack Web Development Intern</p>
+                    <p className="text-xs md:text-sm text-zinc-400 leading-relaxed max-w-sm">
                       Designing prototypes, conducting usability testing, debugging frontend structures, and technical documentation.
                     </p>
                   </div>
-                  <div className="w-full flex items-center justify-center gap-1.5 text-sm text-zinc-400 font-medium border-t border-zinc-900/50 pt-4 mt-4">
+                  <div className="w-full flex items-center justify-center gap-1.5 text-xs text-zinc-400 font-medium border-t border-zinc-900/50 pt-3 mt-3">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
                     <span>Hover to view key contributions</span>
                   </div>
                 </div>
 
                 {/* Back Side */}
-                <div className="flip-card-back p-6 rounded bg-zinc-950 border border-brand/30 flex flex-col justify-between text-left shadow-[0_0_15px_rgba(197,2,72,0.15)]">
+                <div className="flip-card-back p-5 rounded bg-zinc-950 border border-brand/30 flex flex-col justify-between text-left shadow-[0_0_15px_rgba(197,2,72,0.15)]">
                   <div className="overflow-y-auto pr-1 scrollbar-thin flex-1">
-                    <h4 className="text-xs font-semibold text-brand uppercase tracking-widest mb-3">Key Contributions</h4>
-                    <ul className="space-y-2.5 text-sm text-zinc-400">
+                    <h4 className="text-[11px] font-semibold text-brand uppercase tracking-widest mb-2">Key Contributions</h4>
+                    <ul className="space-y-2 text-xs text-zinc-400">
                       <li className="flex items-start gap-2">
                         <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
                         <span>Designed and developed three user-friendly interface prototypes, conducting usability tests that reduced user navigation errors by 30%.</span>
@@ -1404,7 +1485,7 @@ export default function Home() {
                       </li>
                     </ul>
                   </div>
-                  <div className="text-right text-[10px] text-zinc-600 mt-2">
+                  <div className="text-right text-[9px] text-zinc-600 mt-2">
                     <span>Hover away to flip back</span>
                   </div>
                 </div>
@@ -1416,7 +1497,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+      <section id="projects" className="py-10 md:py-12 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="text-center mb-10 reveal-item">
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-silver-gradient mb-4">Projects Portfolio</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
@@ -1426,20 +1507,6 @@ export default function Home() {
 
         {/* Tab Controls */}
         <div className="flex justify-center gap-4 mb-12 reveal-item">
-          <button
-            onClick={() => setActiveProjectTab("devopstrio")}
-            className={`flex items-center gap-2 px-5 py-3 rounded-full font-heading font-semibold text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer ${
-              activeProjectTab === "devopstrio"
-                ? "bg-brand text-white shadow-[0_0_20px_rgba(197,2,72,0.4)]"
-                : "bg-zinc-900/60 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700"
-            }`}
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0" />
-            </svg>
-            Work @ Devopstrio
-          </button>
-
           <button
             onClick={() => setActiveProjectTab("major")}
             className={`flex items-center gap-2 px-5 py-3 rounded-full font-heading font-semibold text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer ${
@@ -1452,6 +1519,20 @@ export default function Home() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
             </svg>
             Major Projects
+          </button>
+
+          <button
+            onClick={() => setActiveProjectTab("devopstrio")}
+            className={`flex items-center gap-2 px-5 py-3 rounded-full font-heading font-semibold text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+              activeProjectTab === "devopstrio"
+                ? "bg-brand text-white shadow-[0_0_20px_rgba(197,2,72,0.4)]"
+                : "bg-zinc-900/60 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700"
+            }`}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0" />
+            </svg>
+            Work @ Devopstrio
           </button>
           
           <button
@@ -1943,7 +2024,7 @@ export default function Home() {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+      <section id="education" className="py-10 md:py-12 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="text-center mb-10 reveal-item">
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-silver-gradient mb-4">Academic Background</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
@@ -2105,7 +2186,7 @@ export default function Home() {
       </section>
 
       {/* Certifications Slider Section */}
-      <section className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900 relative z-10">
+      <section className="py-10 md:py-12 px-6 max-w-6xl mx-auto border-t border-zinc-900 relative z-10">
         <div className="max-w-6xl mx-auto text-center mb-10 reveal-item">
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-silver-gradient mb-4">Certifications</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
@@ -2208,7 +2289,7 @@ export default function Home() {
       </section>
 
       {/* Blogs Section */}
-      <section id="blogs" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900 relative z-10 overflow-hidden">
+      <section id="blogs" className="py-10 md:py-12 px-6 max-w-6xl mx-auto border-t border-zinc-900 relative z-10 overflow-hidden">
         {/* Background Glow */}
         <div className="glow-sphere w-[400px] h-[400px] bg-brand/5 top-[10%] left-[60%]"></div>
         
@@ -2322,7 +2403,7 @@ export default function Home() {
       )}
 
       {/* Contact Section */}
-      <section id="contact" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
+      <section id="contact" className="py-10 md:py-12 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="text-center mb-10 reveal-item">
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-silver-gradient mb-4">Get In Touch</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
