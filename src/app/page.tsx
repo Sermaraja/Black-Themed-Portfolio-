@@ -589,13 +589,13 @@ export default function Home() {
             SERMARAJA<span className="text-brand">.V</span>
           </a>
           
-          <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
+          <nav className="hidden md:flex items-center space-x-6 text-xs lg:text-sm font-semibold uppercase tracking-wider font-heading">
             <a href="#about" className="text-zinc-400 hover:text-white transition-colors">About</a>
             <a href="#awards" className="text-zinc-400 hover:text-white transition-colors">Awards</a>
             <a href="#skills" className="text-zinc-400 hover:text-white transition-colors">Skills</a>
             <a href="#experience" className="text-zinc-400 hover:text-white transition-colors">Experience</a>
             <a href="#projects" className="text-zinc-400 hover:text-white transition-colors">Projects</a>
-            <a href="#education" className="text-zinc-400 hover:text-white transition-colors">Education & Accomplishments</a>
+            <a href="#education" className="text-zinc-400 hover:text-white transition-colors">Education</a>
             <a href="#blogs" className="text-zinc-400 hover:text-white transition-colors">Blogs</a>
             <a href="#contact" className="text-zinc-400 hover:text-white transition-colors">Contact</a>
           </nav>
@@ -603,8 +603,16 @@ export default function Home() {
           <div className="hidden md:block">
             <a 
               href="#contact" 
-              className="px-5 py-2 text-xs font-semibold uppercase tracking-wider rounded border border-brand/30 hover:border-brand hover:text-white transition-all duration-300"
+              className="talk-btn"
             >
+              <span className="talk-btn__icon-wrapper">
+                <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="talk-btn__icon-svg w-2.5 h-2.5">
+                  <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor" />
+                </svg>
+                <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="talk-btn__icon-svg talk-btn__icon-svg--copy w-2.5 h-2.5">
+                  <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor" />
+                </svg>
+              </span>
               Let's Talk
             </a>
           </div>
@@ -639,8 +647,16 @@ export default function Home() {
             <a 
               onClick={() => setIsMobileMenuOpen(false)}
               href="#contact" 
-              className="inline-block text-center px-4 py-2.5 text-xs font-semibold uppercase tracking-wider rounded bg-brand hover:bg-brand/80 text-white transition-all"
+              className="talk-btn justify-center"
             >
+              <span className="talk-btn__icon-wrapper">
+                <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="talk-btn__icon-svg w-2.5 h-2.5">
+                  <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor" />
+                </svg>
+                <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="talk-btn__icon-svg talk-btn__icon-svg--copy w-2.5 h-2.5">
+                  <path d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z" fill="currentColor" />
+                </svg>
+              </span>
               Let's Talk
             </a>
           </div>
@@ -686,7 +702,7 @@ export default function Home() {
             
             <button 
               onClick={handleDownloadCV}
-              className="w-full sm:w-auto px-8 py-4 rounded font-heading font-semibold text-sm border border-zinc-700 hover:border-brand text-zinc-300 hover:text-white hover:bg-zinc-950 transition-all duration-300 flex items-center justify-center gap-2"
+              className="themed-btn w-full sm:w-auto px-8 py-4 text-sm flex items-center justify-center gap-2"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
@@ -981,9 +997,11 @@ export default function Home() {
 
               {/* Awarded By */}
               <div className="flex items-center gap-2.5 text-zinc-400 text-sm md:text-base mt-3.5 font-medium">
-                <svg className="w-5 h-5 text-zinc-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V11m0 0h4m-4 0V5" />
-                </svg>
+                <img 
+                  src="https://img.icons8.com/?size=100&id=c66BXsthaw6n&format=png&color=000000" 
+                  alt="Devopstrio Office Icon" 
+                  className="w-5 h-5 object-contain shrink-0 invert opacity-70"
+                />
                 <span>Awarded by <strong className="text-white font-semibold">Devopstrio</strong></span>
               </div>
 
@@ -1015,7 +1033,7 @@ export default function Home() {
 
               <a
                 href="/awards"
-                className="px-6 py-3 rounded font-heading text-xs font-semibold uppercase tracking-wider text-zinc-300 bg-zinc-950 border border-zinc-900 hover:border-brand/30 hover:text-white transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer group"
+                className="themed-btn px-6 py-3 text-xs flex items-center justify-center gap-2.5 cursor-pointer group"
               >
                 <span>Explore More</span>
                 <svg className="w-4 h-4 text-zinc-400 group-hover:translate-x-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1029,7 +1047,7 @@ export default function Home() {
       {/* Skills Section */}
       <section id="skills" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="text-center mb-10 reveal-item">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Core Competencies</h2>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-silver-gradient mb-4">Core Competencies</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
             Categorized technical capabilities and achievements
           </p>
@@ -1166,89 +1184,159 @@ export default function Home() {
       {/* Experience & Timeline Section */}
       <section id="experience" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="text-center mb-10 reveal-item">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Experience & Timeline</h2>
-          <p className="text-zinc-500 text-sm max-w-md mx-auto">
-            Professional trajectory and projects
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-silver-gradient mb-4">Experience Highlights</h2>
+          <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+            From internship to engineering experience shaped by design, development, and cloud operations
           </p>
         </div>
 
-        <div className="relative timeline-line pl-8 md:pl-0">
+        <div className="relative timeline-line md:pl-0">
           
           {/* Card 1: Devopstrio */}
           <div className="relative md:flex md:justify-between items-start mb-16 reveal-item">
             {/* Date on Left */}
             <div className="hidden md:block w-5/12 text-right pr-8 self-center">
-              <span className="text-sm font-semibold tracking-wider text-brand font-heading">
-                Present
+              <span className="text-base md:text-lg font-semibold tracking-wider text-brand font-heading">
+                Aug 2025 - Present
               </span>
-              <p className="text-xs text-zinc-500 mt-1">Associate System Engineer</p>
+              <p className="text-sm text-zinc-400 font-medium mt-1">Associate System Engineer</p>
             </div>
             
             {/* Node in Center */}
-            <div className="absolute left-[-4px] md:left-1/2 md:translate-x-[-50%] w-10 h-10 rounded-full bg-zinc-950 border-2 border-brand flex items-center justify-center text-brand z-10 font-bold text-sm shadow-[0_0_15px_rgba(197,2,72,0.3)]">
+            <div className="hidden md:flex absolute left-1/2 md:translate-x-[-50%] w-10 h-10 rounded-full bg-zinc-950 border-2 border-brand items-center justify-center text-brand z-10 font-bold text-sm shadow-[0_0_15px_rgba(197,2,72,0.3)]">
               1
             </div>
 
             {/* Card on Right */}
-            <div className="w-full md:w-5/12 p-6 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/20 transition-all">
-              <div className="md:hidden mb-2">
-                <span className="text-xs font-bold text-brand uppercase tracking-widest">Present</span>
+            <div className="w-full md:w-5/12 flip-card h-[340px]">
+              <div className="flip-card-inner">
+                {/* Front Side */}
+                <div className="flip-card-front p-8 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/20 flex flex-col justify-between items-center text-center">
+                  <div className="flex-1 flex flex-col justify-center items-center">
+                    <div className="md:hidden mb-2">
+                      <span className="text-sm font-bold text-brand uppercase tracking-widest">Present</span>
+                    </div>
+                    <div className="flex flex-col items-center mb-5 gap-3">
+                      <div className="w-16 h-16 rounded-full bg-zinc-900/80 flex items-center justify-center border border-zinc-800 overflow-hidden p-2.5 shrink-0 shadow-lg shadow-black/50">
+                        <img src="https://devopstrio.co.uk/assets/logo/logo.png" alt="Devopstrio Logo" className="w-full h-full object-contain" />
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-heading font-bold text-white tracking-wide">Devopstrio</h3>
+                    </div>
+                    <p className="text-sm md:text-base font-semibold text-brand uppercase tracking-wider mb-3">Associate System Engineer & Web Developer</p>
+                    <p className="text-sm md:text-base text-zinc-400 leading-relaxed max-w-sm">
+                      Designing responsive web applications, interactive UI/UX interfaces, and managing system infrastructures.
+                    </p>
+                  </div>
+                  <div className="w-full flex items-center justify-center gap-1.5 text-sm text-zinc-400 font-medium border-t border-zinc-900/50 pt-4 mt-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+                    <span>Hover to view key contributions</span>
+                  </div>
+                </div>
+
+                {/* Back Side */}
+                <div className="flip-card-back p-6 rounded bg-zinc-950 border border-brand/30 flex flex-col justify-between text-left shadow-[0_0_15px_rgba(197,2,72,0.15)]">
+                  <div className="overflow-y-auto pr-1 scrollbar-thin flex-1">
+                    <h4 className="text-xs font-semibold text-brand uppercase tracking-widest mb-3">Key Contributions</h4>
+                    <ul className="space-y-2.5 text-sm text-zinc-400">
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                        <span>1.Worked on cloud operations tasks, including environment support, service coordination, and infrastructure-related activities.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                        <span>2.Assisted in cloud assessments, technical documentation, and solution analysis to support planning and implementation initiatives.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                        <span>3.Contributed to digital assets, internal project execution, and technical presentation materials for business and delivery teams.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                        <span>4.Designed and developed responsive web applications and digital solutions for business and client requirements.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                        <span>5.Created engaging, user-friendly UI/UX interfaces with a strong focus on usability, accessibility, and performance.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                        <span>6.Contributed to product design workflows, translating ideas into functional interfaces, layouts, and user-centric experiences.</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="text-right text-[10px] text-zinc-600 mt-2">
+                    <span>Hover away to flip back</span>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-lg font-heading font-bold text-white mb-1">Devopstrio</h3>
-              <p className="text-xs font-semibold text-zinc-500 uppercase mb-4 tracking-wider">Associate System Engineer & Web Developer</p>
-              <ul className="space-y-2.5 text-sm text-zinc-400">
-                <li className="flex items-start gap-2">
-                  <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
-                  <span>Designed and developed responsive web applications for clients.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
-                  <span>Created engaging, interactive, user-friendly UI/UX interfaces.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
-                  <span>Maintained server configurations, network setups, and systems administration duties.</span>
-                </li>
-              </ul>
             </div>
           </div>
 
           {/* Card 2: Softstor Technology */}
           <div className="relative md:flex md:justify-between items-start mb-16 reveal-item">
             {/* Card on Left */}
-            <div className="w-full md:w-5/12 p-6 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/20 transition-all">
-              <div className="md:hidden mb-2">
-                <span className="text-xs font-bold text-brand uppercase tracking-widest">May 2024</span>
+            <div className="w-full md:w-5/12 flip-card h-[340px]">
+              <div className="flip-card-inner">
+                {/* Front Side */}
+                <div className="flip-card-front p-8 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/20 flex flex-col justify-between items-center text-center">
+                  <div className="flex-1 flex flex-col justify-center items-center">
+                    <div className="md:hidden mb-2">
+                      <span className="text-sm font-bold text-brand uppercase tracking-widest">May 2024 - May 2024</span>
+                    </div>
+                    <div className="flex flex-col items-center mb-5 gap-3">
+                      <div className="w-16 h-16 rounded-full bg-zinc-900/80 flex items-center justify-center border border-zinc-800 overflow-hidden shrink-0 shadow-lg shadow-black/50">
+                        <span className="text-lg font-bold text-brand">ST</span>
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-heading font-bold text-white tracking-wide">Softstor Technology</h3>
+                    </div>
+                    <p className="text-sm md:text-base font-semibold text-brand uppercase tracking-wider mb-3">Web Development Intern</p>
+                    <p className="text-sm md:text-base text-zinc-400 leading-relaxed max-w-sm">
+                      Building responsive web layouts, improving performance metrics, and assisting senior developer tasks.
+                    </p>
+                  </div>
+                  <div className="w-full flex items-center justify-center gap-1.5 text-sm text-zinc-400 font-medium border-t border-zinc-900/50 pt-4 mt-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+                    <span>Hover to view key contributions</span>
+                  </div>
+                </div>
+
+                {/* Back Side */}
+                <div className="flip-card-back p-6 rounded bg-zinc-950 border border-brand/30 flex flex-col justify-between text-left shadow-[0_0_15px_rgba(197,2,72,0.15)]">
+                  <div className="overflow-y-auto pr-1 scrollbar-thin flex-1">
+                    <h4 className="text-xs font-semibold text-brand uppercase tracking-widest mb-3">Key Contributions</h4>
+                    <ul className="space-y-2.5 text-sm text-zinc-400">
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                        <span>Built and optimized responsive websites using HTML, CSS, and JavaScript.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                        <span>Implemented user-friendly interfaces and improved website performance.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                        <span>Worked closely with senior developers to understand project requirements.</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="text-right text-[10px] text-zinc-600 mt-2">
+                    <span>Hover away to flip back</span>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-lg font-heading font-bold text-white mb-1">Softstor Technology</h3>
-              <p className="text-xs font-semibold text-zinc-500 uppercase mb-4 tracking-wider">Web Development Intern</p>
-              <ul className="space-y-2.5 text-sm text-zinc-400">
-                <li className="flex items-start gap-2">
-                  <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
-                  <span>Built and optimized responsive websites using HTML, CSS, and JavaScript.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
-                  <span>Implemented user-friendly interfaces and improved website performance.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
-                  <span>Worked closely with senior developers to understand project requirements.</span>
-                </li>
-              </ul>
             </div>
 
             {/* Node in Center */}
-            <div className="absolute left-[-4px] md:left-1/2 md:translate-x-[-50%] w-10 h-10 rounded-full bg-zinc-950 border-2 border-brand flex items-center justify-center text-brand z-10 font-bold text-sm shadow-[0_0_15px_rgba(197,2,72,0.3)]">
+            <div className="hidden md:flex absolute left-1/2 md:translate-x-[-50%] w-10 h-10 rounded-full bg-zinc-950 border-2 border-brand items-center justify-center text-brand z-10 font-bold text-sm shadow-[0_0_15px_rgba(197,2,72,0.3)]">
               2
             </div>
 
             {/* Date on Right */}
             <div className="hidden md:block w-5/12 text-left pl-8 self-center">
-              <span className="text-sm font-semibold tracking-wider text-brand font-heading">
+              <span className="text-base md:text-lg font-semibold tracking-wider text-brand font-heading">
                 May 2024
               </span>
-              <p className="text-xs text-zinc-500 mt-1">Web Development Intern</p>
+              <p className="text-sm text-zinc-400 font-medium mt-1">Web Development Intern</p>
             </div>
           </div>
 
@@ -1256,42 +1344,71 @@ export default function Home() {
           <div className="relative md:flex md:justify-between items-start mb-16 reveal-item">
             {/* Date on Left */}
             <div className="hidden md:block w-5/12 text-right pr-8 self-center">
-              <span className="text-sm font-semibold tracking-wider text-brand font-heading">
+              <span className="text-base md:text-lg font-semibold tracking-wider text-brand font-heading">
                 Dec 2023 - Jan 2024
               </span>
-              <p className="text-xs text-zinc-500 mt-1">Fullstack Web Development Intern</p>
+              <p className="text-sm text-zinc-400 font-medium mt-1">Fullstack Web Development Intern</p>
             </div>
 
             {/* Node in Center */}
-            <div className="absolute left-[-4px] md:left-1/2 md:translate-x-[-50%] w-10 h-10 rounded-full bg-zinc-950 border-2 border-brand flex items-center justify-center text-brand z-10 font-bold text-sm shadow-[0_0_15px_rgba(197,2,72,0.3)]">
+            <div className="hidden md:flex absolute left-1/2 md:translate-x-[-50%] w-10 h-10 rounded-full bg-zinc-950 border-2 border-brand items-center justify-center text-brand z-10 font-bold text-sm shadow-[0_0_15px_rgba(197,2,72,0.3)]">
               3
             </div>
 
             {/* Card on Right */}
-            <div className="w-full md:w-5/12 p-6 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/20 transition-all">
-              <div className="md:hidden mb-2">
-                <span className="text-xs font-bold text-brand uppercase tracking-widest">Dec 2023 - Jan 2024</span>
+            <div className="w-full md:w-5/12 flip-card h-[340px]">
+              <div className="flip-card-inner">
+                {/* Front Side */}
+                <div className="flip-card-front p-8 rounded bg-zinc-950 border border-zinc-900 hover:border-brand/20 flex flex-col justify-between items-center text-center">
+                  <div className="flex-1 flex flex-col justify-center items-center">
+                    <div className="md:hidden mb-2">
+                      <span className="text-sm font-bold text-brand uppercase tracking-widest">Dec 2023 - Jan 2024</span>
+                    </div>
+                    <div className="flex flex-col items-center mb-5 gap-3">
+                      <div className="w-16 h-16 rounded-full bg-zinc-900/80 flex items-center justify-center border border-zinc-800 overflow-hidden shrink-0 shadow-lg shadow-black/50">
+                        <span className="text-lg font-bold text-brand">NR</span>
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-heading font-bold text-white tracking-wide">Novitech R&D Pvt Ltd</h3>
+                    </div>
+                    <p className="text-sm md:text-base font-semibold text-brand uppercase tracking-wider mb-3">Fullstack Web Development Intern</p>
+                    <p className="text-sm md:text-base text-zinc-400 leading-relaxed max-w-sm">
+                      Designing prototypes, conducting usability testing, debugging frontend structures, and technical documentation.
+                    </p>
+                  </div>
+                  <div className="w-full flex items-center justify-center gap-1.5 text-sm text-zinc-400 font-medium border-t border-zinc-900/50 pt-4 mt-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+                    <span>Hover to view key contributions</span>
+                  </div>
+                </div>
+
+                {/* Back Side */}
+                <div className="flip-card-back p-6 rounded bg-zinc-950 border border-brand/30 flex flex-col justify-between text-left shadow-[0_0_15px_rgba(197,2,72,0.15)]">
+                  <div className="overflow-y-auto pr-1 scrollbar-thin flex-1">
+                    <h4 className="text-xs font-semibold text-brand uppercase tracking-widest mb-3">Key Contributions</h4>
+                    <ul className="space-y-2.5 text-sm text-zinc-400">
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                        <span>Designed and developed three user-friendly interface prototypes, conducting usability tests that reduced user navigation errors by 30%.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                        <span>Collaborated with a team of developers to design and implement new features.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                        <span>Tested and debugged code to ensure optimal performance and functionality.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
+                        <span>Assisted in creating technical documentation for future reference.</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="text-right text-[10px] text-zinc-600 mt-2">
+                    <span>Hover away to flip back</span>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-lg font-heading font-bold text-white mb-1">Novitech R&D Pvt Ltd</h3>
-              <p className="text-xs font-semibold text-zinc-500 uppercase mb-4 tracking-wider">Fullstack Web Development Intern</p>
-              <ul className="space-y-2.5 text-sm text-zinc-400">
-                <li className="flex items-start gap-2">
-                  <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
-                  <span>Designed and developed three user-friendly interface prototypes, conducting usability tests that reduced user navigation errors by 30%.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
-                  <span>Collaborated with a team of developers to design and implement new features.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
-                  <span>Tested and debugged code to ensure optimal performance and functionality.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-brand mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"></span>
-                  <span>Assisted in creating technical documentation for future reference.</span>
-                </li>
-              </ul>
             </div>
           </div>
 
@@ -1301,7 +1418,7 @@ export default function Home() {
       {/* Projects Section */}
       <section id="projects" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="text-center mb-10 reveal-item">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Projects Portfolio</h2>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-silver-gradient mb-4">Projects Portfolio</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
             Explore my major academic, freelance, and professional work projects.
           </p>
@@ -1815,7 +1932,7 @@ export default function Home() {
         <div className="text-center mt-16 reveal-item">
           <a
             href="/works"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-lg font-heading font-bold text-sm uppercase tracking-wider bg-zinc-950 border border-zinc-800 hover:border-brand text-zinc-300 hover:text-white hover:bg-zinc-900 transition-all duration-300 group hover:shadow-[0_0_25px_rgba(197,2,72,0.15)]"
+            className="themed-btn inline-flex items-center gap-3 px-8 py-4 text-sm group"
           >
             <span>View All My Works</span>
             <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -1828,7 +1945,7 @@ export default function Home() {
       {/* Education Section */}
       <section id="education" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="text-center mb-10 reveal-item">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Academic Background</h2>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-silver-gradient mb-4">Academic Background</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
             Formal education history and accomplishments
           </p>
@@ -1903,17 +2020,18 @@ export default function Home() {
           {activeEduTab === "prizes" && (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fadeIn">
               {/* Card 1: 1st Prize */}
-              <div className="group p-6 rounded-xl bg-zinc-950/40 border border-zinc-900/80 hover:border-brand/30 hover:shadow-[0_0_30px_rgba(197,2,72,0.1)] transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between backdrop-blur-sm">
+              <div className="card group p-6 rounded-xl hover:shadow-[0_0_30px_rgba(197,2,72,0.15)] flex flex-col justify-between backdrop-blur-sm">
                 <div>
                   <div className="flex items-center justify-between mb-5">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-xs font-semibold uppercase tracking-wider">
                       1st Prize
                     </div>
-                    {/* Premium Gold Trophy Icon */}
-                    <svg className="w-8 h-8 text-yellow-500 group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 9.75a4.875 4.875 0 00-3.75-4.65c-.228-.052-.45-.192-.619-.357L13.8 3.413a1.5 1.5 0 00-2.2 0L10.26 4.743c-.168.165-.39.305-.618.357a4.875 4.875 0 00-3.75 4.65c0 .762.2 1.478.55 2.1l-2.07 2.07A1 1 0 005.08 15.5h13.84a1 1 0 00.707-1.707l-2.07-2.07c.35-.622.55-1.338.55-2.1zM12 18v2.5M9 22h6" />
-                    </svg>
+                    {/* Prize Medal Icon */}
+                    <img 
+                      src="https://img.icons8.com/?size=100&id=xG2YSvm4niez&format=png" 
+                      alt="1st Prize Medal" 
+                      className="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-500"
+                    />
                   </div>
                   <h4 className="text-lg font-heading font-bold text-white group-hover:text-brand transition-colors mb-2">
                     PPT Presentation (SmartDust)
@@ -1929,18 +2047,18 @@ export default function Home() {
               </div>
 
               {/* Card 2: 2nd Prize */}
-              <div className="group p-6 rounded-xl bg-zinc-950/40 border border-zinc-900/80 hover:border-brand/30 hover:shadow-[0_0_30px_rgba(197,2,72,0.1)] transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between backdrop-blur-sm">
+              <div className="card group p-6 rounded-xl hover:shadow-[0_0_30px_rgba(197,2,72,0.15)] flex flex-col justify-between backdrop-blur-sm">
                 <div>
                   <div className="flex items-center justify-between mb-5">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-zinc-400/10 border border-zinc-400/20 text-zinc-400 text-xs font-semibold uppercase tracking-wider">
                       2nd Prize
                     </div>
-                    {/* Premium Silver Medal Icon */}
-                    <svg className="w-8 h-8 text-zinc-400 group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="12" r="5" strokeLinecap="round" strokeLinejoin="round" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 7V3M12 21v-4M7 12H3M21 12h-4" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.465 8.465L5.636 5.636M18.364 18.364l-2.828-2.828M8.465 15.535l-2.828 2.828M18.364 5.636l-2.828 2.828" />
-                    </svg>
+                    {/* Trophy Icon */}
+                    <img 
+                      src="https://img.icons8.com/?size=100&id=ZnPyopUZ4b6R&format=png" 
+                      alt="2nd Prize Trophy" 
+                      className="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-500"
+                    />
                   </div>
                   <h4 className="text-lg font-heading font-bold text-white group-hover:text-brand transition-colors mb-2">
                     E-Waste Management
@@ -1956,16 +2074,18 @@ export default function Home() {
               </div>
 
               {/* Card 3: Competitor Award */}
-              <div className="group p-6 rounded-xl bg-zinc-950/40 border border-zinc-900/80 hover:border-brand/30 hover:shadow-[0_0_30px_rgba(197,2,72,0.1)] transition-all duration-500 hover:-translate-y-1.5 flex flex-col justify-between backdrop-blur-sm">
+              <div className="card group p-6 rounded-xl hover:shadow-[0_0_30px_rgba(197,2,72,0.15)] flex flex-col justify-between backdrop-blur-sm">
                 <div>
                   <div className="flex items-center justify-between mb-5">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-brand/10 border border-brand/20 text-brand text-xs font-semibold uppercase tracking-wider">
                       Competitor Award
                     </div>
-                    {/* Premium Badge Icon */}
-                    <svg className="w-8 h-8 text-brand group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-                    </svg>
+                    {/* Cyber Security Badge Icon */}
+                    <img 
+                      src="https://img.icons8.com/?size=100&id=KFssnxqXHKfA&format=png&color=000000" 
+                      alt="Cyber Security Badge" 
+                      className="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-500"
+                    />
                   </div>
                   <h4 className="text-lg font-heading font-bold text-white group-hover:text-brand transition-colors mb-2">
                     Cyber Security PPT
@@ -1987,7 +2107,7 @@ export default function Home() {
       {/* Certifications Slider Section */}
       <section className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900 relative z-10">
         <div className="max-w-6xl mx-auto text-center mb-10 reveal-item">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Certifications</h2>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-silver-gradient mb-4">Certifications</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
             Drag to explore or use navigation buttons. Click a certificate to view details.
           </p>
@@ -2077,7 +2197,7 @@ export default function Home() {
         <div className="text-center mt-12 reveal-item">
           <a
             href="/certifications"
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded font-heading font-semibold text-xs uppercase tracking-wider border border-zinc-800 hover:border-brand text-zinc-400 hover:text-white hover:bg-zinc-950 transition-all duration-300"
+            className="themed-btn inline-flex items-center gap-2 px-6 py-3.5 text-xs"
           >
             <span>View More Certifications</span>
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -2095,7 +2215,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-10 select-none reveal-item">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">My Blogs</h2>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-silver-gradient mb-4">My Blogs</h2>
             <div className="h-1 w-20 bg-brand mx-auto rounded"></div>
             <p className="text-zinc-500 text-sm mt-4 max-w-md mx-auto">
               Sharing thoughts, tutorials, and insights on modern tech stack and infrastructure
@@ -2204,7 +2324,7 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="py-14 md:py-16 px-6 max-w-6xl mx-auto border-t border-zinc-900">
         <div className="text-center mb-10 reveal-item">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-silver-gradient mb-4">Get In Touch</h2>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-silver-gradient mb-4">Get In Touch</h2>
           <p className="text-zinc-500 text-sm max-w-md mx-auto">
             Have an idea or a collaboration in mind? I'd love to hear from you.
           </p>
@@ -2346,11 +2466,13 @@ export default function Home() {
           </div>
 
           {/* Form */}
-          <div className="p-6 sm:p-10 rounded-2xl bg-zinc-950/40 border border-zinc-900 backdrop-blur-md relative reveal-item hover:border-brand/20 transition-all duration-500 shadow-2xl overflow-hidden">
-            {/* Soft inner glow behind form */}
-            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-brand/5 rounded-full filter blur-[80px] pointer-events-none"></div>
+          <div className="animated-border-card reveal-item w-full">
+            <div className="blob"></div>
+            <div className="inner-bg p-6 sm:p-10">
+              {/* Soft inner glow behind form */}
+              <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-brand/5 rounded-full filter blur-[80px] pointer-events-none -z-10"></div>
 
-            <form onSubmit={handleContactSubmit} className="space-y-6 relative z-10">
+              <form onSubmit={handleContactSubmit} className="space-y-6 relative z-10">
               <div>
                 <label htmlFor="name" className="block text-xs font-bold text-zinc-500 uppercase tracking-widest mb-2 font-heading">
                   Your Name
@@ -2461,6 +2583,7 @@ export default function Home() {
               )}
             </form>
           </div>
+        </div>
 
         </div>
       </section>

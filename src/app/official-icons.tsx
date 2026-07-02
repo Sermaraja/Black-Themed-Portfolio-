@@ -118,7 +118,7 @@ export const MongoDBIcon = ({ isActive }: { isActive?: boolean }) => (
 
 export const AzureLogAnalyticsIcon = ({ isActive }: { isActive?: boolean }) => (
   <img 
-    src="https://img.icons8.com/color/48/azure-log-analytics.png" 
+    src="https://img.icons8.com/?size=100&id=84279&format=png&color=000000" 
     alt="Azure Log Analytics" 
     className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
   />

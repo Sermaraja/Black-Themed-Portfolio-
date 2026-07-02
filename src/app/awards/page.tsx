@@ -208,16 +208,7 @@ export default function AwardsPage() {
             </p>
           </div>
 
-          {/* Top Right Wreath Emblem */}
-          <div className="hidden md:flex items-center justify-center relative w-20 h-20 shrink-0 opacity-80">
-            <div className="absolute inset-0 rounded-full border border-brand/20 bg-[radial-gradient(circle_at_center,rgba(197,2,72,0.15)_0%,transparent_70%)]"></div>
-            <svg className="w-14 h-14 text-brand/90 drop-shadow-[0_0_12px_rgba(197,2,72,0.4)]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="32" cy="24" r="5" fill="currentColor" />
-              <path d="M32 14L34.5 20.5L41 21.5L36 26.5L37.5 33L32 30L26.5 33L28 26.5L23 21.5L29.5 20.5L32 14Z" fill="currentColor" opacity="0.9"/>
-              <path d="M18 42C14 38 12 32 13 26C13.5 23 15 20 17 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M46 42C50 38 52 32 51 26C50.5 23 49 20 47 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
-          </div>
+
         </div>
 
         {/* Main Award Showcase Card */}
@@ -265,10 +256,12 @@ export default function AwardsPage() {
                 </div>
 
                 <div className="flex items-center gap-2.5 text-zinc-400 text-sm md:text-base mt-3.5 font-medium">
-                  <svg className="w-5 h-5 text-zinc-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V11m0 0h4m-4 0V5" />
-                  </svg>
-                  <span>Awarded by <strong className="text-white font-semibold">Devopstrio</strong></span>
+                <img 
+                  src="https://img.icons8.com/?size=100&id=c66BXsthaw6n&format=png&color=000000" 
+                  alt="Devopstrio Office Icon" 
+                  className="w-5 h-5 object-contain shrink-0 invert opacity-70"
+                />
+                <span>Awarded by <strong className="text-white font-semibold">Devopstrio</strong></span>
                 </div>
 
                 <div className="h-px bg-zinc-900 w-full my-6"></div>
@@ -388,13 +381,13 @@ export default function AwardsPage() {
                 MEDIA HIGHLIGHTS
               </span>
               <h3 className="text-2xl md:text-3xl font-heading font-bold text-white flex items-center gap-3">
-                <span>📸</span> Recognition Gallery
+                <span></span> Recognition Gallery
               </h3>
             </div>
             <div className="hidden sm:flex items-center gap-2 text-xs text-zinc-500 font-heading bg-zinc-900/60 px-3.5 py-1.5 rounded-full border border-zinc-800">
               <span className="text-zinc-300">@sermaraja_v</span>
               <span className="text-zinc-600">•</span>
-              <span className="text-emerald-400 font-bold">REAL VISITOR METRICS</span>
+              
             </div>
           </div>
 
