@@ -171,3 +171,227 @@ export const SharePointIcon = ({ isActive }: { isActive?: boolean }) => (
     className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
   />
 );
+
+export const NodejsOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=jcpZof5KfVtL&format=png" 
+    alt="Node.js" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const NextjsOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=yUdJlcKanVbh&format=png&color=ffffff" 
+    alt="Next.js" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const ExpressjsOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=SDVmtZ6VBGXt&format=png&color=ffffff" 
+    alt="Express.js" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const TailwindcssOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=CIAZz2CYc6Kc&format=png" 
+    alt="Tailwind CSS" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const RestApiOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=Ov4kJCn8JtAH&format=png&color=ffffff" 
+    alt="REST API" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const CloudDevelopmentOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=BiW0cKUWFuoO&format=png&color=ffffff" 
+    alt="Cloud Development" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const UiDesignOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=GRcoHJad9KZs&format=png&color=ffffff" 
+    alt="UI Design" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const MaterialUiOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=gFw7X5Tbl3ss&format=png" 
+    alt="Material UI" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const PersonalBrandOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=rNje6BOnKAUN&format=png&color=ffffff" 
+    alt="Personal Brand" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const InteractiveOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=TLYtRZR0Zdnm&format=png&color=ffffff" 
+    alt="Interactive Layout" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const CircuitOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=2357&format=png&color=ffffff" 
+    alt="Circuit" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const DecentralizedNetworkOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=6oFZ7BIVGUGH&format=png&color=ffffff" 
+    alt="Decentralized Network" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const CentralizedNetworkOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=NHf3Nw8jio00&format=png&color=ffffff" 
+    alt="Centralized Network" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const PositiveDynamicOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=12814&format=png&color=ffffff" 
+    alt="Positive Dynamic" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const ContentOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=lodKMuDC2kpV&format=png&color=ffffff" 
+    alt="Content" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const ResponsiveOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=fDOGphCfrMd1&format=png&color=ffffff" 
+    alt="Responsive" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const GoogleAdsOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=ui4CTPMMDCFh&format=png" 
+    alt="Google Ads" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const GooglePodcastsOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=0Fe0X5gc8K2g&format=png" 
+    alt="Google Podcasts" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const MetaOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=PvvcWRWxRKSR&format=png" 
+    alt="Meta" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const ApolloIoOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://asset.brandfetch.io/idY56OZ9sE/id4qjc_3ln.jpeg?updated=1717667021983" 
+    alt="Apollo.io" 
+    className={`w-12 h-12 transition-all duration-300 object-contain rounded-lg ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const MyBusinessOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=4y5FyfJdxJ3h&format=png" 
+    alt="My Business" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const ServicesOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=11256&format=png&color=ffffff" 
+    alt="Services" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const AzureStorageOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=84283&format=png" 
+    alt="Azure Storage" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const AzureActiveDirectoryOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=opiqp7sRZvdM&format=png" 
+    alt="Azure Active Directory" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const VmwareOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=ICsxwkCBZGfj&format=png" 
+    alt="VMware" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const EngineeringOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=G7OEQv1UC4mi&format=png&color=ffffff" 
+    alt="Engineering" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const WebOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=102562&format=png&color=ffffff" 
+    alt="Web" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);
+
+export const MonitorOfficialIcon = ({ isActive }: { isActive?: boolean }) => (
+  <img 
+    src="https://img.icons8.com/?size=100&id=57715&format=png&color=ffffff" 
+    alt="Monitor" 
+    className={`w-12 h-12 transition-all duration-300 object-contain ${isActive ? "filter-none brightness-100 opacity-100" : "filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"}`}
+  />
+);

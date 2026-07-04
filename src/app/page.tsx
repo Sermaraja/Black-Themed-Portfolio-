@@ -28,7 +28,35 @@ import {
   MicrosoftExcelIcon,
   Microsoft365Icon,
   MicrosoftVisioIcon,
-  SharePointIcon
+  SharePointIcon,
+  NodejsOfficialIcon,
+  NextjsOfficialIcon,
+  ExpressjsOfficialIcon,
+  TailwindcssOfficialIcon,
+  RestApiOfficialIcon,
+  CloudDevelopmentOfficialIcon,
+  UiDesignOfficialIcon,
+  MaterialUiOfficialIcon,
+  PersonalBrandOfficialIcon,
+  InteractiveOfficialIcon,
+  CircuitOfficialIcon,
+  DecentralizedNetworkOfficialIcon,
+  CentralizedNetworkOfficialIcon,
+  PositiveDynamicOfficialIcon,
+  ContentOfficialIcon,
+  ResponsiveOfficialIcon,
+  GoogleAdsOfficialIcon,
+  GooglePodcastsOfficialIcon,
+  MetaOfficialIcon,
+  ApolloIoOfficialIcon,
+  MyBusinessOfficialIcon,
+  ServicesOfficialIcon,
+  AzureStorageOfficialIcon,
+  AzureActiveDirectoryOfficialIcon,
+  VmwareOfficialIcon,
+  EngineeringOfficialIcon,
+  WebOfficialIcon,
+  MonitorOfficialIcon
 } from "./official-icons";
 
 const roles = [
@@ -159,6 +187,267 @@ const docsSkills = [
   { name: "SharePoint", icon: <SharePointIcon /> },
 ];
 
+const services = [
+  {
+    title: "MERN Web Application",
+    tag: "POPULAR",
+    description: "Building scalable, high-performance full-stack web applications using the MERN stack with a strong focus on clean architecture, responsive interfaces, and smooth user experiences. From dashboards to custom business platforms, I create solutions designed for performance, maintainability, and growth.",
+    techStack: ["MongoDB", "Express.js", "React", "Node.js", "Next.js", "Tailwind CSS"],
+    keyFeatures: [
+      "Full-stack application development",
+      "REST API integration",
+      "Admin dashboards & business portals",
+      "Authentication & role-based access",
+      "Responsive UI implementation",
+      "Scalable frontend architecture"
+    ],
+    cta: "Start MERN Project"
+  },
+  {
+    title: "Digital Solutions Engineering",
+    tag: "FEATURED",
+    description: "Designing and building tailored digital solutions that align technology with business goals. I work on web systems, digital workflows, and solution-driven interfaces that improve usability, efficiency, and operational clarity across products and platforms.",
+    techStack: ["React / Next.js", "JavaScript / TypeScript", "Tailwind CSS", "Figma", "API Integrations", "Cloud-connected workflows"],
+    keyFeatures: [
+      "Custom digital solution design",
+      "Business workflow-focused interfaces",
+      "Process-driven web systems",
+      "Scalable UI architecture",
+      "Product-oriented implementation",
+      "Modern responsive experiences"
+    ],
+    cta: "Build Digital Solution"
+  },
+  {
+    title: "UI/UX & Portfolio Design",
+    tag: "CREATIVE",
+    description: "Designing modern, clean, and user-focused interfaces for personal brands, business websites, dashboards, and digital products. I focus on visual clarity, hierarchy, responsiveness, and portfolio-ready presentation that balances aesthetics with functionality.",
+    techStack: ["Figma", "UI layout systems", "Tailwind CSS", "Modern design patterns", "Personal branding layouts", "Interactive section design"],
+    keyFeatures: [
+      "Portfolio website design",
+      "Landing page and business UI design",
+      "Clean responsive layouts",
+      "Visual hierarchy improvements",
+      "Modern dark-theme interface styling",
+      "UI refinement for better engagement"
+    ],
+    cta: "Design Better Experience"
+  },
+  {
+    title: "Performance Optimization",
+    tag: "OPTIMIZED",
+    description: "Improving website speed, frontend responsiveness, structure, and user experience through cleaner implementation, better UI organization, and performance-focused refinement. This includes optimizing the feel, usability, and efficiency of modern web interfaces.",
+    techStack: ["Next.js", "React optimization", "Image optimization", "Component structuring", "Responsive layout improvements", "SEO-aware frontend cleanup"],
+    keyFeatures: [
+      "Frontend performance refinement",
+      "UI responsiveness improvements",
+      "Better layout and rendering flow",
+      "Cleaner code structure planning",
+      "Website optimization mindset",
+      "Improved user experience delivery"
+    ],
+    cta: "Optimize Experience"
+  },
+  {
+    title: "Business Website Development",
+    tag: "BUSINESS",
+    description: "Creating professional business websites, portfolio platforms, service pages, and digital brand experiences that present offerings clearly and convert attention into trust. Built with responsive design, structured messaging, and modern UI presentation.",
+    techStack: ["Next.js", "React", "Tailwind CSS", "SEO-ready structure", "Content-driven sections", "Responsive Layouts"],
+    keyFeatures: [
+      "Business website development",
+      "Service showcase sections",
+      "Contact and lead-focused pages",
+      "SEO-friendly structure",
+      "Responsive modern layouts",
+      "Brand-aligned digital presentation"
+    ],
+    cta: "Build Business Website"
+  },
+  {
+    title: "SEO, Digital Marketing & Growth Operations",
+    tag: "ESSENTIAL",
+    description: "Driving business visibility through SEO, campaign support, social media marketing, analytics tracking, and growth-focused digital operations. I work across search optimization, Google Search Console, Google Analytics, Google Ads, Meta Ads, Bing Webmaster Tools, Apollo.io, and Google Business Profile to improve discoverability, engagement, local presence, and lead generation.",
+    techStack: ["Google Search Console", "Google Analytics", "Google Ads", "Meta Ads", "Apollo.io", "Google Business Profile"],
+    keyFeatures: [
+      "SEO optimization & content structuring",
+      "Campaign support for Google Ads and Meta Ads",
+      "Search Console and analytics monitoring",
+      "Social media posting and poster content support",
+      "Google Business Profile optimization",
+      "Lead generation and outreach workflow support"
+    ],
+    cta: "Grow Your Business"
+  },
+  {
+    title: "Technical Documentation & Knowledge Assets",
+    tag: "ESSENTIAL",
+    description: "Creating structured technical documentation, service guides, proposal content, case-study style material, whitepaper assets, and solution-oriented documentation for cloud, IT, and product-based services. The goal is to make complex solutions easier to understand, present, and scale.",
+    techStack: ["Markdown / Structured Content", "Microsoft Documentation Style Assets", "Proposal Documentation", "Whitepapers / Brochures", "Technical Service Content", "Knowledge Base Structure"],
+    keyFeatures: [
+      "Technical documentation writing",
+      "Solution brochures and whitepapers",
+      "Proposal and scope documentation",
+      "Service workflow documentation",
+      "Internal knowledge asset preparation",
+      "Product and support content structuring"
+    ],
+    cta: "View Documentation Services"
+  },
+  {
+    title: "Cloud Analytics & Azure Solutions",
+    tag: "TRENDING",
+    description: "Supporting cloud-driven solutions with a focus on Azure services, infrastructure understanding, analytics-oriented workflows, and business-ready cloud support. This includes cloud architecture awareness, Azure-based service support, and structured cloud solution planning for modern digital environments.",
+    techStack: ["Microsoft Azure", "Azure Storage", "Azure Networking", "VMware", "Monitoring & Reporting"],
+    keyFeatures: [
+      "Azure solution support content",
+      "Cloud service workflow understanding",
+      "Analytics-focused solution documentation",
+      "Infrastructure and service mapping",
+      "Support for cloud modernization content",
+      "Business-facing cloud solution presentation"
+    ],
+    cta: "Explore Cloud Solutions"
+  },
+  {
+    title: "Product Planning & Development",
+    tag: "HOT",
+    description: "Turning ideas into structured product concepts by combining web engineering, product thinking, solution planning, and user-focused execution. From concept definition to feature structuring and digital product planning, I help shape ideas into practical and scalable product experiences.",
+    techStack: ["Product planning workflows", "Figma / Wireframing", "Feature structuring", "React / Next.js", "Documentation-first planning", "UX-focused solution thinking"],
+    keyFeatures: [
+      "Product idea structuring",
+      "Feature planning & requirement definition",
+      "Product workflow thinking",
+      "MVP-oriented web solution planning",
+      "User-focused interface direction",
+      "End-to-end digital product execution"
+    ],
+    cta: "Plan Your Product"
+  }
+];
+
+const ServiceIconWrapper = ({ title, isActive }: { title: string; isActive: boolean }) => {
+  const titleLower = title.toLowerCase();
+  if (titleLower.includes("mern")) return <ReactIcon isActive={isActive} />;
+  if (titleLower.includes("digital solutions")) return <JavaScriptIcon isActive={isActive} />;
+  if (titleLower.includes("cloud analytics")) return <AzureIcon isActive={isActive} />;
+  if (titleLower.includes("technical documentation")) return <MicrosoftWordIcon isActive={isActive} />;
+  if (titleLower.includes("product planning")) return <MicrosoftVisioIcon isActive={isActive} />;
+  if (titleLower.includes("ui/ux")) return <FigmaIcon isActive={isActive} />;
+  if (titleLower.includes("seo") || titleLower.includes("marketing") || titleLower.includes("growth")) {
+    return <SEOIcon isActive={isActive} />;
+  }
+  if (titleLower.includes("performance optimization")) {
+    return (
+      <svg 
+        className={`w-12 h-12 transition-all duration-300 ${
+          isActive 
+            ? "text-brand filter-none brightness-100 opacity-100" 
+            : "text-zinc-500 filter grayscale brightness-75 opacity-60 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100"
+        }`} 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="2" 
+        strokeLinecap="round" 
+        strokeLinejoin="round"
+      >
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="currentColor"/>
+      </svg>
+    );
+  }
+  if (titleLower.includes("business website")) return <WordPressIcon isActive={isActive} />;
+  return <ReactIcon isActive={isActive} />;
+};
+
+function renderTechStackIcon(techName: string) {
+  const nameLower = techName.toLowerCase();
+
+  // MERN Web Application / General Stack Mappings
+  if (nameLower === "node.js" || nameLower === "nodejs" || nameLower === "node") return <NodejsOfficialIcon isActive={true} />;
+  if (nameLower === "next.js" || nameLower === "nextjs" || nameLower === "next") return <NextjsOfficialIcon isActive={true} />;
+  if (nameLower === "express.js" || nameLower === "express") return <ExpressjsOfficialIcon isActive={true} />;
+  if (nameLower === "tailwind css" || nameLower === "tailwindcss" || nameLower === "tailwind") return <TailwindcssOfficialIcon isActive={true} />;
+  if (nameLower.includes("mongodb")) return <MongoDBIcon isActive={true} />;
+  if (nameLower.includes("react")) return <ReactIcon isActive={true} />;
+  if (nameLower.includes("azure log analytics")) return <AzureLogAnalyticsIcon isActive={true} />;
+  if (nameLower.includes("azure")) return <AzureIcon isActive={true} />;
+  if (nameLower.includes("figma")) return <FigmaIcon isActive={true} />;
+  if (nameLower.includes("javascript")) return <JavaScriptIcon isActive={true} />;
+  if (nameLower.includes("typescript")) return <JavaScriptIcon isActive={true} />;
+  if (nameLower.includes("wordpress")) return <WordPressIcon isActive={true} />;
+  if (nameLower.includes("canva")) return <CanvaIcon isActive={true} />;
+  if (nameLower.includes("word") || nameLower.includes("documentation")) return <MicrosoftWordIcon isActive={true} />;
+  if (nameLower.includes("powerpoint") || nameLower.includes("whitepaper") || nameLower.includes("brochures")) return <MicrosoftPowerPointIcon isActive={true} />;
+  if (nameLower.includes("excel")) return <MicrosoftExcelIcon isActive={true} />;
+  if (nameLower.includes("visio") || nameLower.includes("planning") || nameLower.includes("structure")) return <MicrosoftVisioIcon isActive={true} />;
+  if (nameLower.includes("sharepoint") || nameLower.includes("knowledge")) return <SharePointIcon isActive={true} />;
+  if (nameLower.includes("seo") || nameLower.includes("search console")) return <SEOIcon isActive={true} />;
+  if (nameLower.includes("content")) return <ContentCreationIcon isActive={true} />;
+  if (nameLower.includes("html")) return <HTMLIcon isActive={true} />;
+  if (nameLower.includes("css")) return <CSSIcon isActive={true} />;
+  if (nameLower.includes("sql") || nameLower.includes("database")) return <SQLIcon isActive={true} />;
+  if (nameLower.includes("affinity")) return <AffinityIcon isActive={true} />;
+  if (nameLower.includes("mobirise")) return <MobiriseIcon isActive={true} />;
+
+  // Digital Solutions Engineering
+  if (nameLower === "api integrations" || nameLower === "api") return <RestApiOfficialIcon isActive={true} />;
+  if (nameLower === "cloud-connected workflows" || nameLower === "cloud") return <CloudDevelopmentOfficialIcon isActive={true} />;
+
+  // UI/UX & Portfolio Design
+  if (nameLower === "ui layout systems" || nameLower === "ui layout") return <UiDesignOfficialIcon isActive={true} />;
+  if (nameLower.includes("modern design") || nameLower === "modern") return <MaterialUiOfficialIcon isActive={true} />;
+  if (nameLower.includes("personal branding") || nameLower === "personal brand") return <PersonalBrandOfficialIcon isActive={true} />;
+  if (nameLower.includes("interactive section") || nameLower === "interactive") return <InteractiveOfficialIcon isActive={true} />;
+
+  // Performance Optimization
+  if (nameLower === "image optimization" || nameLower === "image") return <CircuitOfficialIcon isActive={true} />;
+  if (nameLower === "component structuring" || nameLower === "component") return <DecentralizedNetworkOfficialIcon isActive={true} />;
+  if (nameLower === "responsive layout improvements") return <CentralizedNetworkOfficialIcon isActive={true} />;
+
+  // Business Website Development
+  if (nameLower === "seo-ready structure" || nameLower === "seo") return <PositiveDynamicOfficialIcon isActive={true} />;
+  if (nameLower === "content-driven sections" || nameLower === "content") return <ContentOfficialIcon isActive={true} />;
+  if (nameLower === "responsive layouts" || nameLower === "responsive") return <ResponsiveOfficialIcon isActive={true} />;
+
+  // SEO, Digital Marketing & Growth Operations
+  if (nameLower === "google ads") return <GoogleAdsOfficialIcon isActive={true} />;
+  if (nameLower === "google analytics" || nameLower === "analytics") return <GooglePodcastsOfficialIcon isActive={true} />;
+  if (nameLower === "meta ads") return <MetaOfficialIcon isActive={true} />;
+  if (nameLower === "apollo.io" || nameLower === "apollo") return <ApolloIoOfficialIcon isActive={true} />;
+  if (nameLower === "google business profile" || nameLower === "business profile") return <MyBusinessOfficialIcon isActive={true} />;
+
+  // Technical Documentation & Knowledge Assets
+  if (nameLower === "technical service content" || nameLower === "tech service content") return <ServicesOfficialIcon isActive={true} />;
+
+  // Cloud Analytics & Azure Solutions
+  if (nameLower === "azure storage") return <AzureStorageOfficialIcon isActive={true} />;
+  if (nameLower === "azure networking" || nameLower === "azure network") return <AzureActiveDirectoryOfficialIcon isActive={true} />;
+  if (nameLower === "vmware") return <VmwareOfficialIcon isActive={true} />;
+  if (nameLower === "monitoring & reporting" || nameLower === "monitor") return <MonitorOfficialIcon isActive={true} />;
+
+  // Product Planning & Development
+  if (nameLower === "feature structuring" || nameLower === "feature") return <EngineeringOfficialIcon isActive={true} />;
+  if (nameLower.includes("ux-focused") || nameLower === "ux") return <WebOfficialIcon isActive={true} />;
+
+  // Fallbacks for default SVG renderings
+  if (nameLower.includes("markdown")) {
+    return (
+      <svg className="w-5 h-5 text-zinc-400 fill-current" viewBox="0 0 16 16">
+        <path d="M14 3H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM2 2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/>
+        <path d="M3.5 11V5h2l1.5 2.5L8.5 5h2v6h-1.5V7.5L7 10 5.5 7.5V11h-2zm9.75-2H12v2h-1.5V9H9.25L11.25 6h1.5l2 3z"/>
+      </svg>
+    );
+  }
+
+  const initials = techName
+    .split(/[\s/.-]+/)
+    .map(w => w[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+  return <span className="text-[10px] font-bold tracking-wider text-brand">{initials}</span>;
+}
+
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("technical");
@@ -179,6 +468,15 @@ export default function Home() {
   const [activeSkillIndex, setActiveSkillIndex] = useState(0);
   const [isSkillsGridHovered, setIsSkillsGridHovered] = useState(false);
   const [activeEduTab, setActiveEduTab] = useState("education");
+
+  const [activeServiceIndex, setActiveServiceIndex] = useState(0);
+  const [serviceProgress, setServiceProgress] = useState(0);
+  const [isServicesHovered, setIsServicesHovered] = useState(false);
+  const servicesSectionRef = useRef<HTMLDivElement>(null);
+  const [isServicesVisible, setIsServicesVisible] = useState(false);
+
+  const mobileTabsRef = useRef<HTMLDivElement>(null);
+  const desktopTabsRef = useRef<HTMLDivElement>(null);
 
   const [projects, setProjects] = useState<any[]>([]);
   const [projectsLoading, setProjectsLoading] = useState(true);
@@ -210,6 +508,70 @@ export default function Home() {
     }
     fetchProjects();
   }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !servicesSectionRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsServicesVisible(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(servicesSectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (!isServicesHovered && isServicesVisible) {
+      interval = setInterval(() => {
+        setServiceProgress((prev) => {
+          if (prev >= 100) {
+            return 100;
+          }
+          return prev + 0.5; // Increments by 0.5% every 30ms -> 6000ms total duration
+        });
+      }, 30);
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isServicesHovered, isServicesVisible]);
+
+  useEffect(() => {
+    if (serviceProgress >= 100) {
+      setActiveServiceIndex((prevIndex) => (prevIndex + 1) % services.length);
+      setServiceProgress(0);
+    }
+  }, [serviceProgress]);
+
+  const handleServiceTabClick = (index: number) => {
+    setActiveServiceIndex(index);
+    setServiceProgress(0);
+  };
+
+  useEffect(() => {
+    if (mobileTabsRef.current) {
+      const activeElement = mobileTabsRef.current.children[activeServiceIndex] as HTMLElement;
+      if (activeElement) {
+        activeElement.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center"
+        });
+      }
+    }
+    if (desktopTabsRef.current) {
+      const activeElement = desktopTabsRef.current.children[activeServiceIndex] as HTMLElement;
+      if (activeElement) {
+        activeElement.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "nearest"
+        });
+      }
+    }
+  }, [activeServiceIndex]);
 
   const filteredProjects = projects.filter(p => p.category === activeProjectTab);
 
@@ -534,7 +896,7 @@ export default function Home() {
   const handleDownloadCV = () => {
     // Attempt download of resume
     const link = document.createElement("a");
-    link.href = "/images/SERMARAJA V_Resume-1.pdf";
+    link.href = "/Sermaraja_V_Resume.pdf";
     link.download = "Sermaraja_V_Resume.pdf";
     document.body.appendChild(link);
     link.click();
@@ -604,6 +966,7 @@ export default function Home() {
           <nav className="hidden md:flex items-center space-x-10 text-sm font-semibold uppercase tracking-wider font-heading">
             <a href="#about" className="text-zinc-400 hover:text-white transition-colors">About</a>
             <a href="#skills" className="text-zinc-400 hover:text-white transition-colors">Skills</a>
+            <a href="#services-solutions" className="text-zinc-400 hover:text-white transition-colors">Services</a>
             <a href="#experience" className="text-zinc-400 hover:text-white transition-colors">Experience</a>
             <a href="#projects" className="text-zinc-400 hover:text-white transition-colors">Projects</a>
             <a href="#contact" className="text-zinc-400 hover:text-white transition-colors">Contact</a>
@@ -647,6 +1010,7 @@ export default function Home() {
           <div className="md:hidden mt-2 bg-zinc-950/95 border border-zinc-900 rounded-2xl py-4 px-6 flex flex-col space-y-4 shadow-xl">
             <a onClick={() => setIsMobileMenuOpen(false)} href="#about" className="text-zinc-400 hover:text-white transition-colors py-1">About</a>
             <a onClick={() => setIsMobileMenuOpen(false)} href="#skills" className="text-zinc-400 hover:text-white transition-colors py-1">Skills</a>
+            <a onClick={() => setIsMobileMenuOpen(false)} href="#services-solutions" className="text-zinc-400 hover:text-white transition-colors py-1">Services</a>
             <a onClick={() => setIsMobileMenuOpen(false)} href="#experience" className="text-zinc-400 hover:text-white transition-colors py-1">Experience</a>
             <a onClick={() => setIsMobileMenuOpen(false)} href="#projects" className="text-zinc-400 hover:text-white transition-colors py-1">Projects</a>
             <a onClick={() => setIsMobileMenuOpen(false)} href="#contact" className="text-zinc-400 hover:text-white transition-colors py-1">Contact</a>
@@ -1258,6 +1622,215 @@ export default function Home() {
               })}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Services & Solutions Section */}
+      <section ref={servicesSectionRef} id="services-solutions" className="py-16 md:py-24 px-6 max-w-6xl mx-auto border-t border-zinc-900 overflow-hidden">
+        {/* Header */}
+        <div className="text-center mb-16 reveal-item">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-silver-gradient mb-4">
+            Services & Solutions
+          </h2>
+          <p className="text-zinc-500 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+            Transforming ideas into high-performance digital realities with precision and creativity.
+          </p>
+        </div>
+
+        {/* Content Container */}
+        <div 
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-start reveal-item"
+          onMouseEnter={() => setIsServicesHovered(true)}
+          onMouseLeave={() => setIsServicesHovered(false)}
+        >
+          {/* Left Column: Tabs List */}
+          <div className="lg:col-span-5 flex flex-col gap-3 w-full max-h-[580px] lg:overflow-y-auto lg:pr-2 scrollbar-thin scrollbar-thumb-zinc-900 scrollbar-track-transparent">
+            {/* Mobile View: Horizontal scroll tabs */}
+            <div ref={mobileTabsRef} className="flex lg:hidden overflow-x-auto pb-4 gap-3 scrollbar-none snap-x w-full">
+              {services.map((service, index) => {
+                const isActive = activeServiceIndex === index;
+                return (
+                  <button
+                    key={index}
+                    onClick={() => handleServiceTabClick(index)}
+                    className={`snap-center shrink-0 flex items-center gap-3 px-5 py-3 rounded-xl border transition-all duration-300 ${
+                      isActive
+                        ? "bg-zinc-950 border-brand/40 shadow-[0_0_15px_rgba(197,2,72,0.15)] text-white"
+                        : "bg-zinc-950/40 border-zinc-900 text-zinc-400 hover:border-zinc-800 hover:text-zinc-300"
+                    }`}
+                  >
+                    <div className="w-5 h-5 flex items-center justify-center scale-90">
+                      <ServiceIconWrapper title={service.title} isActive={isActive} />
+                    </div>
+                    <span className="font-heading text-xs font-semibold whitespace-nowrap">
+                      {service.title}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Desktop View: Vertical stack list */}
+            <div ref={desktopTabsRef} className="hidden lg:flex flex-col gap-3">
+              {services.map((service, index) => {
+                const isActive = activeServiceIndex === index;
+                
+                let tagColorClass = "text-zinc-400 border-zinc-800/80 bg-zinc-900/40";
+                if (isActive) {
+                  if (service.tag === "POPULAR") tagColorClass = "text-rose-400 border-rose-500/20 bg-rose-500/10";
+                  else if (service.tag === "FEATURED") tagColorClass = "text-emerald-400 border-emerald-500/20 bg-emerald-500/10";
+                  else if (service.tag === "TRENDING") tagColorClass = "text-purple-400 border-purple-500/20 bg-purple-500/10";
+                  else if (service.tag === "ESSENTIAL") tagColorClass = "text-blue-400 border-blue-500/20 bg-blue-500/10";
+                  else if (service.tag === "HOT") tagColorClass = "text-amber-400 border-amber-500/20 bg-amber-500/10";
+                  else if (service.tag === "CREATIVE") tagColorClass = "text-fuchsia-400 border-fuchsia-500/20 bg-fuchsia-500/10";
+                  else if (service.tag === "OPTIMIZED") tagColorClass = "text-cyan-400 border-cyan-500/20 bg-cyan-500/10";
+                  else if (service.tag === "BUSINESS") tagColorClass = "text-teal-400 border-teal-500/20 bg-teal-500/10";
+                }
+
+                return (
+                  <button
+                    key={index}
+                    onClick={() => handleServiceTabClick(index)}
+                    className={`relative overflow-hidden group flex items-center justify-between p-4 rounded-xl border text-left transition-all duration-300 cursor-pointer ${
+                      isActive
+                        ? "bg-zinc-950 border-brand/35 shadow-[0_4px_20px_rgba(197,2,72,0.08)]"
+                        : "bg-zinc-950/40 border-zinc-900 hover:border-zinc-800 hover:bg-zinc-900/20"
+                    }`}
+                  >
+                    {isActive && (
+                      <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-brand"></div>
+                    )}
+
+                    <div className="flex items-center gap-4">
+                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors duration-300 ${
+                        isActive ? "bg-zinc-900 border border-zinc-800" : "bg-zinc-900/50 border border-zinc-900/50"
+                      }`}>
+                        <ServiceIconWrapper title={service.title} isActive={isActive} />
+                      </div>
+
+                      <div className="flex flex-col gap-1">
+                        <span className={`font-heading text-sm font-bold tracking-wide transition-colors ${
+                          isActive ? "text-white" : "text-zinc-400 group-hover:text-white"
+                        }`}>
+                          {service.title}
+                        </span>
+                        
+                        <div className="flex">
+                          <span className={`text-[9px] font-heading font-extrabold tracking-wider uppercase px-2 py-0.5 rounded border ${tagColorClass}`}>
+                            {service.tag}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className={`transition-all duration-300 ${
+                      isActive ? "text-brand translate-x-0" : "text-zinc-600 group-hover:text-zinc-400 group-hover:translate-x-1"
+                    }`}>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+
+                    {isActive && (
+                      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-zinc-900">
+                        <div 
+                          className="h-full bg-brand transition-all duration-300 ease-linear"
+                          style={{ width: `${serviceProgress}%` }}
+                        ></div>
+                      </div>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Right Column: Detailed Card */}
+          <div className="lg:col-span-7 bg-zinc-950 border border-zinc-900 hover:border-brand/20 transition-all duration-500 rounded-2xl p-6 md:p-8 relative min-h-[580px] flex flex-col justify-between overflow-hidden shadow-2xl">
+            <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-brand/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div className="absolute -top-24 -left-24 w-80 h-80 bg-brand/5 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div key={activeServiceIndex} className="animate-fadeIn flex flex-col justify-between h-full w-full space-y-6">
+              <div className="space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 pb-6 border-b border-zinc-900/60">
+                  <div className="w-16 h-16 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center p-3.5 shadow-lg shadow-black/50 shrink-0">
+                    <ServiceIconWrapper title={services[activeServiceIndex].title} isActive={true} />
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <h3 className="text-2xl md:text-3xl font-heading font-bold text-white tracking-tight">
+                        {services[activeServiceIndex].title}
+                      </h3>
+                    </div>
+                    
+                    <div>
+                      <span className="text-[10px] font-heading font-extrabold tracking-widest uppercase bg-brand/10 border border-brand/20 text-brand px-2.5 py-1 rounded">
+                        {services[activeServiceIndex].tag}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-sans font-normal">
+                  {services[activeServiceIndex].description}
+                </p>
+
+                <div className="space-y-3 pt-2">
+                  <h4 className="font-heading text-xs font-bold uppercase tracking-widest text-zinc-500">
+                    Tech Stack
+                  </h4>
+                  <div className="flex flex-wrap gap-3">
+                    {services[activeServiceIndex].techStack.map((tech, index) => (
+                      <div
+                        key={index}
+                        className="w-10 h-10 rounded-full bg-zinc-900/80 border border-zinc-800 flex items-center justify-center p-2 hover:border-brand/40 hover:shadow-[0_0_12px_rgba(197,2,72,0.15)] transition-all duration-300 relative group/tech shrink-0 cursor-default"
+                      >
+                        <div className="w-full h-full flex items-center justify-center">
+                          {renderTechStackIcon(tech)}
+                        </div>
+                        
+                        <span className="absolute bottom-full mb-2.5 left-1/2 -translate-x-1/2 hidden group-hover/tech:block bg-zinc-950 text-white text-[10px] font-heading tracking-wide py-1 px-2.5 rounded border border-zinc-800 shadow-xl whitespace-nowrap z-50">
+                          {tech}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-3 pt-2">
+                  <h4 className="font-heading text-xs font-bold uppercase tracking-widest text-zinc-500">
+                    Key Features
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-y-3.5 gap-x-6">
+                    {services[activeServiceIndex].keyFeatures.map((feature, index) => (
+                      <div key={index} className="flex items-start gap-2.5 text-xs md:text-sm text-zinc-400">
+                        <span className="w-1.5 h-1.5 rounded-full bg-brand mt-2 shrink-0 shadow-[0_0_8px_#C50248]"></span>
+                        <span className="leading-relaxed">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-8 border-t border-zinc-900/60">
+                <a
+                  href="#contact"
+                  className="themed-btn w-full px-6 py-4 text-xs font-semibold uppercase tracking-widest flex items-center justify-center gap-3 transition-all group"
+                >
+                  <span>{services[activeServiceIndex].cta}</span>
+                  <svg 
+                    className="w-4 h-4 text-white group-hover:translate-x-1.5 transition-transform duration-300" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -2670,151 +3243,101 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black/90 pt-16 pb-12 px-6 border-t border-zinc-900 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-            
-            {/* Column 1: Info */}
-            <div>
-              <a href="#" className="font-heading text-lg font-bold tracking-tight text-white mb-4 block">
-                SERMARAJA<span className="text-brand">.V</span>
-              </a>
-              <p className="text-sm text-zinc-500 leading-relaxed mb-6">
-                Associate System Engineer and Web Developer focused on crafting high-performance systems, clean architectures, and interactive, human-centered designs.
-              </p>
-              <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-zinc-900 border border-zinc-800 text-[10px] font-semibold text-zinc-400 select-none">
-                <span className="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
-                <span>Open for Worldwide Remote roles</span>
+      <footer className="bg-black/95 pt-20 pb-12 px-6 border-t border-zinc-900 relative z-10 select-none">
+        <div className="max-w-6xl mx-auto flex flex-col gap-12 md:gap-16">
+          
+          {/* Top Row: Copyright & Back to Top */}
+          <div className="flex items-center justify-between">
+            <div className="text-zinc-500 text-sm font-sans tracking-wide">
+              © {new Date().getFullYear()} Sermaraja V. All rights reserved.
+            </div>
+            <button 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center gap-3 group text-zinc-400 hover:text-white transition-colors duration-300 cursor-pointer"
+            >
+              <span className="text-xs font-heading font-bold uppercase tracking-widest">Back to Top</span>
+              <div className="w-10 h-10 rounded-full border border-zinc-800 group-hover:border-white/20 group-hover:bg-zinc-900 flex items-center justify-center transition-all duration-300">
+                <svg className="w-4 h-4 transform group-hover:-translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                </svg>
               </div>
-            </div>
+            </button>
+          </div>
 
-            {/* Column 2: Links */}
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4 font-heading">
-                Quick Navigation
-              </h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="#about" className="text-zinc-500 hover:text-white transition-colors">About Me</a>
-                </li>
-                <li>
-                  <a href="#awards" className="text-zinc-500 hover:text-white transition-colors">Awards & Recognition</a>
-                </li>
-                <li>
-                  <a href="#skills" className="text-zinc-500 hover:text-white transition-colors">Core Skills</a>
-                </li>
-                <li>
-                  <a href="#experience" className="text-zinc-500 hover:text-white transition-colors">Experience</a>
-                </li>
-                <li>
-                  <a href="#projects" className="text-zinc-500 hover:text-white transition-colors">Projects</a>
-                </li>
-                <li>
-                  <a href="#education" className="text-zinc-500 hover:text-white transition-colors">Education</a>
-                </li>
-                <li>
-                  <a href="#blogs" className="text-zinc-500 hover:text-white transition-colors">Blogs</a>
-                </li>
-                <li>
-                  <a href="#contact" className="text-zinc-500 hover:text-white transition-colors">Get In Touch</a>
-                </li>
-              </ul>
+          {/* Middle Section: CTA */}
+          <div className="space-y-4">
+            <div className="text-brand text-xs sm:text-sm font-heading font-extrabold uppercase tracking-[0.25em]">
+              Have a project in mind?
             </div>
+            <a 
+              href="mailto:sermarajav.offcl@gmail.com"
+              className="block group/talk relative overflow-hidden"
+            >
+              <h2 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-heading font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-zinc-800 via-zinc-400 to-zinc-800 group-hover/talk:from-brand group-hover/talk:to-amber-500 transition-all duration-700 uppercase">
+                Let's Talk
+              </h2>
+            </a>
+          </div>
 
-            {/* Column 3: Contact Info */}
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4 font-heading">
-                Contact Details
-              </h4>
-              <ul className="space-y-3.5 text-sm text-zinc-500">
-                <li className="flex flex-col gap-0.5">
-                  <span className="text-[10px] text-zinc-600 font-semibold uppercase tracking-wider">Email Address</span>
-                  <a href="mailto:sermarajav.offcl@gmail.com" className="text-zinc-400 hover:text-white transition-colors break-all">
-                    sermarajav.offcl@gmail.com
-                  </a>
-                </li>
-                <li className="flex flex-col gap-0.5">
-                  <span className="text-[10px] text-zinc-600 font-semibold uppercase tracking-wider">Call / Mobile</span>
-                  <a href="tel:9626628589" className="text-zinc-400 hover:text-white transition-colors">
-                    +91 96266 28589
-                  </a>
-                </li>
-                <li className="flex flex-col gap-0.5">
-                  <span className="text-[10px] text-zinc-600 font-semibold uppercase tracking-wider">Location</span>
-                  <span className="text-zinc-400">Tamil Nadu, India</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Column 4: Connect */}
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4 font-heading">
-                Connect Socially
-              </h4>
-              <p className="text-xs text-zinc-500 leading-relaxed mb-4">
-                Follow my work, check code repositories, and stay in touch on social platforms.
-              </p>
-              <div className="flex flex-wrap gap-2.5">
+          {/* Bottom Section: Social Pill Buttons & Credits */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8 pt-8 border-t border-zinc-900/60">
+            {/* Social Pill Buttons & Opportunity Tag */}
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-wrap gap-4">
+                {/* GitHub */}
                 <a 
                   href="https://github.com/Sermaraja" 
                   target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"
-                  aria-label="GitHub"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-6 py-3 rounded-full border border-zinc-800 hover:border-brand hover:bg-brand/5 text-zinc-400 hover:text-white font-heading font-bold text-xs uppercase tracking-wider transition-all duration-300"
                 >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"></path>
                   </svg>
+                  <span>GitHub</span>
                 </a>
 
+                {/* LinkedIn */}
                 <a 
                   href="https://www.linkedin.com/in/sermaraja-v09022005/" 
                   target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"
-                  aria-label="LinkedIn"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-6 py-3 rounded-full border border-zinc-800 hover:border-brand hover:bg-brand/5 text-zinc-400 hover:text-white font-heading font-bold text-xs uppercase tracking-wider transition-all duration-300"
                 >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
                   </svg>
+                  <span>LinkedIn</span>
                 </a>
 
-                <a 
-                  href="mailto:sermarajav.offcl@gmail.com" 
-                  className="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"
-                  aria-label="Email"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                  </svg>
-                </a>
-
+                {/* WhatsApp */}
                 <a 
                   href="https://wa.me/919626628589" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="group w-9 h-9 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"
-                  aria-label="WhatsApp"
+                  className="flex items-center gap-3 px-6 py-3 rounded-full border border-zinc-800 hover:border-brand hover:bg-brand/5 text-zinc-400 hover:text-white font-heading font-bold text-xs uppercase tracking-wider transition-all duration-300"
                 >
                   <img 
                     src="https://img.icons8.com/ios/50/whatsapp--v1.png" 
                     alt="WhatsApp" 
-                    className="w-4 h-4 object-contain invert opacity-60 group-hover:opacity-100 transition-opacity" 
+                    className="w-4 h-4 object-contain invert opacity-60 hover:opacity-100 transition-opacity" 
                   />
+                  <span>WhatsApp</span>
                 </a>
+              </div>
+              
+              {/* Opportunity Tag */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-950 border border-zinc-900 text-[10px] font-semibold text-zinc-400 select-none w-fit">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Open to Remote, On-Site & Hybrid Opportunities</span>
               </div>
             </div>
 
-          </div>
+            {/* Credits */}
+            <div className="text-left sm:text-right text-[11px] text-zinc-500 font-sans select-none self-end sm:self-auto">
+              Designed & Built with passion & precision <span className="text-brand">❤️</span>
+            </div>
 
-          <div className="border-t border-zinc-900 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-zinc-600 text-xs select-none">
-              © {new Date().getFullYear()} Sermaraja V. All rights reserved.
-            </div>
-            <div className="text-zinc-600 text-xs font-heading select-none flex items-center gap-1.5">
-              <span>Designed & Built with passion & precision</span>
-              <span className="text-brand">❤</span>
-            </div>
           </div>
 
         </div>
