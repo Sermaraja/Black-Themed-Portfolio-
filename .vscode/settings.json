@@ -2,6 +2,9 @@
   "css.lint.unknownAtRules": "ignore",
   "scss.lint.unknownAtRules": "ignore",
   "less.lint.unknownAtRules": "ignore",
+  "files.associations": {
+    ".github/workflows/*.yml": "yaml"
+  },
   "yaml.schemas": {
     "https://json.schemastore.org/empty.json": [
       ".github/workflows/*.yml"
