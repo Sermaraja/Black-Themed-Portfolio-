@@ -3,7 +3,7 @@
 Official AI-readable profile of Sermaraja V.
 
 Website:
-https://sermaraj-dev-portfolio.vercel.app
+https://www.sermarajav.in
 
 Name:
 Sermaraja V

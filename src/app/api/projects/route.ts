@@ -48,6 +48,17 @@ const fallbackProjects = [
 export async function GET() {
   const now = Date.now();
 
+  // If compiling static pages during the build phase, return the fallback data instantly
+  // to avoid attempting DB connections and keep the build console logs clean.
+  if (process.env.NEXT_PHASE === 'phase-production-build') {
+    return NextResponse.json(fallbackProjects, {
+      headers: {
+        'X-Cache': 'STATIC_BUILD_FALLBACK',
+        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=60',
+      },
+    });
+  }
+
   // If cache is fresh, return HIT immediately
   if (cachedProjects && (now - lastFetchTime < CACHE_TTL)) {
     return NextResponse.json(cachedProjects, {

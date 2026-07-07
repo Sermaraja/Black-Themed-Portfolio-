@@ -39,6 +39,10 @@ if (process.env.NODE_ENV === 'development') {
 
   const getClientPromise = (): Promise<MongoClient> => {
     if (!cachedPromise) {
+      if (process.env.NEXT_PHASE === 'phase-production-build') {
+        cachedPromise = Promise.reject(new Error('Skipping MongoDB connection during Next.js build phase'));
+        return cachedPromise;
+      }
       console.log('Connecting to MongoDB database (production)...');
       const client = new MongoClient(uri, options);
       cachedPromise = client.connect().catch(async (err) => {

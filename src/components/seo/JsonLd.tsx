@@ -68,8 +68,8 @@ export function JsonLd() {
       addressCountry: 'India',
     },
     sameAs: [
-      'https://linkedin.com',
-      'https://github.com'
+      siteConfig.links.linkedin,
+      siteConfig.links.github
     ],
   };
 

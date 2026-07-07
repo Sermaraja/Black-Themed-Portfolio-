@@ -5,17 +5,21 @@ export const siteConfig = {
   name: 'Sermaraja V',
   title: 'Sermaraja V | Web Engineering, Product Strategy & Digital Solutions',
   description: 'Official portfolio of Sermaraja V (Sermaraj Vairamani), Associate System Engineer at Devopstrio Ltd. Specialized in Azure/AWS Cloud Engineering, DevOps, Infrastructure Modernization, and Full Stack Web Development across Kovilpatti, Chennai, Bangalore, India, UK, London, USA, and Australia.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://sermaraj-dev-portfolio.vercel.app',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sermarajav.in',
   ogImage: '/IMG/sermaja V logo.png',
   author: 'Sermaraja V',
   keywords: [
-    // Brand & Name Keywords (Main Focus)zzzz
+    // Brand & Name Keywords (Main Focus)
     'sermaraj',
     'sermaraja V',
     'sermaraja vairamani',
+    'sermarajav',
+    'sermarajav.in',
+    'www.sermarajav.in',
     'devopstrio',
     'devopstrio ltd',
     'Sermaraja V portfolio',
+    'Sermaraja V official website',
 
     // Main Focus Local City (Kovilpatti)
     'web developer in kovilpatti',
@@ -26,6 +30,7 @@ export const siteConfig = {
     'software engineer in kovilpatti',
     'Kovilpatti web developer',
     'Kovil patti cloud specialist',
+    'Azure Administrator Kovilpatti',
 
     // Major Tamil Nadu Cities & Services
     'web developer in chennai',
@@ -65,11 +70,13 @@ export const siteConfig = {
     'VMware Virtualization Specialist',
     'Infrastructure Modernization',
     'Next.js Full Stack Developer',
-    'AI Agent & RAG Developer'
+    'AI Agent & RAG Developer',
+    'Sermaraja V Associate System Engineer',
+    'Sermaraja V Web Developer'
   ],
   links: {
-    github: 'https://github.com',
-    linkedin: 'https://linkedin.com',
+    github: 'https://github.com/sermaraja',
+    linkedin: 'https://linkedin.com/in/sermaraja',
   },
 };
 
@@ -89,6 +96,8 @@ export function constructMetadata({
   path?: string;
 } = {}): Metadata {
   const canonicalUrl = path ? `${siteConfig.url}${path}` : siteConfig.url;
+  const absoluteImageUrl = image.startsWith('http') ? image : `${siteConfig.url}${image}`;
+  const absoluteIconUrl = icons.startsWith('http') ? icons : `${siteConfig.url}${icons}`;
 
   return {
     title,
@@ -101,6 +110,9 @@ export function constructMetadata({
     alternates: {
       canonical: canonicalUrl,
     },
+    applicationName: 'Sermaraja V Portfolio',
+    referrer: 'origin-when-cross-origin',
+    generator: 'Next.js',
     openGraph: {
       title,
       description,
@@ -108,7 +120,7 @@ export function constructMetadata({
       siteName: siteConfig.name,
       images: [
         {
-          url: '/IMG/sermaraj fevicon.png',
+          url: absoluteImageUrl,
           width: 1200,
           height: 630,
           alt: 'Sermaraja V Logo',
@@ -125,7 +137,7 @@ export function constructMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['/IMG/sermaraj fevicon.png'],
+      images: [absoluteImageUrl],
       creator: '@sermaraja',
     },
     robots: {
@@ -139,7 +151,11 @@ export function constructMetadata({
         'max-snippet': -1,
       },
     },
-    icons,
+    icons: {
+      icon: absoluteIconUrl,
+      shortcut: absoluteIconUrl,
+      apple: absoluteIconUrl,
+    },
     other: {
       'geo.region': 'IN-TN',
       'geo.placename': 'Kovilpatti, Tamil Nadu, India',

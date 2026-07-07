@@ -554,23 +554,22 @@ export default function Home() {
     if (mobileTabsRef.current) {
       const activeElement = mobileTabsRef.current.children[activeServiceIndex] as HTMLElement;
       if (activeElement) {
-        activeElement.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
-          inline: "center"
+        const container = mobileTabsRef.current;
+        const containerWidth = container.clientWidth;
+        const elementOffsetLeft = activeElement.offsetLeft;
+        const elementWidth = activeElement.clientWidth;
+
+        // Scroll only the mobile tabs container horizontally to center the active tab,
+        // without yanking the main page/window viewport scroll.
+        const targetScrollLeft = elementOffsetLeft - (containerWidth / 2) + (elementWidth / 2);
+        container.scrollTo({
+          left: targetScrollLeft,
+          behavior: "smooth"
         });
       }
     }
-    if (desktopTabsRef.current) {
-      const activeElement = desktopTabsRef.current.children[activeServiceIndex] as HTMLElement;
-      if (activeElement) {
-        activeElement.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
-          inline: "nearest"
-        });
-      }
-    }
+    // Desktop tabs are in a vertical layout and do not scroll internally,
+    // so we should not do any scroll actions for desktop to avoid yanking the page view.
   }, [activeServiceIndex]);
 
   const filteredProjects = projects.filter(p => p.category === activeProjectTab);
