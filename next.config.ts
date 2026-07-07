@@ -23,6 +23,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'raw.githubusercontent.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'devopstrio.co.uk',
+      },
     ],
   },
 
@@ -58,7 +62,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.clarity.ms https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https://images.unsplash.com https://img.icons8.com https://raw.githubusercontent.com https://www.clarity.ms https://c.bing.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://c.bing.com https://www.clarity.ms https://va.vercel-scripts.com https://*.vercel-storage.com; media-src 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests;",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.clarity.ms https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https://images.unsplash.com https://img.icons8.com https://raw.githubusercontent.com https://devopstrio.co.uk https://www.clarity.ms https://c.bing.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://c.bing.com https://www.clarity.ms https://va.vercel-scripts.com https://*.vercel-storage.com; media-src 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests;",
           },
           {
             key: 'Cross-Origin-Opener-Policy',
