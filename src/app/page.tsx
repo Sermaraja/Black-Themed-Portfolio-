@@ -1120,6 +1120,21 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                   </svg>
                 </a>
+
+                <a 
+                  href="https://calendly.com/sermarajav0709/30min" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-11 h-11 rounded-full bg-zinc-900/60 border border-zinc-800/80 hover:border-pink-500/50 hover:bg-zinc-800/80 flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110"
+                  aria-label="Calendly"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></line>
+                    <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></line>
+                    <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></line>
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
@@ -3041,6 +3056,24 @@ export default function Home() {
                   </div>
                 </div>
 
+                {/* Calendly */}
+                <div className="flex items-center gap-4 group/item">
+                  <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-brand transition-colors group-hover/item:border-brand">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></line>
+                      <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></line>
+                      <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></line>
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-xs text-zinc-500 font-semibold uppercase tracking-wider">Book a Call</p>
+                    <a href="https://calendly.com/sermarajav0709/30min" target="_blank" rel="noopener noreferrer" className="text-white hover:text-brand transition-colors font-medium">
+                      Schedule on Calendly
+                    </a>
+                  </div>
+                </div>
+
                 {/* Location */}
                 <div className="flex items-center gap-4 group/item">
                   <div className="w-10 h-10 rounded bg-zinc-900 border border-zinc-800 flex items-center justify-center text-brand transition-colors group-hover/item:border-brand">
@@ -3106,6 +3139,21 @@ export default function Home() {
                       alt="WhatsApp" 
                       className="w-5 h-5 object-contain invert opacity-60 group-hover:opacity-100 transition-opacity" 
                     />
+                  </a>
+
+                  <a 
+                    href="https://calendly.com/sermarajav0709/30min" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="group w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 hover:border-brand flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(197,2,72,0.499)]"
+                    aria-label="Calendly"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></rect>
+                      <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></line>
+                      <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></line>
+                      <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></line>
+                    </svg>
                   </a>
                 </div>
               </div>
@@ -3323,6 +3371,22 @@ export default function Home() {
                   />
                   <span>WhatsApp</span>
                 </a>
+
+                {/* Calendly */}
+                <a 
+                  href="https://calendly.com/sermarajav0709/30min" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-6 py-3 rounded-full border border-zinc-800 hover:border-brand hover:bg-brand/5 text-zinc-400 hover:text-white font-heading font-bold text-xs uppercase tracking-wider transition-all duration-300"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></line>
+                    <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></line>
+                    <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></line>
+                  </svg>
+                  <span>Calendly</span>
+                </a>
               </div>
               
               {/* Opportunity Tag */}
@@ -3392,6 +3456,27 @@ export default function Home() {
                 <div className="flex flex-col">
                   <span className="text-xs text-zinc-500 font-semibold uppercase tracking-wider">Email</span>
                   <span className="text-sm font-semibold text-white group-hover:text-brand transition-colors">sermarajav.offcl@gmail.com</span>
+                </div>
+              </a>
+
+              {/* Calendly Booking Link */}
+              <a 
+                href="https://calendly.com/sermarajav0709/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-900 hover:border-brand/30 hover:bg-zinc-900/80 transition-all group"
+              >
+                <div className="w-10 h-10 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-brand shrink-0 group-hover:scale-105 transition-transform">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></line>
+                    <line x1="8" y1="2" x2="8" y2="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></line>
+                    <line x1="3" y1="10" x2="21" y2="10" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></line>
+                  </svg>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xs text-zinc-500 font-semibold uppercase tracking-wider">Book a Meeting</span>
+                  <span className="text-sm font-semibold text-white group-hover:text-brand transition-colors">Schedule on Calendly</span>
                 </div>
               </a>
 
