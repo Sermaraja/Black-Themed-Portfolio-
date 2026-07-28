@@ -3,80 +3,26 @@ import type { Metadata } from 'next';
 
 export const siteConfig = {
   name: 'Sermaraja V',
-  title: 'Sermaraja V | Web Engineering, Product Strategy & Digital Solutions',
-  description: 'Official portfolio of Sermaraja V (Sermaraj Vairamani), Associate System Engineer at Devopstrio Ltd. Specialized in Azure/AWS Cloud Engineering, DevOps, Infrastructure Modernization, and Full Stack Web Development across Kovilpatti, Chennai, Bangalore, India, UK, London, USA, and Australia.',
+  title: 'Sermaraja V | Web Developer & Cloud Engineer in Kovilpatti',
+  description: 'Sermaraja V is a Web Developer & Cloud Engineer based in Kovilpatti, serving clients across Madurai and Chennai. Full-stack development, Azure/AWS cloud, and DevOps solutions.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sermarajav.in',
   ogImage: '/IMG/sermaja V logo.png',
   author: 'Sermaraja V',
   keywords: [
-    // Brand & Name Keywords (Main Focus)
-    'sermaraj',
-    'sermaraja V',
-    'sermaraja vairamani',
-    'sermarajav',
-    'sermarajav.in',
-    'www.sermarajav.in',
-    'devopstrio',
-    'devopstrio ltd',
-    'Sermaraja V portfolio',
-    'Sermaraja V official website',
-
-    // Main Focus Local City (Kovilpatti)
-    'web developer in kovilpatti',
-    'full stack developer in kovilpatti',
-    'cloud engineer in kovilpatti',
-    'devops engineer in kovilpatti',
-    'system engineer in kovilpatti',
-    'software engineer in kovilpatti',
-    'Kovilpatti web developer',
-    'Kovil patti cloud specialist',
-    'Azure Administrator Kovilpatti',
-
-    // Major Tamil Nadu Cities & Services
-    'web developer in chennai',
-    'cloud engineer in chennai',
-    'devops engineer in chennai',
-    'web developer in madurai',
-    'full stack developer in madurai',
-    'web developer in coimbatore',
-    'cloud engineer in coimbatore',
-    'web developer in thirunelvelli',
-    'web developer in tirunelveli',
-    'web developer in trichy',
-
-    // Metro Indian Cities & Services
-    'web developer in bangalore',
-    'cloud engineer in bangalore',
-    'devops engineer in bangalore',
-    'web developer in mumbai',
-    'cloud engineer in mumbai',
-    'web developer in delhi',
-
-    // Global Services & Target Countries
-    'cloud engineer India',
-    'devops engineer India',
-    'cloud engineer UK',
-    'cloud engineer London',
-    'cloud engineer USA',
-    'cloud engineer Australia',
-    'remote full stack developer UK',
-    'remote azure cloud specialist USA',
-    'freelance web developer Australia',
-
-    // Core Technical Expertise
-    'Associate System Engineer',
-    'Azure Cloud Specialist',
-    'AWS Migration Specialist',
-    'VMware Virtualization Specialist',
-    'Infrastructure Modernization',
-    'Next.js Full Stack Developer',
-    'AI Agent & RAG Developer',
-    'Sermaraja V Associate System Engineer',
-    'Sermaraja V Web Developer'
+    'web developer Kovilpatti',
+    'cloud engineer Kovilpatti',
+    'full stack developer Kovilpatti',
+    'Azure cloud engineer Tamil Nadu',
+    'web developer Madurai',
+    'cloud engineer Madurai',
+    'web developer Chennai',
+    'DevOps engineer Tamil Nadu',
+    'Next.js developer India',
+    'freelance web developer Tamil Nadu',
   ],
   links: {
     github: 'https://github.com/sermaraja',
-    linkedin: 'https://linkedin.com/in/sermaraja',
+    linkedin: 'https://www.linkedin.com/in/sermaraja-v09022005/',
   },
 };
 

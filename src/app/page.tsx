@@ -1045,6 +1045,9 @@ export default function Home() {
             
             <h1 className="text-5xl sm:text-7xl md:text-8xl font-heading font-black tracking-tight mb-4 text-silver-gradient select-none">
               Sermaraja V
+              <span className="block text-lg sm:text-xl md:text-2xl font-medium text-zinc-400 mt-3 tracking-normal leading-snug font-sans" style={{ fontFamily: 'var(--font-sans)' }}>
+                — Web Developer &amp; Cloud Engineer in Kovilpatti, Tamil Nadu
+              </span>
             </h1>
 
             <div className="text-xl sm:text-3xl md:text-4xl font-heading font-medium tracking-tight mb-8 h-12 flex items-center justify-center lg:justify-start">
@@ -1179,7 +1182,7 @@ export default function Home() {
               <div className="absolute inset-0 rounded-full overflow-hidden z-10 border-2 border-brand/20">
                 <img 
                   src="/IMG/sermaraja-hero-profile.png" 
-                  alt="Sermaraja V" 
+                  alt="Sermaraja V — Web Developer and Cloud Engineer based in Kovilpatti, Tamil Nadu" 
                   className="hero-profile-img w-full h-full object-cover object-top" 
                 />
               </div>
@@ -1242,9 +1245,12 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="w-2 h-2 rounded-full bg-brand"></span>
-                  <span>Location: Tamil Nadu, India</span>
+                  <span>Location: Kovilpatti, Tamil Nadu, India</span>
                 </div>
               </div>
+              <p>
+                Based in <strong className="text-white">Kovilpatti, Tamil Nadu</strong>, I work with clients locally and remotely — with a particular focus on serving businesses and professionals in <strong className="text-white">Madurai</strong> and <strong className="text-white">Chennai</strong>. Whether you need a web application, cloud infrastructure support, or a complete digital solution, I&apos;m available across these areas and ready to build something that works for you.
+              </p>
             </div>
           </div>
 
@@ -1649,6 +1655,40 @@ export default function Home() {
           <p className="text-zinc-500 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
             Transforming ideas into high-performance digital realities with precision and creativity.
           </p>
+
+          {/* Service Areas Strip */}
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+            <div className="bg-zinc-950/60 border border-zinc-900 hover:border-brand/30 rounded-xl p-5 text-left transition-all duration-300 group">
+              <div className="flex items-center gap-2.5 mb-2">
+                <span className="w-2 h-2 rounded-full bg-brand shadow-[0_0_8px_#C50248] shrink-0"></span>
+                <span className="font-heading text-sm font-bold text-white tracking-wide">Kovilpatti</span>
+                <span className="text-[9px] font-heading font-extrabold uppercase tracking-widest text-brand border border-brand/30 bg-brand/10 px-1.5 py-0.5 rounded">Base</span>
+              </div>
+              <p className="text-zinc-500 text-xs leading-relaxed">
+                My home base — full-stack web development, cloud engineering, and DevOps for local businesses and startups.
+              </p>
+            </div>
+            <div className="bg-zinc-950/60 border border-zinc-900 hover:border-brand/30 rounded-xl p-5 text-left transition-all duration-300 group">
+              <div className="flex items-center gap-2.5 mb-2">
+                <span className="w-2 h-2 rounded-full bg-zinc-500 group-hover:bg-brand transition-colors duration-300 shrink-0"></span>
+                <span className="font-heading text-sm font-bold text-white tracking-wide">Madurai</span>
+                <span className="text-[9px] font-heading font-extrabold uppercase tracking-widest text-zinc-400 border border-zinc-800 bg-zinc-900/60 px-1.5 py-0.5 rounded">Service Area</span>
+              </div>
+              <p className="text-zinc-500 text-xs leading-relaxed">
+                Web applications, business websites, and Azure cloud solutions for clients across Madurai.
+              </p>
+            </div>
+            <div className="bg-zinc-950/60 border border-zinc-900 hover:border-brand/30 rounded-xl p-5 text-left transition-all duration-300 group">
+              <div className="flex items-center gap-2.5 mb-2">
+                <span className="w-2 h-2 rounded-full bg-zinc-500 group-hover:bg-brand transition-colors duration-300 shrink-0"></span>
+                <span className="font-heading text-sm font-bold text-white tracking-wide">Chennai</span>
+                <span className="text-[9px] font-heading font-extrabold uppercase tracking-widest text-zinc-400 border border-zinc-800 bg-zinc-900/60 px-1.5 py-0.5 rounded">Service Area</span>
+              </div>
+              <p className="text-zinc-500 text-xs leading-relaxed">
+                Full-stack development, SEO, and cloud infrastructure services for Chennai-based businesses and teams.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Content Container */}

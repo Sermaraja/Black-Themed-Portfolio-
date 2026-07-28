@@ -10,7 +10,7 @@ export function JsonLd() {
     alternateName: ['Sermaraj', 'Sermaraja Vairamani', 'Sermaraj V', 'sermaraja'],
     url: siteConfig.url,
     image: `${siteConfig.url}/IMG/sermaja V logo.png`,
-    jobTitle: 'Associate System Engineer & Cloud Specialist',
+    jobTitle: 'Web Developer & Cloud Engineer',
     worksFor: {
       '@type': 'Organization',
       name: 'Devopstrio Ltd.',
@@ -76,10 +76,10 @@ export function JsonLd() {
   const localBusinessSchema: WithContext<ProfessionalService> = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: 'Sermaraja V (Devopstrio Ltd) - Cloud Engineering & Web Development',
+    name: 'Sermaraja V — Web Developer & Cloud Engineer in Kovilpatti',
     url: siteConfig.url,
     image: `${siteConfig.url}/IMG/sermaja V logo.png`,
-    description: 'Professional Cloud Infrastructure Modernization, Azure/AWS Migration, DevOps, and Full-Stack Web Development serving Kovilpatti, Chennai, Madurai, Tirunelveli, Coimbatore, Trichy, Bangalore, Mumbai, Delhi, India, UK, London, USA, and Australia.',
+    description: 'Full-stack web development, Azure/AWS cloud engineering, and DevOps solutions based in Kovilpatti, Tamil Nadu. Serving clients in Kovilpatti, Madurai, and Chennai.',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Kovilpatti',
@@ -95,19 +95,8 @@ export function JsonLd() {
     priceRange: '$$$',
     areaServed: [
       'Kovilpatti',
-      'Chennai',
       'Madurai',
-      'Tirunelveli',
-      'Coimbatore',
-      'Trichy',
-      'Bangalore',
-      'Mumbai',
-      'Delhi',
-      'India',
-      'United Kingdom',
-      'London',
-      'United States',
-      'Australia'
+      'Chennai',
     ],
   };
 
